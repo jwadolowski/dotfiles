@@ -54,6 +54,9 @@ Plug 'w0rp/ale'
 " Jenkinsfile support
 Plug 'martinda/Jenkinsfile-vim-syntax'
 
+" Log highlighting
+Plug 'mtdl9/vim-log-highlighting'
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{
 
 " TODO review
