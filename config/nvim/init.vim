@@ -73,10 +73,6 @@ Plug 'hashivim/vim-terraform'
 " TODO Go
 " Plug 'fatih/vim-go'
 
-" TODO YAML
-" Plug 'mrk21/yaml-vim'
-" Plug 'pearofducks/ansible-vim'
-
 " TODO compare against ultisnips
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
@@ -360,6 +356,12 @@ autocmd! User GoyoLeave Limelight!
 " -----------------------------------------------------------------------------
 " enable folding for JSON files
 autocmd FileType json setlocal foldmethod=syntax
+
+" -----------------------------------------------------------------------------
+" YAML
+" -----------------------------------------------------------------------------
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " -----------------------------------------------------------------------------
 " Incsearch
