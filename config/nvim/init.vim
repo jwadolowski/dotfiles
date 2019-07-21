@@ -51,6 +51,9 @@ Plug 'jiangmiao/auto-pairs'
 " Syntax checks
 Plug 'w0rp/ale'
 
+" Jenkinsfile
+Plug 'martinda/Jenkinsfile-vim-syntax'
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{
 
 " TODO review
@@ -254,6 +257,8 @@ let ruby_spellcheck_strings = 1
 let g:terraform_fmt_on_save = 0 " ALE takes care of that
 let g:terraform_align = 1       " Auto-align code as I type
 let g:terraform_fold_sections=1 " Allow folding
+
+autocmd BufNewFile,BufRead *.hcl set filetype=terraform
 
 " -----------------------------------------------------------------------------
 " Chef
