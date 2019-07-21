@@ -1,2 +1,9 @@
+# ----------------------------------------------------------------------------
+# vim/NeoVim
+# ----------------------------------------------------------------------------
+
 # Complied vim dictionaries
-*.spl
+config/nvim/spell/*.spl
+
+# Built-in filebrowser
+config/nvim/.netrwhist
