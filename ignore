@@ -1,0 +1,4 @@
+# Paths to be ignored by fd/rg/ag
+/Library/
+.git
+.subversion
