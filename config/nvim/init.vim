@@ -30,9 +30,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-" JSON
-Plug 'elzr/vim-json'
-
 " Utils
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -40,6 +37,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist' " adds TAB completion to :Rake function
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'       " Reconfig built-in directory browser
 
 " VCL
 Plug 'fgsch/vim-varnish'
