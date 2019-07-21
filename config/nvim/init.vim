@@ -51,7 +51,7 @@ Plug 'jiangmiao/auto-pairs'
 " Syntax checks
 Plug 'w0rp/ale'
 
-" Jenkinsfile
+" Jenkinsfile support
 Plug 'martinda/Jenkinsfile-vim-syntax'
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{
