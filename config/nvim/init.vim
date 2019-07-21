@@ -132,17 +132,8 @@ vnoremap > >gv
 " General
 " -----------------------------------------------------------------------------
 set showmatch    " highlight matching bracket for short period of time
-set matchtime=2  " tenths of a second to show the matching bracket
 set nojoinspaces " Prevents inserting two spaces after punctuation on a join (J)
 set autochdir    " automatically change window's cwd to file's dir
-
-" scroll up/down to show matching bracket (showmatch doesn't do that by
-" default)
-"
-" https://vim.fandom.com/wiki/Moving_to_matching_braces#showmatch
-inoremap } }<Left><c-o>%<c-o>:sleep 200m<CR><c-o>%<c-o>a
-inoremap ] ]<Left><c-o>%<c-o>:sleep 200m<CR><c-o>%<c-o>a
-inoremap ) )<Left><c-o>%<c-o>:sleep 200m<CR><c-o>%<c-o>a
 
 " -----------------------------------------------------------------------------
 " Splits
