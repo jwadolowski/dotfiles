@@ -332,6 +332,7 @@ let g:ale_fixers = {
 \   'markdown': ['prettier'],
 \   'terraform': ['terraform'],
 \   'yaml': ['prettier'],
+\   'sh': ['shfmt'],
 \}
 
 " Adjust jq settings to match 'python -mjson.tool' output
