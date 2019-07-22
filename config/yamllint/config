@@ -3,4 +3,5 @@ extends: default
 
 rules:
   line-length: disable
+  braces: disable
 # vim: ft=yaml

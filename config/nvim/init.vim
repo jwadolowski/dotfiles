@@ -57,6 +57,9 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 " Log highlighting
 Plug 'mtdl9/vim-log-highlighting'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{
 
 " TODO review
@@ -67,7 +70,6 @@ Plug 'mtdl9/vim-log-highlighting'
 " Plug 'hashivim/vim-consul'
 " Plug 'hashivim/vim-nomadproject'
 " Plug 'hashivim/vim-packer'
-Plug 'hashivim/vim-terraform'
 " Plug 'hashivim/vim-vagrant'
 " Plug 'hashivim/vim-vaultproject'
 
@@ -117,6 +119,7 @@ set smartcase       " override 'ignorecase' if pattern has upper case characters
 " -----------------------------------------------------------------------------
 " Indentation & moving things around
 " -----------------------------------------------------------------------------
+
 set tabstop=4       " tab = N spaces
 set softtabstop=4   " remove N spaces when removing indentation
 set shiftwidth=4    " autoindent indents N spaces
