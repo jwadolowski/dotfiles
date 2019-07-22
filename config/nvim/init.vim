@@ -350,6 +350,9 @@ let g:ale_fixers = {
 " Adjust jq settings to match 'python -mjson.tool' output
 let g:ale_json_jq_options = '--sort-keys --indent 4'
 
+" Prefer 4 space indentation in bash scripts
+let g:ale_sh_shftm_options = '-i 4'
+
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 
