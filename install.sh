@@ -9,6 +9,12 @@ set -o pipefail
 set -o nounset
 
 # -----------------------------------------------------------------------------
+# Constants
+# -----------------------------------------------------------------------------
+declare -r CONFIG_ROOT_DIR="${HOME}/.config"
+declare -r OH_MY_ZSH_ROOT_DIR="${HOME}/.oh-my-zsh"
+
+# -----------------------------------------------------------------------------
 # Colors
 # -----------------------------------------------------------------------------
 declare -r RED_COLOR='\033[0;31m'
@@ -31,18 +37,20 @@ function error_log() {
     echo -e "[${RED_COLOR}ERROR${NO_COLOR}] [$(date -R)] $1"
 }
 
+function output_separator() {
+    echo -e "---"
+}
+
 # -----------------------------------------------------------------------------
 # Deploy ~/.config
 # -----------------------------------------------------------------------------
-config_root="$HOME/.config"
-
-if [[ ! -d $config_root ]]; then
-    mkdir "$config_root"
+if [[ ! -d $CONFIG_ROOT_DIR ]]; then
+    mkdir "$CONFIG_ROOT_DIR"
 fi
 
 for d in config/*; do
     config_name=$(basename "${d}")
-    target_dir="${config_root}/${config_name}"
+    target_dir="${CONFIG_ROOT_DIR}/${config_name}"
 
     info_log "Processing: ${PWD}/config/${config_name} -> ${target_dir}"
 
@@ -50,7 +58,7 @@ for d in config/*; do
     ln -sf "${PWD}/config/${config_name}" "${target_dir}"
 done
 
-echo -e "---"
+output_separator
 
 # -----------------------------------------------------------------------------
 # Extensionless $HOME-level configs
@@ -64,3 +72,18 @@ while IFS= read -r -d '' file; do
     info_log "Processing: ${config_file} -> ${target_file}"
     ln -sf "${config_file}" "${target_file}"
 done < <(find -E . -type f -maxdepth 1 -not -iregex "./(README\.md|install\.sh)$" -print0)
+
+output_separator
+
+# -----------------------------------------------------------------------------
+# oh-my-zsh customizations
+# -----------------------------------------------------------------------------
+while IFS= read -r -d '' file; do
+    filename=$(basename "${file}")
+
+    config_file="${PWD}/${filename}"
+    target_file="${OH_MY_ZSH_ROOT_DIR}/custom/${filename}"
+
+    info_log "Processing: ${config_file} -> ${target_file}"
+    ln -sf "${config_file}" "${target_file}"
+done < <(find -E oh-my-zsh/custom/ -type f -maxdepth 1 -iregex ".*\.zsh$" -print0)
