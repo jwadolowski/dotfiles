@@ -49,3 +49,18 @@ for d in config/*; do
     rm -rf "${target_dir}"
     ln -sf "${PWD}/config/${config_name}" "${target_dir}"
 done
+
+echo -e "---"
+
+# -----------------------------------------------------------------------------
+# Extensionless $HOME-level configs
+# -----------------------------------------------------------------------------
+while IFS= read -r -d '' file; do
+    filename=$(basename "${file}")
+
+    config_file="${PWD}/${filename}"
+    target_file="${HOME}/.${filename}"
+
+    info_log "Processing: ${config_file} -> ${target_file}"
+    ln -sf "${config_file}" "${target_file}"
+done < <(find -E . -type f -maxdepth 1 -not -iregex "./(README\.md|install\.sh)$" -print0)
