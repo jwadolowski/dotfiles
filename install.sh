@@ -41,12 +41,11 @@ if [[ ! -d $config_root ]]; then
 fi
 
 for d in config/*; do
-    src_dir=$(basename "${d}")
-    target_dir="${config_root}/${src_dir}"
+    config_name=$(basename "${d}")
+    target_dir="${config_root}/${config_name}"
 
-    info_log "Processing: ${PWD}/config/${src_dir} -> ${target_dir}"
+    info_log "Processing: ${PWD}/config/${config_name} -> ${target_dir}"
 
     rm -rf "${target_dir}"
-    ln -sf "${PWD}/config/${src_dir}" "${target_dir}"
-
+    ln -sf "${PWD}/config/${config_name}" "${target_dir}"
 done
