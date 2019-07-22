@@ -61,7 +61,7 @@ done
 output_separator
 
 # -----------------------------------------------------------------------------
-# Extensionless $HOME-level configs
+# $HOME-level configs
 # -----------------------------------------------------------------------------
 while IFS= read -r -d '' file; do
     filename=$(basename "${file}")
