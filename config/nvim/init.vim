@@ -165,10 +165,10 @@ set diffopt+=vertical " start diff mode with vertical splits by default
 " Folding
 " -----------------------------------------------------------------------------
 " https://forum.upcase.com/t/code-folding-for-ruby/5644
-"
-" Space to toggle folds.
 nnoremap <Space> za
 vnoremap <Space> za
+
+set foldlevel=99 " All folds should be opened by default
 
 " -----------------------------------------------------------------------------
 " FZF
@@ -238,21 +238,8 @@ let ruby_line_continuation_error = 1
 let ruby_global_variable_error   = 1
 
 " folding
-" let g:ruby_foldable_groups = 'def #'
 let g:ruby_foldable_groups = 'if def class module do begin case for { [ #'
 let ruby_fold = 1
-
-set foldlevel=99
-
-" nnoremap <leader>f :call FoldRubyToggle()<cr>
-
-" function! FoldRubyToggle()
-"   if !exists("g:ruby_fold")
-"     let g:ruby_fold = 1
-"   else
-"     unlet g:ruby_fold
-"   endif
-" endfunction
 
 " -----------------------------------------------------------------------------
 " Terraform
