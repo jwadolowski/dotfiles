@@ -168,7 +168,7 @@ set diffopt+=vertical " start diff mode with vertical splits by default
 nnoremap <Space> za
 vnoremap <Space> za
 
-set foldlevel=99 " All folds should be opened by default
+set foldlevelstart=99 " Start with all folds opened
 
 " -----------------------------------------------------------------------------
 " FZF
@@ -335,13 +335,11 @@ autocmd FileType markdown setlocal
   \ colorcolumn=+1
   \ spell spelllang=en_us
 
-let g:vim_markdown_folding_disabled = 1
+" ge command doesn't make sense for [Section](#section)
 let g:vim_markdown_follow_anchor = 1
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
 
-" Resize Goyo window to 120 characters
-let g:goyo_width = 120
+" Resize Goyo window to 121 characters (120 for markdown + sign column)
+let g:goyo_width = 121
 
 " Turn on Limelight automatically
 autocmd! User GoyoEnter Limelight
