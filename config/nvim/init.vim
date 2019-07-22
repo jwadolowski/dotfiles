@@ -399,3 +399,8 @@ set nofixendofline
 
 " sudo write
 cmap w!! w !sudo tee > /dev/null %
+
+" clever substitute
+"
+" https://vim.fandom.com/wiki/Search_and_replace_the_word_under_the_cursor
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
