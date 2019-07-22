@@ -315,18 +315,24 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
 
+" Populate localion list with linter messages
+let g:ale_set_loclist = 1
+
+" Open location list with <Leader>m
+"
+" Location list == per window quickfix
+nmap <Leader>m :lopen<CR>
+
 " -----------------------------------------------------------------------------
 " ALE (fixers)
 " -----------------------------------------------------------------------------
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'json': ['jq'],
+\   'markdown': ['prettier'],
 \   'terraform': ['terraform'],
 \   'yaml': ['prettier'],
 \}
-
-" FIXME does it make sense to enforce Prettier-style for all *.md files?
-" \   'markdown': ['prettier'],
 
 " Adjust jq settings to match 'python -mjson.tool' output
 let g:ale_json_jq_options = '--sort-keys --indent 4'
@@ -338,9 +344,12 @@ let g:ale_fix_on_save = 1
 " Markdown
 " -----------------------------------------------------------------------------
 autocmd FileType markdown setlocal
-  \ textwidth=120
-  \ colorcolumn=+1
-  \ spell spelllang=en_us
+\   textwidth=120
+\   colorcolumn=+1
+\   spell spelllang=en_us
+
+" Do not fix Markdown syntax on save
+autocmd FileType markdown let b:ale_fix_on_save=0
 
 " ge command doesn't make sense for [Section](#section)
 let g:vim_markdown_follow_anchor = 1
@@ -351,6 +360,9 @@ let g:goyo_width = 121
 " Turn on Limelight automatically
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Shortcut to fix syntax on demand
+nmap <Leader>f <Plug>(ale_fix)
 
 " -----------------------------------------------------------------------------
 " JSON
