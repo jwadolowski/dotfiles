@@ -1,51 +1,51 @@
 [includeIf "gitdir:~/projects/github/"]
-  path = ~/.gitconfig_github
+    path = ~/.gitconfig_github
 
 [includeIf "gitdir:~/projects/cognifide/"]
-  path = ~/.gitconfig_cognifide
+    path = ~/.gitconfig_cognifide
 
 [alias]
-  br = branch
-  ci = commit
-  cl = clone
-  co = checkout
-  ds = diff --staged
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  pu = push -u origin HEAD
-  rv = remote -v
-  st = status
+    br = branch
+    ci = commit
+    cl = clone
+    co = checkout
+    ds = diff --staged
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    pu = push -u origin HEAD
+    rv = remote -v
+    st = status
 
-  ; show recent branches
-  short-recent = "for-each-ref --count=25 --sort=committerdate refs/heads/ --format='%(refname:short)'"
-  ; fuzzy switch branch
-  fco = "!git short-recent | fzf --print0 | xargs -0 -t git checkout"
+    ; show recent branches
+    short-recent = "for-each-ref --count=25 --sort=committerdate refs/heads/ --format='%(refname:short)'"
+    ; fuzzy switch branch
+    fco = "!git short-recent | fzf --print0 | xargs -0 -t git checkout"
 
 [core]
-  pager = diff-so-fancy | less --tabs=4 -RFX
-  excludesfile = $HOME/.gitignore_global
+    pager = diff-so-fancy | less --tabs=4 -RFX
+    excludesfile = $HOME/.gitignore_global
 
 [color]
-  ui = true
+    ui = true
 
 [color "diff"]
-  commit = green
-  meta = yellow
-  frag = cyan bold
-  old = red
-  new = green
-  whitespace = red reverse
+    commit = green
+    meta = yellow
+    frag = cyan bold
+    old = red
+    new = green
+    whitespace = red reverse
 
 [diff-so-fancy]
-  markEmptyLines = false
-  changeHunkIndicators = false
-  rulerWidth = 80
+    markEmptyLines = false
+    changeHunkIndicators = false
+    rulerWidth = 80
 
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
 
 [mergetool "sourcetree"]
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+    cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
 
 # vim: ft=gitconfig
