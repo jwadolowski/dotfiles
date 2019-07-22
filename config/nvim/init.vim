@@ -38,6 +38,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist' " adds TAB completion to :Rake function
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'       " Reconfig built-in directory browser
+Plug 'junegunn/vim-easy-align'
 
 " VCL
 Plug 'fgsch/vim-varnish'
@@ -92,13 +93,13 @@ call plug#end()
 " -----------------------------------------------------------------------------
 " Look & feel
 " -----------------------------------------------------------------------------
-set number          " display line numbers on the left
-set colorcolumn=80  " highlight column #80
-set cursorline      " Highlight current line
-set noshowmode      " don't display current mode (Insert, Visual, Replace) in
-                    " the status line. This information is already shown in the
-                    " Airline status bar
-set termguicolors   " enable true colors support
+set number         " display line numbers on the left
+set colorcolumn=80 " highlight column #80
+set cursorline     " Highlight current line
+set noshowmode     " don't display current mode (Insert, Visual, Replace) in
+                   " the status line. This information is already shown in the
+                   " Airline status bar
+set termguicolors  " enable true colors support
 
 " order matters
 "
@@ -113,8 +114,8 @@ nmap <leader>l :set list!<CR>
 " -----------------------------------------------------------------------------
 " Search
 " -----------------------------------------------------------------------------
-set ignorecase      " ignore case when using a search pattern
-set smartcase       " override 'ignorecase' if pattern has upper case characters
+set ignorecase " ignore case when using a search pattern
+set smartcase  " override 'ignorecase' if pattern has upper case characters
 
 " -----------------------------------------------------------------------------
 " Indentation & moving things around
@@ -136,9 +137,11 @@ vnoremap > >gv
 " -----------------------------------------------------------------------------
 " General
 " -----------------------------------------------------------------------------
-set showmatch    " highlight matching bracket for short period of time
-set nojoinspaces " Prevents inserting two spaces after punctuation on a join (J)
-set autochdir    " automatically change window's cwd to file's dir
+set showmatch         " highlight matching bracket for short period of time
+set nojoinspaces      " Prevents inserting two spaces after punctuation on a
+                      " join (J)
+set autochdir         " automatically change window's cwd to file's dir
+set clipboard=unnamed " macOS clipboard sharing
 
 " -----------------------------------------------------------------------------
 " Splits
@@ -217,6 +220,15 @@ nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Rg<Cr>
 nnoremap <C-f> :BLines<Cr>
 nnoremap <C-q> :Helptags<Cr>
+
+" -----------------------------------------------------------------------------
+" Easy align
+" -----------------------------------------------------------------------------
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " -----------------------------------------------------------------------------
 " Airline
