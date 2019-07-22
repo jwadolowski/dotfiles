@@ -308,6 +308,13 @@ let g:ale_markdown_mdl_options = '-r "~MD013,~MD024,~MD025"'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+" Let's be a bit more verbose during linting
+"
+" https://github.com/w0rp/ale#5vii-how-can-i-change-the-format-for-echo-messages
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+
 " -----------------------------------------------------------------------------
 " ALE (fixers)
 " -----------------------------------------------------------------------------
