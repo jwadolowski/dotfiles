@@ -1,0 +1,7 @@
+{
+    "allow": [
+        "executed",
+        "execution",
+        "invalid"
+    ]
+}
