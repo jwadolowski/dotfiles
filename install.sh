@@ -81,9 +81,9 @@ output_separator
 while IFS= read -r -d '' file; do
     filename=$(basename "${file}")
 
-    config_file="${PWD}/${filename}"
+    config_file="${PWD}/${file}"
     target_file="${OH_MY_ZSH_ROOT_DIR}/custom/${filename}"
 
     info_log "Processing: ${config_file} -> ${target_file}"
     ln -sf "${config_file}" "${target_file}"
-done < <(find -E oh-my-zsh/custom/ -type f -maxdepth 1 -iregex ".*\.zsh$" -print0)
+done < <(find -E oh-my-zsh/custom -type f -maxdepth 1 -iregex ".*\.zsh$" -print0)
