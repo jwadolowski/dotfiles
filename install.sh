@@ -94,10 +94,10 @@ BREW_PACKAGES=(
 BREW_CASK_PACKAGES=(
     adobe-acrobat-reader
     adoptopenjdk8
+    balenaetcher
     brave-browser
     docker
     dropbox
-    etcher
     firefox
     font-hack-nerd-font
     google-chrome
