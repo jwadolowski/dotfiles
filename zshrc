@@ -87,7 +87,6 @@ plugins=(
     kitchen
     knife
     kubectl
-    minikube
     mvn
     rake-fast
     ripgrep

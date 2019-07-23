@@ -85,7 +85,6 @@ BREW_CASK_PACKAGES=(
     font-hack-nerd-font
     google-chrome
     iterm2
-    minikube
     sourcetree
     spectacle
 )
