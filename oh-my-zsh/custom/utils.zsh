@@ -1,6 +1,36 @@
+# -----------------------------------------------------------------------------
+# Colors
+# -----------------------------------------------------------------------------
+declare -r RED_COLOR='\033[0;31m'
+declare -r YELLOW_COLOR='\033[0;33m'
+declare -r BLUE_COLOR='\033[0;34m'
+declare -r NO_COLOR='\033[0m'
+
+# -----------------------------------------------------------------------------
+# Output logging
+# -----------------------------------------------------------------------------
+function info_log() {
+    echo -e "[${BLUE_COLOR}INFO${NO_COLOR}] [$(date -R)] $1"
+}
+
+function warn_log() {
+    echo -e "[${YELLOW_COLOR}WARN${NO_COLOR}] [$(date -R)] $1"
+}
+
+function error_log() {
+    echo -e "[${RED_COLOR}ERROR${NO_COLOR}] [$(date -R)] $1"
+}
+
+# -----------------------------------------------------------------------------
+# oh-my-zsh
+# -----------------------------------------------------------------------------
 function upgrade_zsh_plugins {
   wd=$(pwd)
-  for r in $(find ~/.oh-my-zsh/custom/plugins -type d -iregex ".*\.git" -exec dirname {} \;); do cd $r && git pull; done
+  for plugin in $(find ~/.oh-my-zsh/custom/plugins -type d -iregex ".*\.git" -exec dirname {} \;); do
+      info_log "Upgrading ${plugin}"
+      cd $plugin
+      git pull
+  done
   cd $wd
 }
 
