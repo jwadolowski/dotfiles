@@ -72,7 +72,9 @@ BREW_CASK_PACKAGES=(
     sourcetree
 )
 
-GEM_PACKAGES=()
+GEM_PACKAGES=(
+    mdl
+)
 
 # -----------------------------------------------------------------------------
 # Colors
@@ -122,6 +124,15 @@ function install_brew_tap() {
     fi
 }
 
+function install_ruby_gem() {
+    if chef gem list | grep -q "${1}"; then
+        info_log "${1} gem is already installed"
+    else
+        info_log "Installing ${1} gem..."
+        chef gem install "${1}"
+    fi
+}
+
 # -----------------------------------------------------------------------------
 # brew.sh
 # -----------------------------------------------------------------------------
@@ -159,6 +170,20 @@ fi
 for p in "${OH_MY_ZSH_PLUGINS[@]}"; do
     install_oh_my_zsh_plugin "$p"
 done
+
+output_separator
+
+# -----------------------------------------------------------------------------
+# Ruby gems
+# -----------------------------------------------------------------------------
+if [[ $(command -v chef) == "" ]]; then
+    error_log "Chef Workstation is not installed. Please install it first!"
+else
+    info_log "Installing Ruby gems"
+    for g in "${GEM_PACKAGES[@]}"; do
+        install_ruby_gem "${g}"
+    done
+fi
 
 output_separator
 
