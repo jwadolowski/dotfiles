@@ -104,10 +104,14 @@ BREW_CASK_PACKAGES=(
     iterm2
     joinme
     kap
+    keepassxc
     kitematic
+    microsoft-lync
+    skype
     sourcetree
     spectacle
     spotify
+    tunnelblick
     visual-studio-code
     visualvm
     vlc
