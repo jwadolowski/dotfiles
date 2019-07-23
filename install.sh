@@ -22,6 +22,11 @@ OH_MY_ZSH_PLUGINS=(
     https://github.com/zsh-users/zsh-syntax-highlighting
 )
 
+BREW_TAPS=(
+    caskroom/versions
+    valelint/vale
+)
+
 BREW_PACKAGES=(
     alexjs
     bat
@@ -67,7 +72,7 @@ BREW_CASK_PACKAGES=(
     sourcetree
 )
 
-GEM_PACKAGEs=()
+GEM_PACKAGES=()
 
 # -----------------------------------------------------------------------------
 # Colors
@@ -101,10 +106,19 @@ function install_oh_my_zsh_plugin() {
     plugin_dir="${OH_MY_ZSH_ROOT_DIR}/custom/plugins/${plugin_name}"
 
     if [[ ! -d ${plugin_dir} ]]; then
-        info_log "Installing ${plugin_name}..."
+        info_log "Installing ${plugin_name} plugin..."
         # git clone ${1} ${}
     else
-        info_log "${plugin_name} is already installed"
+        info_log "${plugin_name} plugin is already installed"
+    fi
+}
+
+function install_brew_tap() {
+    if brew tap | grep -q "${1}"; then
+        info_log "${1} tap is already configured"
+    else
+        info_log "Configuring ${1} brew tap..."
+        brew tap "${1}"
     fi
 }
 
@@ -118,6 +132,18 @@ else
     info_log "brew is already installed"
 fi
 
+for tap in "${BREW_TAPS[@]}"; do
+    install_brew_tap "${tap}"
+done
+
+info_log "Installing brew packages..."
+# shellcheck disable=SC2086
+brew install ${BREW_PACKAGES[*]}
+
+info_log "Installing brew cask packages..."
+# shellcheck disable=SC2086
+brew cask install ${BREW_CASK_PACKAGES[*]}
+
 output_separator
 
 # -----------------------------------------------------------------------------
@@ -130,11 +156,6 @@ else
     info_log "oh-my-zsh is already installed"
 fi
 
-output_separator
-
-# -----------------------------------------------------------------------------
-# oh-my-zsh plugins
-# -----------------------------------------------------------------------------
 for p in "${OH_MY_ZSH_PLUGINS[@]}"; do
     install_oh_my_zsh_plugin "$p"
 done
