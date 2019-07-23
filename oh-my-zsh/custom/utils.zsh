@@ -46,14 +46,14 @@ autoload -U compinit && compinit
 # edit any file
 function e() {
   local files
-  IFS=$'\n' files=$(fd --type file --follow --hidden . $HOME | fzf --query="$1" --multi --select-1 --exit-0 --preview 'bat --style=numbers --color=always {}')
+  IFS=$'\n' files=$(fd --type file --follow --hidden . $HOME | fzf --query="$1" --preview 'bat --style=numbers --color=always {}')
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # edit file within current directory
 function v() {
   local files
-  IFS=$'\n' files=$(fd --type file --follow --hidden | fzf --query="$1" --multi --select-1 --exit-0 --preview 'bat --style=numbers --color=always {}')
+  IFS=$'\n' files=$(fd --type file --follow --hidden | fzf --query="$1" --preview 'bat --style=numbers --color=always {}')
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
@@ -64,7 +64,7 @@ function v() {
 # -----------------------------------------------------------------------------
 function c() {
   local dir
-  dir=$(fd --type directory --follow --hidden . $HOME | fzf --query="$1" --no-multi --select-1 --exit-0) && cd "$dir"
+  dir=$(fd --type directory --follow --hidden . $HOME | fzf --query="$1") && cd "$dir"
 }
 
 # -----------------------------------------------------------------------------
