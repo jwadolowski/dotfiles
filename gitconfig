@@ -14,11 +14,7 @@
     pu = push -u origin HEAD
     rv = remote -v
     st = status
-
-    ; show recent branches
-    short-recent = "for-each-ref --count=25 --sort=committerdate refs/heads/ --format='%(refname:short)'"
-    ; fuzzy switch branch
-    fco = "!git short-recent | fzf --print0 | xargs -0 -t git checkout"
+    fco = "!git co $(git for-each-ref --format='%(refname:short)' | grep -v "HEAD" | sed 's#^origin/##' | sort | uniq | fzf --layout=reverse)"
 
 [core]
     pager = diff-so-fancy | less --tabs=4 -RFX
