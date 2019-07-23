@@ -53,6 +53,9 @@ BREW_PACKAGES=(
     htop
     jq
     jsonlint
+    kops
+    kubernetes-helm
+    maven
     ncdu
     neovim
     prettier
@@ -75,12 +78,15 @@ BREW_PACKAGES=(
 )
 
 BREW_CASK_PACKAGES=(
+    adobe-acrobat-reader
     adoptopenjdk8
+    docker
     dropbox
     firefox
     font-hack-nerd-font
     google-chrome
     iterm2
+    minikube
     sourcetree
     spectacle
 )
