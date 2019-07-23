@@ -53,7 +53,6 @@ BREW_PACKAGES=(
     htop
     jq
     jsonlint
-    kops
     kubernetes-helm
     maven
     ncdu
