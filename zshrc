@@ -74,7 +74,7 @@ plugins=(
     docker
     docker-compose
     docker-machine
-    doctl
+    # doctl
     encode64
     fd
     fzf
@@ -83,10 +83,10 @@ plugins=(
     git-extras
     golang
     gradle
-    helm
+    # helm
     kitchen
     knife
-    kubectl
+    # kubectl
     mvn
     rake-fast
     ripgrep
