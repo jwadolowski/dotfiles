@@ -71,7 +71,7 @@ while IFS= read -r -d '' file; do
 
     info_log "Processing: ${config_file} -> ${target_file}"
     ln -sf "${config_file}" "${target_file}"
-done < <(find -E . -type f -maxdepth 1 -not -iregex "./(README\.md|install\.sh)$" -print0)
+done < <(find -E . -type f -maxdepth 1 -not -iregex "./(\.gitignore|README\.md|install\.sh)$" -print0)
 
 output_separator
 
