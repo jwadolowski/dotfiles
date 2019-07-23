@@ -24,7 +24,7 @@ function error_log() {
 # -----------------------------------------------------------------------------
 # oh-my-zsh
 # -----------------------------------------------------------------------------
-function upgrade_zsh_plugins {
+function upgrade_oh_my_zsh_plugins {
   wd=$(pwd)
   for plugin in $(find ~/.oh-my-zsh/custom/plugins -type d -iregex ".*\.git" -exec dirname {} \;); do
       info_log "Upgrading ${plugin}"
