@@ -34,9 +34,6 @@ function upgrade_oh_my_zsh_plugins {
   cd $wd
 }
 
-# Init zsh-completions
-autoload -U compinit && compinit
-
 # -----------------------------------------------------------------------------
 # Quick file edit with NVIM
 #
@@ -74,7 +71,7 @@ function c() {
 # -----------------------------------------------------------------------------
 function bi() {
   local token
-  token=$(brew search | fzf-tmux --query="$1" +m --preview 'brew info {}')
+  token=$(brew search | fzf-tmux --query="$1" +m --layout=reverse --preview 'brew info {}')
 
   if [ "x$token" != "x" ]; then
     brew install $token
@@ -83,7 +80,7 @@ function bi() {
 
 function bci() {
   local token
-  token=$(brew search --casks | fzf-tmux --query="$1" +m --preview 'brew cask info {}')
+  token=$(brew search --casks | fzf-tmux --query="$1" +m --layout=reverse --preview 'brew cask info {}')
 
   if [ "x$token" != "x" ]; then
     brew cask install $token

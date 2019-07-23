@@ -76,12 +76,13 @@ BREW_PACKAGES=(
 
 BREW_CASK_PACKAGES=(
     adoptopenjdk8
+    dropbox
     firefox
     font-hack-nerd-font
     google-chrome
     iterm2
-    spectacle
     sourcetree
+    spectacle
 )
 
 GEM_PACKAGES=(
