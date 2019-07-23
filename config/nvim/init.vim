@@ -143,6 +143,13 @@ set nojoinspaces      " Prevents inserting two spaces after punctuation on a
 set autochdir         " automatically change window's cwd to file's dir
 set clipboard=unnamed " macOS clipboard sharing
 
+" https://vi.stackexchange.com/a/1985/18655
+"
+" Disable comment continuation:
+" * do not continue comment on ENTER in insert mode
+" * do not continue comment after hiting 'o' or 'O' in normal mode
+au FileType * setlocal formatoptions-=r formatoptions-=o
+
 " -----------------------------------------------------------------------------
 " Splits
 " -----------------------------------------------------------------------------
