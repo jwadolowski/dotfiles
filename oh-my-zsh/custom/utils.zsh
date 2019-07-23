@@ -73,12 +73,6 @@ function c() {
 # https://github.com/junegunn/fzf/wiki/examples#homebrew
 # -----------------------------------------------------------------------------
 function bi() {
-  # local inst=$(brew search | fzf -m)
-
-  # if [[ $inst ]]; then
-  #   for prog in $(echo $inst);
-  #   do; brew install $prog; done;
-  #   fi
   local token
   token=$(brew search | fzf-tmux --query="$1" +m --preview 'brew info {}')
 
