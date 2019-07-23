@@ -64,7 +64,7 @@ function v() {
 # -----------------------------------------------------------------------------
 function c() {
   local dir
-  dir=$(fd --type directory --follow . $HOME | fzf --query="$1" --no-multi --select-1 --exit-0) && cd "$dir"
+  dir=$(fd --type directory --follow --hidden . $HOME | fzf --query="$1" --no-multi --select-1 --exit-0) && cd "$dir"
 }
 
 # -----------------------------------------------------------------------------
