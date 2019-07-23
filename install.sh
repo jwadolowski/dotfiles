@@ -263,8 +263,3 @@ while IFS= read -r -d '' file; do
 done < <(find -E oh-my-zsh/custom -type f -maxdepth 1 -iregex ".*\.zsh$" -print0)
 
 output_separator
-
-# -----------------------------------------------------------------------------
-# FZF
-# -----------------------------------------------------------------------------
-warn_log "Don't forget to run $(brew --prefix)/opt/fzf/install to set up key bindings!"

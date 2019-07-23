@@ -1,4 +1,4 @@
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # .ignore is taken into account while execuiting fd/rg/ag
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --no-ignore-vcs'
