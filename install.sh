@@ -28,6 +28,7 @@ OH_MY_ZSH_THEMES=(
 BREW_TAPS=(
     caskroom/versions
     valelint/vale
+    fastly/tap
 )
 
 BREW_PACKAGES=(
@@ -49,44 +50,68 @@ BREW_PACKAGES=(
     glances
     go
     goaccess
+    graphviz
+    groovy
     hadolint
     htop
+    iproute2mac
     jq
     jsonlint
     kubernetes-helm
     maven
+    minio
+    mitmproxy
     ncdu
     neovim
+    oath-toolkit
+    parallel
+    pidof
     prettier
     prettyping
     pstree
     python
     python2
     ripgrep
+    sf-pwgen
     shellcheck
     shfmt
+    speedtest-cli
+    sslscan
     terraform@0.11
     tflint
     tldr
     tree
     vale
+    vegeta
+    waflyctl
     watch
     wget
     yamllint
+    youtube-dl
     zsh
 )
 
 BREW_CASK_PACKAGES=(
     adobe-acrobat-reader
     adoptopenjdk8
+    brave-browser
     docker
     dropbox
+    etcher
     firefox
     font-hack-nerd-font
     google-chrome
     iterm2
+    joinme
+    kap
+    kitematic
     sourcetree
     spectacle
+    spotify
+    visual-studio-code
+    visualvm
+    vlc
+    wireshark
 )
 
 GEM_PACKAGES=(
