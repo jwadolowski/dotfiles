@@ -68,7 +68,7 @@ ZSH_THEME="spaceship-prompt/spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws colored-man-pages doctl fzf git git-extras zsh-syntax-highlighting)
+plugins=(aws colored-man-pages doctl fzf git git-extras gradle zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
