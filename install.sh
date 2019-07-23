@@ -18,7 +18,6 @@ declare -r OH_MY_ZSH_ROOT_DIR="${HOME}/.oh-my-zsh"
 # Packages/plugins
 # -----------------------------------------------------------------------------
 OH_MY_ZSH_PLUGINS=(
-    https://github.com/zsh-users/zsh-completions
     https://github.com/zsh-users/zsh-syntax-highlighting
 )
 
