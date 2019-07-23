@@ -22,6 +22,10 @@ OH_MY_ZSH_PLUGINS=(
     https://github.com/zsh-users/zsh-syntax-highlighting
 )
 
+OH_MY_ZSH_THEMES=(
+    https://github.com/denysdovhan/spaceship-prompt
+)
+
 BREW_TAPS=(
     caskroom/versions
     valelint/vale
@@ -29,14 +33,23 @@ BREW_TAPS=(
 
 BREW_PACKAGES=(
     alexjs
+    awscli
     bat
+    certbot
     coreutils
+    csvkit
     ctags
     diff-so-fancy
+    doctl
+    dos2unix
     fd
+    fdupes
     fzf
     git
+    git-extras
     glances
+    go
+    goaccess
     hadolint
     htop
     jq
@@ -109,9 +122,21 @@ function install_oh_my_zsh_plugin() {
 
     if [[ ! -d ${plugin_dir} ]]; then
         info_log "Installing ${plugin_name} plugin..."
-        # git clone ${1} ${}
+        git clone "${1}" "${plugin_dir}"
     else
         info_log "${plugin_name} plugin is already installed"
+    fi
+}
+
+function install_oh_my_zsh_theme() {
+    theme_name=$(basename "${1}")
+    theme_dir="${OH_MY_ZSH_ROOT_DIR}/custom/themes/${theme_name}"
+
+    if [[ ! -d ${theme_dir} ]]; then
+        info_log "Installing ${theme_name} theme..."
+        git clone "${1}" "${theme_dir}"
+    else
+        info_log "${theme_name} theme is already installed"
     fi
 }
 
@@ -167,8 +192,12 @@ else
     info_log "oh-my-zsh is already installed"
 fi
 
-for p in "${OH_MY_ZSH_PLUGINS[@]}"; do
-    install_oh_my_zsh_plugin "$p"
+for plugin in "${OH_MY_ZSH_PLUGINS[@]}"; do
+    install_oh_my_zsh_plugin "$plugin"
+done
+
+for theme in "${OH_MY_ZSH_THEMES[@]}"; do
+    install_oh_my_zsh_theme "$theme"
 done
 
 output_separator
