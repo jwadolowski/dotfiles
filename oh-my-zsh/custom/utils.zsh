@@ -22,19 +22,6 @@ function error_log() {
 }
 
 # -----------------------------------------------------------------------------
-# oh-my-zsh
-# -----------------------------------------------------------------------------
-function upgrade_oh_my_zsh_plugins {
-  wd=$(pwd)
-  for plugin in $(find ~/.oh-my-zsh/custom/plugins -type d -iregex ".*\.git" -exec dirname {} \;); do
-      info_log "Upgrading ${plugin}"
-      cd $plugin
-      git pull
-  done
-  cd $wd
-}
-
-# -----------------------------------------------------------------------------
 # Quick file edit with NVIM
 #
 # https://github.com/junegunn/fzf/wiki/examples#opening-files
