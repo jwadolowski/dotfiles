@@ -38,6 +38,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist' " adds TAB completion to :Rake function
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'       " Reconfig built-in directory browser
+Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align'
 
 " VCL
@@ -322,10 +323,6 @@ let g:ale_linters_explicit = 1
 
 " https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md
 let g:ale_markdown_mdl_options = '-r "~MD013,~MD024,~MD025"'
-
-" https://github.com/w0rp/ale#5ix-how-can-i-navigate-between-errors-quickly
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Let's be a bit more verbose during linting
 "
