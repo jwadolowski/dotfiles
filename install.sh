@@ -116,6 +116,7 @@ BREW_CASK_PACKAGES=(
     visualvm
     vlc
     wireshark
+    zoomus
 )
 
 GEM_PACKAGES=(
