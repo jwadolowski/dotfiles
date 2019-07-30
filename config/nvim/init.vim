@@ -143,6 +143,7 @@ set nojoinspaces      " Prevents inserting two spaces after punctuation on a
                       " join (J)
 set autochdir         " automatically change window's cwd to file's dir
 set clipboard=unnamed " macOS clipboard sharing
+set nofixendofline    " https://stackoverflow.com/a/16114535/6802186
 
 " https://vi.stackexchange.com/a/1985/18655
 "
@@ -443,3 +444,6 @@ cmap w!! w !sudo tee > /dev/null %
 "
 " https://vim.fandom.com/wiki/Search_and_replace_the_word_under_the_cursor
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
+" disable paste mode when leaving Insert Mode
+autocmd InsertLeave * set nopaste
