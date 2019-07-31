@@ -202,11 +202,21 @@ endfunction
 " * https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
 " * https://github.com/junegunn/fzf.vim/issues/346#issuecomment-412558898
 " * https://github.com/junegunn/fzf.vim/issues/714#issuecomment-428802659
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
-      \                   1,
-      \                   fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
-      \                   <bang>0)
+
+" I experienced quite a few odd issues that I can't explain easily. Let's try
+" ag for a while and then decide what to do next:
+" * Error detected while processing function 276[30]..<SNR>27_callback:
+" * ... (didn't write it down anywhere)
+"
+" command! -bang -nargs=* Rg
+"       \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
+"       \                   1,
+"       \                   fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
+"       \                   <bang>0)
+command! -bang -nargs=* Ag
+    \ call fzf#vim#ag(<q-args>,
+    \                 fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
+    \                 <bang>0)
 
 " Add preview to :GFiles
 command! -bang -nargs=? GFiles
@@ -226,7 +236,7 @@ nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 " Include all $HOME files
 nnoremap <C-o> :Files ~<Cr>
 nnoremap <C-p> :GFiles<Cr>
-nnoremap <C-g> :Rg<Cr>
+nnoremap <C-g> :Ag<Cr>
 nnoremap <C-f> :BLines<Cr>
 nnoremap <C-q> :Helptags<Cr>
 
