@@ -32,6 +32,7 @@ BREW_TAPS=(
 )
 
 BREW_PACKAGES=(
+    ag
     alexjs
     awscli
     bat
