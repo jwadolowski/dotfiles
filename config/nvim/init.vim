@@ -233,6 +233,7 @@ command! -bang -nargs=? -complete=dir Files
 " Grep current word
 nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>g :Ag <C-R><C-W><CR>
 
 " Include all $HOME files
 nnoremap <C-o> :Files ~<Cr>
