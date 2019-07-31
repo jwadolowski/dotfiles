@@ -230,11 +230,13 @@ command! -bang -nargs=? -complete=dir Files
       \                    fzf#vim#with_preview(),
       \                    <bang>0)
 
-" Rg current word
+" Grep current word
 nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
 " Include all $HOME files
 nnoremap <C-o> :Files ~<Cr>
+
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-g> :Ag<Cr>
 nnoremap <C-f> :BLines<Cr>
