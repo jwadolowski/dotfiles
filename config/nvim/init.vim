@@ -383,6 +383,10 @@ autocmd FileType markdown setlocal
 \   textwidth=120
 \   colorcolumn=+1
 \   indentexpr=
+\   ts=2
+\   sts=2
+\   sw=2
+\   expandtab
 \   spell spelllang=en_us
 
 " Do not fix Markdown syntax on save
