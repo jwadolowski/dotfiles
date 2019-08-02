@@ -377,9 +377,12 @@ let g:ale_fix_on_save = 1
 " -----------------------------------------------------------------------------
 " Markdown
 " -----------------------------------------------------------------------------
+
+" https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
 autocmd FileType markdown setlocal
 \   textwidth=120
 \   colorcolumn=+1
+\   indentexpr=
 \   spell spelllang=en_us
 
 " Do not fix Markdown syntax on save
