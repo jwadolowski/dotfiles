@@ -2,4 +2,5 @@
 /Library/
 .git
 .subversion
-~/Dropbox/Backups/
+/Dropbox/
+/OneDrive*
