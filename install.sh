@@ -101,6 +101,7 @@ BREW_CASK_PACKAGES=(
     dropbox
     firefox
     font-hack-nerd-font
+    font-montserrat
     google-chrome
     iterm2
     joinme
