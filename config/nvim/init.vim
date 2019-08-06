@@ -45,7 +45,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'fgsch/vim-varnish'
 
 " Search
-Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/is.vim'
 
 " Auto-close bracket/quotes/tags
 Plug 'jiangmiao/auto-pairs'
@@ -417,34 +417,6 @@ autocmd FileType json setlocal foldmethod=syntax
 " https://lornajane.net/posts/2018/vim-settings-for-working-with-yaml
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-" -----------------------------------------------------------------------------
-" Incsearch
-" -----------------------------------------------------------------------------
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-let g:incsearch#do_not_save_error_message_history = 1
-
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-" https://github.com/haya14busa/incsearch.vim/issues/80
-" augroup NoHlOnInsert
-"   au!
-
-"   " Exit hlsearch when entering insert as well
-"   autocmd InsertEnter * :set nohlsearch
-
-"   " Reenable it so that future searchs do hlsearch
-"   autocmd InsertLeave * :set hlsearch
-" augroup  END
 
 " -----------------------------------------------------------------------------
 " Utils
