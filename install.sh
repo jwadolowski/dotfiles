@@ -40,6 +40,7 @@ BREW_PACKAGES=(
     coreutils
     csvkit
     ctags
+    curl-openssl
     diff-so-fancy
     doctl
     dos2unix
