@@ -37,6 +37,7 @@ BREW_PACKAGES=(
     awscli
     bat
     certbot
+    colordiff
     coreutils
     csvkit
     ctags
@@ -89,6 +90,7 @@ BREW_PACKAGES=(
     watch
     wget
     yamllint
+    yarn
     youtube-dl
     zsh
 )
@@ -115,6 +117,7 @@ BREW_CASK_PACKAGES=(
     spectacle
     spotify
     tunnelblick
+    unshaky
     visual-studio-code
     visualvm
     vlc
