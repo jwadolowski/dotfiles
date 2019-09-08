@@ -57,6 +57,7 @@ BREW_PACKAGES=(
     groovy
     hadolint
     htop
+    imagemagick
     iproute2mac
     jq
     jsonlint
