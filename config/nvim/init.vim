@@ -328,7 +328,7 @@ let g:ale_linters = {
 \   'json': ['jsonlint'],
 \   'markdown': ['alex', 'mdl', 'vale'],
 \   'sh': ['shellcheck'],
-\   'terraform': ['terraform', 'tflint'],
+\   'terraform': ['terraform'],
 \   'yaml': ['yamllint'],
 \   'xml': ['xmllint'],
 \}
