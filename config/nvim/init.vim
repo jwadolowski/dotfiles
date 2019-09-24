@@ -44,6 +44,9 @@ Plug 'junegunn/vim-easy-align'
 " VCL
 Plug 'fgsch/vim-varnish'
 
+" TOML
+Plug 'cespare/vim-toml'
+
 " Search
 Plug 'haya14busa/is.vim'
 
