@@ -111,6 +111,7 @@ BREW_CASK_PACKAGES=(
     joinme
     kap
     keepassxc
+    keycastr
     kitematic
     microsoft-lync
     skype
