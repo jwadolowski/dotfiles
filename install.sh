@@ -81,6 +81,7 @@ BREW_PACKAGES=(
     shfmt
     speedtest-cli
     sslscan
+    terraform
     terraform@0.11
     tflint
     tldr
