@@ -63,7 +63,7 @@ BREW_PACKAGES=(
     jsonlint
     kubernetes-helm
     maven
-    minio
+    minio-mc
     mitmproxy
     ncdu
     neovim
