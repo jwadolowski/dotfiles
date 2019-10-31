@@ -65,6 +65,9 @@ Plug 'mtdl9/vim-log-highlighting'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
+" Go
+Plug 'fatih/vim-go'
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{
 
 " TODO review
@@ -75,9 +78,6 @@ Plug 'hashivim/vim-terraform'
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" TODO Go
-" Plug 'fatih/vim-go'
 
 " TODO compare against ultisnips
 " Plug 'Shougo/neosnippet.vim'
