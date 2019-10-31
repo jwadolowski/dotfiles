@@ -71,13 +71,6 @@ Plug 'hashivim/vim-terraform'
 " Plug 'tpope/vim-eunuch'
 " Plug 'junegunn/vim-slash'
 
-" TODO HashiCorp tools
-" Plug 'hashivim/vim-consul'
-" Plug 'hashivim/vim-nomadproject'
-" Plug 'hashivim/vim-packer'
-" Plug 'hashivim/vim-vagrant'
-" Plug 'hashivim/vim-vaultproject'
-
 " TODO Autocompletion
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
