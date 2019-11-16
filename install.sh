@@ -56,12 +56,12 @@ BREW_PACKAGES=(
     graphviz
     groovy
     hadolint
+    helm
     htop
     imagemagick
     iproute2mac
     jq
     jsonlint
-    kubernetes-helm
     maven
     minio-mc
     mitmproxy
@@ -107,6 +107,7 @@ BREW_CASK_PACKAGES=(
     firefox
     font-hack-nerd-font
     font-montserrat
+    forticlient
     google-chrome
     iterm2
     joinme
