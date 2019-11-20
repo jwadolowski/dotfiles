@@ -65,6 +65,7 @@ BREW_PACKAGES=(
     maven
     minio-mc
     mitmproxy
+    mtr
     ncdu
     neovim
     oath-toolkit
