@@ -65,26 +65,19 @@ Plug 'mtdl9/vim-log-highlighting'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
+" Go
+Plug 'fatih/vim-go'
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{
 
 " TODO review
 " Plug 'tpope/vim-eunuch'
 " Plug 'junegunn/vim-slash'
 
-" TODO HashiCorp tools
-" Plug 'hashivim/vim-consul'
-" Plug 'hashivim/vim-nomadproject'
-" Plug 'hashivim/vim-packer'
-" Plug 'hashivim/vim-vagrant'
-" Plug 'hashivim/vim-vaultproject'
-
 " TODO Autocompletion
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" TODO Go
-" Plug 'fatih/vim-go'
 
 " TODO compare against ultisnips
 " Plug 'Shougo/neosnippet.vim'
