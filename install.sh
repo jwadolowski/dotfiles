@@ -116,6 +116,7 @@ BREW_CASK_PACKAGES=(
     keycastr
     kitematic
     microsoft-lync
+    ngrok
     skype
     sourcetree
     spectacle
