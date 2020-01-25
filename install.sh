@@ -100,6 +100,7 @@ BREW_PACKAGES=(
 BREW_CASK_PACKAGES=(
     adobe-acrobat-reader
     adoptopenjdk8
+    alfred
     balenaetcher
     brave-browser
     docker
