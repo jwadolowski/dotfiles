@@ -75,7 +75,6 @@ BREW_PACKAGES=(
     prettyping
     pstree
     python
-    python2
     ripgrep
     sf-pwgen
     shellcheck
