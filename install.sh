@@ -27,7 +27,6 @@ OH_MY_ZSH_THEMES=(
 
 BREW_TAPS=(
     caskroom/versions
-    valelint/vale
     fastly/tap
 )
 
