@@ -14,6 +14,7 @@
     pu = push -u origin HEAD
     rv = remote -v
     st = status
+    sti = status --ignored
     fco = "!git co $(git for-each-ref --format='%(refname:short)' | grep -v "HEAD" | sed 's#^origin/##' | sort | uniq | fzf --layout=reverse)"
 
 [core]
