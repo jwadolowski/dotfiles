@@ -26,7 +26,7 @@ OH_MY_ZSH_THEMES=(
 )
 
 BREW_TAPS=(
-    caskroom/versions
+    homebrew/cask-versions
     fastly/tap
 )
 
@@ -114,7 +114,6 @@ BREW_CASK_PACKAGES=(
     keepassxc
     keycastr
     kitematic
-    microsoft-lync
     ngrok
     skype
     sourcetree
