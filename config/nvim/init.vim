@@ -211,11 +211,12 @@ endfunction
 " * Error detected while processing function 276[30]..<SNR>27_callback:
 " * ... (didn't write it down anywhere)
 "
-" command! -bang -nargs=* Rg
-"       \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
-"       \                   1,
-"       \                   fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
-"       \                   <bang>0)
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
+      \                   1,
+      \                   fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
+      \                   <bang>0)
+
 command! -bang -nargs=* Ag
     \ call fzf#vim#ag(<q-args>,
     \                 fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
@@ -236,13 +237,13 @@ command! -bang -nargs=? -complete=dir Files
 " Grep current word
 nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader>g :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>g :Rg <C-R><C-W><CR>
 
 " Include all $HOME files
 nnoremap <C-o> :Files ~<Cr>
 
 nnoremap <C-p> :GFiles<Cr>
-nnoremap <C-g> :Ag<Cr>
+nnoremap <C-g> :Rg<Cr>
 nnoremap <C-f> :BLines<Cr>
 nnoremap <C-q> :Helptags<Cr>
 
