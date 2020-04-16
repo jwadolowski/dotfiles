@@ -19,6 +19,7 @@ declare -r OH_MY_ZSH_ROOT_DIR="${HOME}/.oh-my-zsh"
 # -----------------------------------------------------------------------------
 OH_MY_ZSH_PLUGINS=(
     https://github.com/zsh-users/zsh-syntax-highlighting
+    https://github.com/supercrabtree/k
 )
 
 OH_MY_ZSH_THEMES=(
