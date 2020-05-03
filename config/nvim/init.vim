@@ -41,6 +41,9 @@ Plug 'tpope/vim-vinegar'       " Reconfig built-in directory browser
 Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align'
 
+" Startup time
+Plug 'dstein64/vim-startuptime'
+
 " VCL
 Plug 'fgsch/vim-varnish'
 
@@ -144,7 +147,6 @@ vnoremap > >gv
 set showmatch         " highlight matching bracket for short period of time
 set nojoinspaces      " Prevents inserting two spaces after punctuation on a
                       " join (J)
-set autochdir         " automatically change window's cwd to file's dir
 set clipboard=unnamed " macOS clipboard sharing
 set nofixendofline    " https://stackoverflow.com/a/16114535/6802186
 
