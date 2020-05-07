@@ -157,6 +157,9 @@ set nofixendofline    " https://stackoverflow.com/a/16114535/6802186
 " * do not continue comment after hiting 'o' or 'O' in normal mode
 au FileType * setlocal formatoptions-=r formatoptions-=o
 
+" Change to file directory
+nnoremap <leader>cd :cd %:p:h<CR>
+
 " -----------------------------------------------------------------------------
 " Splits
 " -----------------------------------------------------------------------------
