@@ -121,7 +121,6 @@ BREW_CASK_PACKAGES=(
     spectacle
     spotify
     tunnelblick
-    unshaky
     visual-studio-code
     visualvm
     vlc
