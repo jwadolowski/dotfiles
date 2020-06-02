@@ -102,6 +102,7 @@ BREW_CASK_PACKAGES=(
     alfred
     balenaetcher
     brave-browser
+    chef-workstation
     docker
     dropbox
     firefox
@@ -121,6 +122,7 @@ BREW_CASK_PACKAGES=(
     spectacle
     spotify
     tunnelblick
+    virtualbox
     visual-studio-code
     visualvm
     vlc
