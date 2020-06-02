@@ -7,6 +7,8 @@
 .local
 .config
 .cache
+.Trash
+.build
 
 # -----------------------------------------------------------------------------
 # SCM
@@ -24,12 +26,17 @@
 # -----------------------------------------------------------------------------
 # Application caches
 # -----------------------------------------------------------------------------
+.oh-my-zsh
 .berkshelf
 .kitchen
 .chefdk
 .vagrant.d
+.gem
 .m2
 .gradle
 .sonar
 .npm
+.node-gyp
 node_modules
+.tldrc
+.docker
