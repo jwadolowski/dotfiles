@@ -16,6 +16,7 @@
     st = status
     sti = status --ignored
     fco = "!git co $(git for-each-ref --format='%(refname:short)' | grep -v "HEAD" | sed 's#^origin/##' | sort | uniq | fzf --layout=reverse)"
+    sf = diff --name-only --staged
 
 [core]
     pager = diff-so-fancy | less --tabs=4 -RFX
