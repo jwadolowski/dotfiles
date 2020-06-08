@@ -6,7 +6,7 @@
 
 [alias]
     br = branch
-    ci = commit -n
+    ci = commit --no-verify
     cl = clone
     co = checkout
     ds = diff --staged
