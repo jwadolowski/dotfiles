@@ -47,6 +47,7 @@ BREW_PACKAGES=(
     dos2unix
     fd
     fdupes
+    ffmpeg
     fzf
     git
     git-extras
@@ -69,6 +70,7 @@ BREW_PACKAGES=(
     ncdu
     neovim
     oath-toolkit
+    packer
     parallel
     pidof
     prettier
