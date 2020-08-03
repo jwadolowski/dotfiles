@@ -2,10 +2,10 @@
 #
 # ^ that's ridiculously slow, so let's use pre-rendered version instead
 
-export PATH="/opt/chef-workstation/bin:${HOME}/.chefdk/gem/ruby/2.6.0/bin:/opt/chef-workstation/embedded/bin:${PATH}:/opt/chef-workstation/gitbin"
-export GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0"
-export GEM_HOME="${HOME}/.chefdk/gem/ruby/2.6.0"
-export GEM_PATH="${HOME}/.chefdk/gem/ruby/2.6.0:/opt/chef-workstation/embedded/lib/ruby/gems/2.6.0"
+export PATH="/opt/chef-workstation/bin:${HOME}/.chefdk/gem/ruby/2.7.0/bin:/opt/chef-workstation/embedded/bin:${PATH}:/opt/chef-workstation/gitbin"
+export GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0"
+export GEM_HOME="${HOME}/.chefdk/gem/ruby/2.7.0"
+export GEM_PATH="${HOME}/.chefdk/gem/ruby/2.7.0:/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0"
 function _chef() {
 
   local -a _1st_arguments
@@ -28,7 +28,7 @@ function _chef() {
       'delete-policy:Delete all revisions of a policy on the Chef Infra Server'
       'undelete:Undo a delete command'
       'describe-cookbook:Prints cookbook checksum information used for cookbook identifier'
-      'verify:Test the embedded Chef Workstation applications'
+      'provision:Provision VMs and clusters via cookbook'
     )
 
   _arguments \
