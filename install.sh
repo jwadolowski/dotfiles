@@ -36,6 +36,7 @@ BREW_PACKAGES=(
     alexjs
     awscli
     bat
+    caddy
     certbot
     colordiff
     coreutils
@@ -59,6 +60,7 @@ BREW_PACKAGES=(
     hadolint
     helm
     htop
+    hugo
     imagemagick
     iproute2mac
     jq
@@ -119,6 +121,7 @@ BREW_CASK_PACKAGES=(
     keycastr
     kitematic
     ngrok
+    proxyman
     skype
     sourcetree
     spectacle
