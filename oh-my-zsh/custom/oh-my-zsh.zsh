@@ -22,7 +22,7 @@ function upgrade_oh_my_zsh_themes {
 }
 
 function upgrade_oh_my_zsh_all {
-    upgrade_oh_my_zsh
+    omz update
     upgrade_oh_my_zsh_plugins
     upgrade_oh_my_zsh_themes
 }
