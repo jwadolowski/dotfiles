@@ -38,4 +38,8 @@
     changeHunkIndicators = false
     rulerWidth = 80
 
+# https://stackoverflow.com/a/62653400/6802186
+[pull]
+    rebase = false
+
 # vim: ft=gitconfig
