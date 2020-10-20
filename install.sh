@@ -34,6 +34,7 @@ BREW_TAPS=(
 BREW_PACKAGES=(
     ag
     alexjs
+    awk
     awscli
     bat
     caddy
@@ -53,6 +54,7 @@ BREW_PACKAGES=(
     git
     git-extras
     glances
+    gnu-sed
     go
     goaccess
     graphviz
@@ -72,6 +74,7 @@ BREW_PACKAGES=(
     ncdu
     neovim
     oath-toolkit
+    p7zip
     packer
     parallel
     pidof
