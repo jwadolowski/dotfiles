@@ -34,7 +34,6 @@ BREW_TAPS=(
 BREW_PACKAGES=(
     ag
     alexjs
-    awk
     awscli
     bat
     caddy
@@ -51,6 +50,7 @@ BREW_PACKAGES=(
     fdupes
     ffmpeg
     fzf
+    gawk
     git
     git-extras
     glances
