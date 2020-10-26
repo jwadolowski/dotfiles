@@ -57,6 +57,7 @@ BREW_PACKAGES=(
     gnu-sed
     go
     goaccess
+    gpg
     graphviz
     groovy
     hadolint
