@@ -334,8 +334,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " -----------------------------------------------------------------------------
 " ALE (linters)
 " -----------------------------------------------------------------------------
+" \   'chef': ['cookstyle', 'foodcritic'],
 let g:ale_linters = {
-\   'chef': ['cookstyle', 'foodcritic'],
 \   'dockerfile': ['hadolint'],
 \   'json': ['jsonlint'],
 \   'markdown': ['alex', 'mdl', 'vale'],
