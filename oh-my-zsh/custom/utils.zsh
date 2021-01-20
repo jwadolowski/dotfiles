@@ -52,6 +52,19 @@ function c() {
 }
 
 # -----------------------------------------------------------------------------
+# fzf cd replacement for Git directories
+#
+# https://github.com/junegunn/fzf/wiki/examples#changing-directory
+# -----------------------------------------------------------------------------
+function d() {
+    local dir
+
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        dir=$(fd --type directory --follow --hidden | fzf --layout=reverse --query="$1") && cd "$dir"
+    fi
+}
+
+# -----------------------------------------------------------------------------
 # Brew helpers
 #
 # https://github.com/junegunn/fzf/wiki/examples#homebrew
