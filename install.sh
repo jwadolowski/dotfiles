@@ -34,6 +34,8 @@ BREW_TAPS=(
 BREW_PACKAGES=(
     ag
     alexjs
+    ansible
+    ansible-lint
     awscli
     bat
     caddy
@@ -53,6 +55,7 @@ BREW_PACKAGES=(
     gawk
     git
     git-extras
+    git-lfs
     glances
     gnu-sed
     go
@@ -128,7 +131,7 @@ BREW_CASK_PACKAGES=(
     proxyman
     skype
     sourcetree
-    spectacle
+    rectangle
     spotify
     tunnelblick
     virtualbox
