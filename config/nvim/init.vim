@@ -30,6 +30,15 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
+" Caddyfile
+Plug 'isobit/vim-caddyfile'
+
+" Kotlin
+Plug 'udalov/kotlin-vim'
+
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
 " Utils
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
