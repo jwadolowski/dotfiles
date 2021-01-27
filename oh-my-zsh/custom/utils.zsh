@@ -22,6 +22,26 @@ function error_log() {
 }
 
 # -----------------------------------------------------------------------------
+# Git utils
+# -----------------------------------------------------------------------------
+function in_git_repo() {
+    git rev-parse --git-dir > /dev/null 2>&1
+}
+
+function in_git_submodule() {
+    [[ -z $(git rev-parse --show-superproject-working-tree 2>/dev/null) ]] && return 1
+    return 0
+}
+
+function git_top_level() {
+    if in_git_submodule; then
+        git rev-parse --show-superproject-working-tree
+    else
+        git rev-parse --show-toplevel
+    fi
+}
+
+# -----------------------------------------------------------------------------
 # Quick file edit with NVIM
 #
 # https://github.com/junegunn/fzf/wiki/examples#opening-files
@@ -29,20 +49,38 @@ function error_log() {
 
 # edit any file
 function e() {
-    local files
-    IFS=$'\n' files=$(fd --type file --follow --hidden . $HOME | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
-    [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+    local file
+    IFS=$'\n' file=$(fd --type file --follow --hidden . $HOME | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
+    [[ -n "$file" ]] && ${EDITOR:-vim} "${file}"
 }
 
 # edit file within current directory
 function v() {
-    local files
-    IFS=$'\n' files=$(fd --type file --follow --hidden | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
-    [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+    local file
+
+    IFS=$'\n' file=$(fd --type file --follow --hidden | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
+
+    [[ -n "$file" ]] && ${EDITOR:-vim} "${file}"
+}
+
+# edit any file in current Git directory
+function vv() {
+    local file
+
+    if in_git_repo; then
+        base_directory=$(git_top_level)
+
+        IFS=$'\n' file=$(fd --type file --follow --hidden --base-directory ${base_directory} | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
+        [[ -n "$file" ]] && file="${base_directory}/${file}"
+    else
+        error_log "Not in Git repo!"
+    fi
+
+    [[ -n "$file" ]] && ${EDITOR:-vim} "${file}"
 }
 
 # -----------------------------------------------------------------------------
-# fzf cd replacement
+# fzf-flavoured cd replacement
 #
 # https://github.com/junegunn/fzf/wiki/examples#changing-directory
 # -----------------------------------------------------------------------------
@@ -52,15 +90,37 @@ function c() {
 }
 
 # -----------------------------------------------------------------------------
-# fzf cd replacement for Git directories
-#
-# https://github.com/junegunn/fzf/wiki/examples#changing-directory
+# Movements within within Git dir
 # -----------------------------------------------------------------------------
 function d() {
-    local dir
+    local target_dir
 
-    if git rev-parse --git-dir > /dev/null 2>&1; then
-        dir=$(fd --type directory --follow --hidden | fzf --layout=reverse --query="$1") && cd "$dir"
+    if in_git_repo; then
+        base_directory=$(git_top_level)
+        target_dir=$(fd --type directory --follow --hidden --base-directory ${base_directory} | fzf --layout=reverse --query="$1")
+        [[ -n $target_dir ]] && cd "${base_directory}/${target_dir}"
+    else
+        error_log "Not in Git repository!"
+    fi
+}
+
+# gr is defined in git-extras oh-my-zsh plugin
+unalias gr
+function gr() {
+    if in_git_repo; then
+        cd $(git_top_level)
+    else
+        error_log "Not in Git repository!"
+    fi
+}
+
+# gsr is defined in git-extras oh-my-zsh plugin
+unalias gsr
+function gsr() {
+    if in_git_submodule; then
+        cd $(git rev-parse --show-superproject-working-tree)
+    else
+        error_log "Not in Git submodule!"
     fi
 }
 
@@ -83,6 +143,6 @@ function bci() {
     token=$(brew search --casks | fzf-tmux --query="$1" +m --layout=reverse --preview 'brew info --cask {}')
 
     if [ "x$token" != "x" ]; then
-        brew cask install $token
+        brew install --cask $token
     fi
 }
