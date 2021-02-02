@@ -58,7 +58,7 @@ function e() {
 function v() {
     local file
 
-    IFS=$'\n' file=$(fd --type file --follow --hidden | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
+    IFS=$'\n' file=$(fd --type file --follow --hidden --no-ignore-vcs | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
 
     [[ -n "$file" ]] && ${EDITOR:-vim} "${file}"
 }
@@ -70,7 +70,7 @@ function vv() {
     if in_git_repo; then
         base_directory=$(git_top_level)
 
-        IFS=$'\n' file=$(fd --type file --follow --hidden --base-directory ${base_directory} | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
+        IFS=$'\n' file=$(fd --type file --follow --hidden --no-ignore-vcs --base-directory ${base_directory} | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
         [[ -n "$file" ]] && file="${base_directory}/${file}"
     else
         error_log "Not in Git repo!"
