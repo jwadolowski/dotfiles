@@ -401,8 +401,8 @@ let g:ale_fix_on_save = 1
 
 " https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
 autocmd FileType markdown setlocal
-\   textwidth=120
-\   colorcolumn=+1
+\   textwidth=0
+\   colorcolumn=
 \   indentexpr=
 \   ts=2
 \   sts=2
