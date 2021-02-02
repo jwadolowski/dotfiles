@@ -93,6 +93,7 @@ BREW_PACKAGES=(
     speedtest-cli
     sslscan
     terraform
+    terragrunt
     tflint
     tldr
     tree
