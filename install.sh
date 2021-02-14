@@ -27,7 +27,7 @@ OH_MY_ZSH_THEMES=(
 )
 
 BREW_TAPS=(
-    homebrew/cask-versions
+    AdoptOpenJDK/openjdk
     fastly/tap
 )
 
@@ -110,11 +110,13 @@ BREW_PACKAGES=(
 
 BREW_CASK_PACKAGES=(
     adobe-acrobat-reader
+    adoptopenjdk11
     adoptopenjdk8
     alfred
     balenaetcher
     brave-browser
     chef-workstation
+    discord
     docker
     dropbox
     firefox
@@ -130,9 +132,9 @@ BREW_CASK_PACKAGES=(
     kitematic
     ngrok
     proxyman
+    rectangle
     skype
     sourcetree
-    rectangle
     spotify
     tunnelblick
     virtualbox
