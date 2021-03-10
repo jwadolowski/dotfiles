@@ -122,7 +122,7 @@ BREW_CASK_PACKAGES=(
     firefox
     font-hack-nerd-font
     font-montserrat
-    forticlient
+    forticlient-vpn
     google-chrome
     iterm2
     joinme
@@ -142,7 +142,7 @@ BREW_CASK_PACKAGES=(
     visualvm
     vlc
     wireshark
-    zoomus
+    zoom
 )
 
 GEM_PACKAGES=(
