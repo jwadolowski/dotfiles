@@ -48,6 +48,7 @@ BREW_PACKAGES=(
     diff-so-fancy
     doctl
     dos2unix
+    fastly
     fd
     fdupes
     ffmpeg
