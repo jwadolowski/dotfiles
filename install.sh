@@ -63,6 +63,7 @@ BREW_PACKAGES=(
     goaccess
     gpg
     graphviz
+    grep
     groovy
     hadolint
     helm
@@ -78,6 +79,7 @@ BREW_PACKAGES=(
     mtr
     ncdu
     neovim
+    node@12
     oath-toolkit
     p7zip
     packer
@@ -88,6 +90,7 @@ BREW_PACKAGES=(
     pstree
     python
     ripgrep
+    rustup-init
     sf-pwgen
     shellcheck
     shfmt
