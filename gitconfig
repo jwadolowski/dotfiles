@@ -1,8 +1,11 @@
 [includeIf "gitdir:~/projects/github/"]
-    path = ~/.gitconfig_github
+    path = ~/.gitconfig_github_personal
 
-[includeIf "gitdir:~/projects/cognifide/"]
-    path = ~/.gitconfig_cognifide
+[includeIf "gitdir:~/projects/github/wttech-private/"]
+    path = ~/.gitconfig_github_wttech
+
+[includeIf "gitdir:~/projects/wttech/"]
+    path = ~/.gitconfig_wttech
 
 [alias]
     br = branch
