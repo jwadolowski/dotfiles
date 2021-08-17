@@ -1,1 +1,1 @@
-export PATH="/usr/local/opt/curl-openssl/bin:${PATH}"
+export PATH="/usr/local/opt/curl/bin:${PATH}"
