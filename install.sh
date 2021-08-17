@@ -54,6 +54,7 @@ BREW_PACKAGES=(
     ffmpeg
     fzf
     gawk
+    gh
     git
     git-extras
     git-lfs
@@ -119,6 +120,7 @@ BREW_CASK_PACKAGES=(
     alfred
     balenaetcher
     brave-browser
+    calibre
     chef-workstation
     discord
     docker
@@ -141,6 +143,7 @@ BREW_CASK_PACKAGES=(
     sourcetree
     spotify
     tunnelblick
+    vagrant
     virtualbox
     visual-studio-code
     visualvm
