@@ -174,7 +174,6 @@ set smartcase  " override 'ignorecase' if pattern has upper case characters
 " -----------------------------------------------------------------------------
 " Indentation & moving things around
 " -----------------------------------------------------------------------------
-
 set tabstop=4       " tab = N spaces
 set softtabstop=4   " remove N spaces when removing indentation
 set shiftwidth=4    " autoindent indents N spaces
@@ -206,6 +205,14 @@ au FileType * setlocal formatoptions-=r formatoptions-=o
 
 " Change to file directory
 nnoremap <leader>cd :cd %:p:h<CR>
+
+" Disable unused providers to fix ":checkhealth provider"
+"
+" https://neovim.io/doc/user/provider.html
+let g:loaded_python_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
 
 " -----------------------------------------------------------------------------
 " Splits
