@@ -2,10 +2,10 @@
 #
 # ^ that's ridiculously slow, so let's use pre-rendered version instead
 
-export PATH="/opt/chef-workstation/bin:${HOME}/.chefdk/gem/ruby/2.7.0/bin:/opt/chef-workstation/embedded/bin:${PATH}:/opt/chef-workstation/gitbin"
-export GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0"
-export GEM_HOME="${HOME}/.chefdk/gem/ruby/2.7.0"
-export GEM_PATH="${HOME}/.chefdk/gem/ruby/2.7.0:/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0"
+export PATH="/opt/chef-workstation/bin:${HOME}/.chefdk/gem/ruby/3.0.0/bin:/opt/chef-workstation/embedded/bin:${PATH}:/opt/chef-workstation/gitbin"
+export GEM_ROOT="/opt/chef-workstation/embedded/lib/ruby/gems/3.0.0"
+export GEM_HOME="${HOME}/.chefdk/gem/ruby/3.0.0"
+export GEM_PATH="${HOME}/.chefdk/gem/ruby/3.0.0:/opt/chef-workstation/embedded/lib/ruby/gems/3.0.0"
 function _chef() {
 
   local -a _1st_arguments
