@@ -16,6 +16,15 @@ Plug 'junegunn/gv.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" web-devicons
+Plug 'kyazdani42/nvim-web-devicons'
+
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rake'
@@ -36,6 +45,14 @@ Plug 'isobit/vim-caddyfile'
 " Kotlin
 Plug 'udalov/kotlin-vim'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Plug 'windwp/nvim-autopairs'
+
 " Ansible
 Plug 'pearofducks/ansible-vim'
 
@@ -49,6 +66,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'       " Reconfig built-in directory browser
 Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align'
+" Plug 'andymass/vim-matchup'
 
 " Startup time
 Plug 'dstein64/vim-startuptime'
@@ -96,7 +114,7 @@ Plug 'chrisbra/Colorizer'
 " TODO Autocompletion
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " TODO Go
 " Plug 'fatih/vim-go'
@@ -116,9 +134,11 @@ set number         " display line numbers on the left
 set colorcolumn=80 " highlight column #80
 set cursorline     " Highlight current line
 set noshowmode     " don't display current mode (Insert, Visual, Replace) in
-                   " the status line. This information is already shown in the
-                   " Airline status bar
+" the status line. This information is already shown in the
+" Airline status bar
 set termguicolors  " enable true colors support
+
+set updatetime=100
 
 " order matters
 "
@@ -129,6 +149,21 @@ colorscheme gruvbox
 set showbreak=↪\    " string displayed at the start of wrapped lines
 set listchars=tab:»\ ,eol:$,trail:_,space:_,extends:>,precedes:<,nbsp:+
 nmap <leader>l :set list!<CR>
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+ensure_installed = "maintained",
+highlight = {
+enable = true,
+},
+  incremental_selection = {
+  enable = true,
+  },
+  indent = {
+  enable = true,
+  },
+}
+EOF
 
 " -----------------------------------------------------------------------------
 " Search
@@ -158,7 +193,7 @@ vnoremap > >gv
 " -----------------------------------------------------------------------------
 set showmatch         " highlight matching bracket for short period of time
 set nojoinspaces      " Prevents inserting two spaces after punctuation on a
-                      " join (J)
+" join (J)
 set clipboard=unnamed " macOS clipboard sharing
 set nofixendofline    " https://stackoverflow.com/a/16114535/6802186
 
@@ -209,8 +244,8 @@ set foldlevelstart=99 " Start with all folds opened
 "
 " https://github.com/junegunn/fzf.vim/issues/27#issuecomment-185757840
 function! s:with_git_root()
-  let root = systemlist('git rev-parse --show-toplevel')[0]
-  return v:shell_error ? {} : {'dir': root}
+    let root = systemlist('git rev-parse --show-toplevel')[0]
+    return v:shell_error ? {} : {'dir': root}
 endfunction
 
 " A few modifications to make grepping more sensible:
@@ -229,27 +264,27 @@ endfunction
 " * ... (didn't write it down anywhere)
 "
 command! -bang -nargs=* Ag
-      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
-      \                   1,
-      \                   fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
-      \                   <bang>0)
+            \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),
+            \                   1,
+            \                   fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
+            \                   <bang>0)
 
 command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>,
-    \                 fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
-    \                 <bang>0)
+            \ call fzf#vim#ag(<q-args>,
+            \                 fzf#vim#with_preview(extend({'options': '--delimiter : --nth 4..'}, s:with_git_root())),
+            \                 <bang>0)
 
 " Add preview to :GFiles
 command! -bang -nargs=? GFiles
-      \ call fzf#vim#gitfiles(<q-args>,
-      \                       fzf#vim#with_preview(),
-      \                       <bang>0)
+            \ call fzf#vim#gitfiles(<q-args>,
+            \                       fzf#vim#with_preview(),
+            \                       <bang>0)
 
 " Add preview to :Files
 command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>,
-      \                    fzf#vim#with_preview(),
-      \                    <bang>0)
+            \ call fzf#vim#files(<q-args>,
+            \                    fzf#vim#with_preview(),
+            \                    <bang>0)
 
 " Grep current word
 nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
@@ -322,12 +357,12 @@ autocmd BufNewFile,BufRead */cookbooks/*/metadata.rb set filetype=ruby.chef
 " -----------------------------------------------------------------------------
 " UltiSnips
 " -----------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " https://github.com/SirVer/ultisnips/issues/1052#issuecomment-504719268
-" let g:UltiSnipsExpandTrigger = "<nop>"
+let g:UltiSnipsExpandTrigger = "<nop>"
 
 " use <tab> for trigger completion and navigate to the next complete item
 " function! s:check_back_space() abort
@@ -345,14 +380,14 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " -----------------------------------------------------------------------------
 " \   'chef': ['cookstyle', 'foodcritic'],
 let g:ale_linters = {
-\   'dockerfile': ['hadolint'],
-\   'json': ['jsonlint'],
-\   'markdown': ['alex', 'mdl', 'vale'],
-\   'sh': ['shellcheck'],
-\   'terraform': ['terraform'],
-\   'yaml': ['yamllint'],
-\   'xml': ['xmllint'],
-\}
+            \   'dockerfile': ['hadolint'],
+            \   'json': ['jsonlint'],
+            \   'markdown': ['alex', 'mdl', 'vale'],
+            \   'sh': ['shellcheck'],
+            \   'terraform': ['terraform'],
+            \   'yaml': ['yamllint'],
+            \   'xml': ['xmllint'],
+            \}
 
 let g:ale_linters_explicit = 1
 
@@ -378,13 +413,13 @@ nmap <Leader>m :lopen<CR>
 " ALE (fixers)
 " -----------------------------------------------------------------------------
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'json': ['jq'],
-\   'markdown': ['prettier'],
-\   'terraform': ['terraform'],
-\   'yaml': ['prettier'],
-\   'sh': ['shfmt'],
-\}
+            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \   'json': ['jq'],
+            \   'markdown': ['prettier'],
+            \   'terraform': ['terraform'],
+            \   'yaml': ['prettier'],
+            \   'sh': ['shfmt'],
+            \}
 
 " Adjust jq settings to match 'python -mjson.tool' output
 let g:ale_json_jq_options = '--sort-keys --indent 4'
@@ -401,14 +436,14 @@ let g:ale_fix_on_save = 1
 
 " https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
 autocmd FileType markdown setlocal
-\   textwidth=0
-\   colorcolumn=
-\   indentexpr=
-\   ts=2
-\   sts=2
-\   sw=2
-\   expandtab
-\   spell spelllang=en_us
+            \   textwidth=0
+            \   colorcolumn=
+            \   indentexpr=
+            \   ts=2
+            \   sts=2
+            \   sw=2
+            \   expandtab
+            \   spell spelllang=en_us
 
 " Do not fix Markdown syntax on save
 autocmd FileType markdown let b:ale_fix_on_save=0
@@ -460,3 +495,63 @@ cmap w!! w !sudo tee > /dev/null %
 
 " disable paste mode when leaving Insert Mode
 autocmd InsertLeave * set nopaste
+
+" -----------------------------------------------------------------------------
+" coc
+" -----------------------------------------------------------------------------
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+let g:coc_global_extensions = ['coc-solargraph', 'coc-yaml']
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+else
+    inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+let g:coc_filetype_map = {
+            \ 'yaml.ansible': 'yaml',
+            \ }
+
+" -----------------------------------------------------------------------------
+" Telescope
+" -----------------------------------------------------------------------------
+lua << EOF
+require('telescope').setup {
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+            }
+        }
+    }
+require('telescope').load_extension('fzy_native')
+EOF
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>gf <cmd>Telescope git_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
