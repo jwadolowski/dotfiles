@@ -100,6 +100,7 @@ BREW_PACKAGES=(
     shfmt
     speedtest-cli
     sslscan
+    svn
     hashicorp/tap/terraform
     terragrunt
     tflint
