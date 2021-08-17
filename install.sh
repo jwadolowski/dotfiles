@@ -83,7 +83,7 @@ BREW_PACKAGES=(
     mtr
     ncdu
     neovim
-    node@12
+    node@14
     oath-toolkit
     p7zip
     hashicorp/tap/packer
