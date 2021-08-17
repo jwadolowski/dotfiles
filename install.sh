@@ -249,7 +249,7 @@ brew install ${BREW_PACKAGES[*]}
 
 info_log "Installing brew cask packages..."
 # shellcheck disable=SC2086
-brew cask install ${BREW_CASK_PACKAGES[*]}
+brew install --cask ${BREW_CASK_PACKAGES[*]}
 
 output_separator
 
