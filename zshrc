@@ -84,7 +84,6 @@ plugins=(
     golang
     gradle
     # helm
-    k
     kitchen
     knife
     # kubectl
