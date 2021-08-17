@@ -27,13 +27,15 @@ OH_MY_ZSH_THEMES=(
 )
 
 BREW_TAPS=(
-    AdoptOpenJDK/openjdk
+    homebrew/cask-versions
+    homebrew/cask-fonts
+    hashicorp/tap
     fastly/tap
 )
 
 BREW_PACKAGES=(
     ag
-    alexjs
+    # alexjs
     ansible
     ansible-lint
     awscli
@@ -83,7 +85,7 @@ BREW_PACKAGES=(
     node@12
     oath-toolkit
     p7zip
-    packer
+    hashicorp/tap/packer
     parallel
     pidof
     prettier
@@ -97,14 +99,14 @@ BREW_PACKAGES=(
     shfmt
     speedtest-cli
     sslscan
-    terraform
+    hashicorp/tap/terraform
     terragrunt
     tflint
     tldr
     tree
-    vale
+    # vale
     vegeta
-    waflyctl
+    # waflyctl
     watch
     wget
     yamllint
@@ -115,8 +117,6 @@ BREW_PACKAGES=(
 
 BREW_CASK_PACKAGES=(
     adobe-acrobat-reader
-    adoptopenjdk11
-    adoptopenjdk8
     alfred
     balenaetcher
     brave-browser
@@ -128,21 +128,23 @@ BREW_CASK_PACKAGES=(
     firefox
     font-hack-nerd-font
     font-montserrat
-    forticlient-vpn
+    # forticlient-vpn
     google-chrome
     iterm2
-    joinme
-    kap
-    keepassxc
+    # joinme
+    # kap
+    # keepassxc
     keycastr
     kitematic
     ngrok
     proxyman
     rectangle
-    skype
+    # skype
     sourcetree
     spotify
-    tunnelblick
+    temurin11
+    temurin8
+    # tunnelblick
     vagrant
     virtualbox
     visual-studio-code
@@ -273,16 +275,16 @@ output_separator
 # -----------------------------------------------------------------------------
 # Ruby gems
 # -----------------------------------------------------------------------------
-if [[ $(command -v chef) == "" ]]; then
-    error_log "Chef Workstation is not installed. Please install it first!"
-else
-    info_log "Installing Ruby gems"
-    for g in "${GEM_PACKAGES[@]}"; do
-        install_ruby_gem "${g}"
-    done
-fi
+# if [[ $(command -v chef) == "" ]]; then
+#     error_log "Chef Workstation is not installed. Please install it first!"
+# else
+#     info_log "Installing Ruby gems"
+#     for g in "${GEM_PACKAGES[@]}"; do
+#         install_ruby_gem "${g}"
+#     done
+# fi
 
-output_separator
+# output_separator
 
 # -----------------------------------------------------------------------------
 # Deploy ~/.config
