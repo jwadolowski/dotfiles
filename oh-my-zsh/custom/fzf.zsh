@@ -2,4 +2,4 @@
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --no-ignore-vcs'
 export FZF_DEFAULT_OPTS='--height 40% --no-multi --select-1 --exit-0'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --theme=gruvbox-dark --style=header,grid --line-range :300 {}'"
