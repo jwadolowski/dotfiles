@@ -107,7 +107,7 @@ function gw() {
         fi
 
         gradle_task=$(cat $gradle_task_file_path | cut -d ';' -f 1 | fzf --layout=reverse --query="$1" --preview "grep -E '^{};' $gradle_task_file_path | cut -d ';' -f 2")
-        [[ -n $gradle_task ]] && $gradle_cmd $gradle_task
+        [[ -n $gradle_task ]] && echo $gradle_task
     else
         error_log "$gradle_cmd does not exist or is not executable!"
     fi
