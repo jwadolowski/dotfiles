@@ -77,6 +77,7 @@ BREW_PACKAGES=(
     iproute2mac
     jq
     jsonlint
+    mas
     maven
     minio-mc
     mitmproxy
