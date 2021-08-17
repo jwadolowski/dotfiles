@@ -39,6 +39,7 @@ BREW_PACKAGES=(
     ansible
     ansible-lint
     awscli
+    azure-cli
     bat
     caddy
     certbot
