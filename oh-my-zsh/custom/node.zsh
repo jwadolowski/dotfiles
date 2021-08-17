@@ -1,1 +1,1 @@
-export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/node@14/bin:$PATH"
