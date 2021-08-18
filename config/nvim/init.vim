@@ -143,7 +143,7 @@ set updatetime=100
 " order matters
 "
 " https://github.com/morhetz/gruvbox/issues/258#issuecomment-457215075
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='medium'
 colorscheme gruvbox
 
 set showbreak=↪\    " string displayed at the start of wrapped lines
