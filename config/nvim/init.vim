@@ -134,8 +134,8 @@ set number         " display line numbers on the left
 set colorcolumn=80 " highlight column #80
 set cursorline     " Highlight current line
 set noshowmode     " don't display current mode (Insert, Visual, Replace) in
-" the status line. This information is already shown in the
-" Airline status bar
+                   " the status line. This information is already shown in the
+                   " Airline status bar
 set termguicolors  " enable true colors support
 
 set updatetime=100
