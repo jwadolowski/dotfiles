@@ -135,6 +135,7 @@ cask "font-signika"
 cask "google-chrome"
 cask "iterm2"
 cask "keycastr"
+cask "mimestream"
 cask "ngrok"
 cask "postman"
 cask "rectangle"
@@ -150,6 +151,7 @@ cask "wireshark"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
+mas "Balance", id: 1637311725
 mas "Bear", id: 1091189122
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
