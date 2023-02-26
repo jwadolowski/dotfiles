@@ -3,5 +3,7 @@ extends: default
 
 rules:
   line-length: disable
-  braces: disable
+  document-start: disable
+  comments: disable
+
 # vim: ft=yaml
