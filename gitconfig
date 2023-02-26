@@ -5,6 +5,9 @@
 [includeIf "gitdir:~/projects/github/"]
     path = ~/.gitconfig_github
 
+[includeIf "gitdir:~/.config/nvim/lua/user/"]
+    path = ~/.gitconfig_github
+
 [includeIf "gitdir:~/projects/diva-e/"]
     path = ~/.gitconfig_diva-e
 
