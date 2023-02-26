@@ -77,6 +77,8 @@ output_separator
 # -----------------------------------------------------------------------------
 # bat
 # -----------------------------------------------------------------------------
+info_log "Installing bat themes..."
+
 BAT_THEMES_DIR="$(bat --config-dir)/themes"
 mkdir -p "${BAT_THEMES_DIR}"
 
@@ -135,7 +137,7 @@ while IFS= read -r -d '' file; do
 
 	info_log "Processing: ${config_file} -> ${target_file}"
 	ln -sf "${config_file}" "${target_file}"
-done < <(find -E . -type f -maxdepth 1 -not -iregex "./(\.gitignore|README\.md|install\.sh)$" -print0)
+done < <(find -E . -type f -maxdepth 1 -not -iregex "./(\.gitignore|README\.md|Brewfile|Brewfile\.lock\.json|install\.sh)$" -print0)
 
 output_separator
 

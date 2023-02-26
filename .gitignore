@@ -1,0 +1,5 @@
+# There's no point to keep track of brew lock file
+Brewfile.lock.json
+
+# Ignore bat themes
+config/bat/themes
