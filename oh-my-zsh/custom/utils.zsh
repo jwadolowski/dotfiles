@@ -89,6 +89,11 @@ function c() {
     dir=$(fd --type directory --follow --hidden . $HOME | fzf --layout=reverse --query="$1") && cd "$dir"
 }
 
+# Quick helper to go into Neovim custom config directory
+function nvc() {
+    cd $HOME/.config/nvim/lua/user
+}
+
 # -----------------------------------------------------------------------------
 # Movements within within Git dir
 # -----------------------------------------------------------------------------
