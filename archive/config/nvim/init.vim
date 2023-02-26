@@ -42,8 +42,8 @@ Plug 'junegunn/limelight.vim'
 " Caddyfile
 Plug 'isobit/vim-caddyfile'
 
-" Kotlin
-Plug 'udalov/kotlin-vim'
+" Handlebars / Mustache
+Plug 'mustache/vim-mustache-handlebars'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -152,16 +152,51 @@ nmap <leader>l :set list!<CR>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-ensure_installed = "maintained",
-highlight = {
-enable = true,
-},
-  incremental_selection = {
-  enable = true,
-  },
-  indent = {
-  enable = true,
-  },
+    ensure_installed = {
+        "bash",
+        "c",
+        "comment",
+        "cpp",
+        "css",
+        "dockerfile",
+        "go",
+        "gomod",
+        "graphql",
+        "hcl",
+        "hjson",
+        "html",
+        "java",
+        "javascript",
+        "jsdoc",
+        "json",
+        "json5",
+        "jsonc",
+        "latex",
+        "lua",
+        "perl",
+        "php",
+        "python",
+        "ql",
+        "regex",
+        "ruby",
+        "rust",
+        "scss",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vue",
+        "yaml",
+    },
+    highlight = {
+        enable = true,
+    },
+    incremental_selection = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
 }
 EOF
 
@@ -296,7 +331,7 @@ command! -bang -nargs=? -complete=dir Files
 " Grep current word
 nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader>g :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>g :Rg <C-R><C-W><CR>
 
 " Include all $HOME files
 nnoremap <C-o> :Files ~<Cr>
@@ -353,6 +388,17 @@ autocmd BufNewFile,BufRead *.hcl set filetype=terraform
 autocmd BufNewFile,BufRead */cookbooks/*/\(attributes\|definitions\|libraries\|providers\|recipes\|resources\)/*.rb set filetype=ruby.chef
 " autocmd BufNewFile,BufRead */cookbooks/*/templates/*/*.erb set filetype=chef syntax=eruby.chef
 autocmd BufNewFile,BufRead */cookbooks/*/metadata.rb set filetype=ruby.chef
+
+" -----------------------------------------------------------------------------
+" Apache/Dispatcher
+" -----------------------------------------------------------------------------
+autocmd FileType apache setlocal commentstring=#\ %s
+autocmd BufNewFile,BufRead */dispatcher\(-sdk-*\|\)/src/*.\(any\|conf\|farm\|rules\|vars\|vhost\) set filetype=apache ts=2 sts=2 sw=2 et
+
+" -----------------------------------------------------------------------------
+" VCL
+" -----------------------------------------------------------------------------
+autocmd FileType vcl setlocal commentstring=#\ %s
 
 " -----------------------------------------------------------------------------
 " Deoplete (autocompletion)
@@ -421,21 +467,22 @@ nmap <Leader>m :lopen<CR>
 " -----------------------------------------------------------------------------
 let g:ale_fixers = {
             \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'json': ['jq'],
             \   'markdown': ['prettier'],
+            \   'json': ['jq'],
             \   'terraform': ['terraform'],
             \   'yaml': ['prettier'],
             \   'sh': ['shfmt'],
             \}
 
 " Adjust jq settings to match 'python -mjson.tool' output
-let g:ale_json_jq_options = '--sort-keys --indent 4'
+" let g:ale_json_jq_options = '--sort-keys --indent 4'
+let g:ale_json_jq_options = '--sort-keys'
 
 " Prefer 4 space indentation in bash scripts
 let g:ale_sh_shftm_options = '-i 4'
 
 " Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 " -----------------------------------------------------------------------------
 " Markdown
@@ -546,6 +593,18 @@ let g:coc_filetype_map = {
 " -----------------------------------------------------------------------------
 lua << EOF
 require('telescope').setup {
+    defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden"
+        }
+    },
     extensions = {
         fzy_native = {
             override_generic_sorter = false,
@@ -562,3 +621,6 @@ nnoremap <leader>gf <cmd>Telescope git_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" nnoremap <C-p> <cmd>Telescope git_files<cr>
+" nnoremap <C-g> <cmd>Telescope grep_string<cr>
