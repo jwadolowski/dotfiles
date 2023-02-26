@@ -1,11 +1,12 @@
+[user]
+    name = Jakub Wadolowski
+    email = jakub@wadolowski.tech
+
 [includeIf "gitdir:~/projects/github/"]
-    path = ~/.gitconfig_github_personal
+    path = ~/.gitconfig_github
 
-[includeIf "gitdir:~/projects/github/wttech-private/"]
-    path = ~/.gitconfig_github_wttech
-
-[includeIf "gitdir:~/projects/wttech/"]
-    path = ~/.gitconfig_wttech
+[includeIf "gitdir:~/projects/diva-e/"]
+    path = ~/.gitconfig_diva-e
 
 [alias]
     br = branch
@@ -22,36 +23,38 @@
     sf = diff --name-only --staged
 
 [core]
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
     excludesfile = $HOME/.gitignore_global
 
 [color]
     ui = true
 
-[color "diff"]
-    commit = green
-    meta = yellow
-    frag = cyan bold
-    old = red
-    new = green
-    whitespace = red reverse
-
-[diff-so-fancy]
-    markEmptyLines = false
-    changeHunkIndicators = false
-    rulerWidth = 80
-
 # https://stackoverflow.com/a/62653400/6802186
 [pull]
     rebase = false
 
-[filter "lfs"]
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-
 [init]
     defaultBranch = main
+
+[fetch]
+	prune = true
+	pruneTags = true
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/delta/tokyonight_night.gitconfig
+[delta]
+    minus-style                   = syntax "#37222c"
+    minus-non-emph-style          = syntax "#37222c"
+    minus-emph-style              = syntax "#713137"
+    minus-empty-line-marker-style = syntax "#37222c"
+    line-numbers-minus-style      = "#c25d64"
+    plus-style                    = syntax "#20303b"
+    plus-non-emph-style           = syntax "#20303b"
+    plus-emph-style               = syntax "#2c5a66"
+    plus-empty-line-marker-style  = syntax "#20303b"
+    line-numbers-plus-style       = "#399a96"
+    line-numbers-zero-style       = "#3b4261"
 
 # vim: ft=gitconfig
