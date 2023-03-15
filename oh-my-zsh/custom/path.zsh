@@ -1,3 +1,6 @@
+# -----------------------------------------------------------------------------
+# Brew-provided binaries
+# -----------------------------------------------------------------------------
 BREW_PREFIX=$(brew --prefix)
 
 # Prefer coreutils binaries over built-in macOS ones
@@ -7,7 +10,7 @@ export PATH="${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
 export PATH="${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}"
 
 # Add GNU grep to the PATH
-export PATH="${BREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
+export PATH="${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
 
 # Prefer curl installed via brew
 export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
@@ -16,4 +19,9 @@ export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
 export PATH="${BREW_PREFIX}/sbin:${PATH}"
 
 # Use node.js 16 by default
-export PATH="${BREW_PREFIX}/opt/node@16/bin:$PATH"
+export PATH="${BREW_PREFIX}/opt/node@16/bin:${PATH}"
+
+# -----------------------------------------------------------------------------
+# Local binaries
+# -----------------------------------------------------------------------------
+export PATH="${HOME}/bin:${PATH}"
