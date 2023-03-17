@@ -114,8 +114,8 @@ if [[ ! -d $CONFIG_ROOT_DIR ]]; then
 	mkdir "$CONFIG_ROOT_DIR"
 fi
 
-for d in config/*; do
-	config_name=$(basename "${d}")
+for c in config/*; do
+	config_name=$(basename "${c}")
 	target_dir="${CONFIG_ROOT_DIR}/${config_name}"
 
 	info_log "Processing: ${PWD}/config/${config_name} -> ${target_dir}"
