@@ -12,6 +12,9 @@ export PATH="${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}"
 # Add GNU grep to the PATH
 export PATH="${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
 
+# Add GNU find to the PATH
+export PATH="${BREW_PREFIX}/opt/findutils/libexec/gnubin:$PATH"
+
 # Prefer curl installed via brew
 export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
 
