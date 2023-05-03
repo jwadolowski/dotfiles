@@ -137,7 +137,7 @@ while IFS= read -r -d '' file; do
 
 	info_log "Processing: ${config_file} -> ${target_file}"
 	ln -sf "${config_file}" "${target_file}"
-done < <(find -E . -type f -maxdepth 1 -not -iregex "./(\.gitignore|README\.md|Brewfile|Brewfile\.lock\.json|install\.sh)$" -print0)
+done < <(find . -maxdepth 1 -type f -not -iregex "./(\.gitignore|README\.md|Brewfile|Brewfile\.lock\.json|install\.sh)$" -print0)
 
 output_separator
 
@@ -152,6 +152,6 @@ while IFS= read -r -d '' file; do
 
 	info_log "Processing: ${config_file} -> ${target_file}"
 	ln -sf "${config_file}" "${target_file}"
-done < <(find -E oh-my-zsh/custom -type f -maxdepth 1 -iregex ".*\.zsh$" -print0)
+done < <(find oh-my-zsh/custom -maxdepth 1 -type f -iregex ".*\.zsh$" -print0)
 
 output_separator
