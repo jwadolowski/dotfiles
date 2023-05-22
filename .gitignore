@@ -1,3 +1,6 @@
+# MacOS
+.DS_Store
+
 # There's no point to keep track of brew lock file
 Brewfile.lock.json
 
