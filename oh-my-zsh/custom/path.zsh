@@ -21,10 +21,16 @@ export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
 # https://github.com/Homebrew/homebrew-core/issues/14669#issuecomment-353399229
 export PATH="${BREW_PREFIX}/sbin:${PATH}"
 
-# Use node.js 16 by default
-export PATH="${BREW_PREFIX}/opt/node@16/bin:${PATH}"
+# Use node.js 18 by default
+export PATH="${BREW_PREFIX}/opt/node@18/bin:${PATH}"
 
 # -----------------------------------------------------------------------------
 # Local binaries
 # -----------------------------------------------------------------------------
 export PATH="${HOME}/bin:${PATH}"
+
+# -----------------------------------------------------------------------------
+# Golang
+# -----------------------------------------------------------------------------
+export GOPATH="${HOME}/go"
+export PATH="${GOPATH}/bin:${PATH}"
