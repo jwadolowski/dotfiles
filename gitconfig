@@ -35,7 +35,7 @@
 
 # https://stackoverflow.com/a/62653400/6802186
 [pull]
-    rebase = false
+    rebase = true
 
 [init]
     defaultBranch = main
