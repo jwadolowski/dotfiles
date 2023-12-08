@@ -145,3 +145,10 @@ function bci() {
         brew install --cask $token
     fi
 }
+
+# -----------------------------------------------------------------------------
+# delta helpers
+# -----------------------------------------------------------------------------
+function dsbs() {
+    delta --side-by-side --syntax-theme 'Enki-Tokyo-Night' "$@"
+}
