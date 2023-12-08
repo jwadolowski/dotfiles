@@ -47,8 +47,10 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 
-# https://github.com/folke/tokyonight.nvim/blob/main/extras/delta/tokyonight_night.gitconfig
 [delta]
+    # https://github.com/dandavison/delta/issues/773
+    hunk-header-style	          = omit
+    # https://github.com/folke/tokyonight.nvim/blob/main/extras/delta/tokyonight_night.gitconfig
     minus-style                   = syntax "#37222c"
     minus-non-emph-style          = syntax "#37222c"
     minus-emph-style              = syntax "#713137"
