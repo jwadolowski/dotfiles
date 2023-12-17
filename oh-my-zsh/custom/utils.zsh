@@ -149,6 +149,6 @@ function bci() {
 # -----------------------------------------------------------------------------
 # delta helpers
 # -----------------------------------------------------------------------------
-function dsbs() {
+function diff2() {
     delta --side-by-side --syntax-theme 'Enki-Tokyo-Night' "$@"
 }
