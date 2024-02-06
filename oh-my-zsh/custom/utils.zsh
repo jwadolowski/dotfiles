@@ -152,3 +152,14 @@ function bci() {
 function diff2() {
     delta --side-by-side --syntax-theme 'Enki-Tokyo-Night' "$@"
 }
+
+# -----------------------------------------------------------------------------
+# yq helpers
+# -----------------------------------------------------------------------------
+function jty() {
+    yq --input-format json --output-format yaml
+}
+
+function ytj() {
+    yq --input-format yaml --output-format json
+}
