@@ -25,6 +25,7 @@
     sti = status --ignored
     fco = "!git co $(git for-each-ref --format='%(refname:short)' | grep -v "HEAD" | sed 's#^origin/##' | sort | uniq | fzf --layout=reverse)"
     sf = diff --name-only --staged
+    gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
 
 [core]
     pager = delta
