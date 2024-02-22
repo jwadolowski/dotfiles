@@ -180,11 +180,13 @@ cask "send-to-kindle"
 cask "spotify"
 cask "sysdig-inspect"
 cask "temurin11"
+cask "todoist"
 cask "topnotch"
 cask "visual-studio-code"
 cask "visualvm"
 cask "vlc"
 cask "wireshark"
+cask "zed"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
