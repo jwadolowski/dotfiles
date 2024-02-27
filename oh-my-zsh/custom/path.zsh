@@ -21,9 +21,6 @@ export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
 # https://github.com/Homebrew/homebrew-core/issues/14669#issuecomment-353399229
 export PATH="${BREW_PREFIX}/sbin:${PATH}"
 
-# Use node.js 18 by default
-export PATH="${BREW_PREFIX}/opt/node@18/bin:${PATH}"
-
 # -----------------------------------------------------------------------------
 # Local binaries
 # -----------------------------------------------------------------------------
