@@ -86,6 +86,7 @@ brew "lazygit"
 brew "mas"
 brew "maven"
 brew "minio-mc"
+brew "mise"
 brew "mitmproxy"
 brew "mkcert"
 brew "mongosh"
@@ -95,8 +96,6 @@ brew "ncdu"
 brew "tree-sitter"
 brew "neovim"
 brew "newrelic-cli"
-brew "node@16"
-brew "node@18"
 brew "nss"
 brew "oath-toolkit"
 brew "p7zip"
@@ -198,5 +197,4 @@ mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
-mas "Todoist", id: 585829637
 mas "Unsplash Wallpapers", id: 1284863847
