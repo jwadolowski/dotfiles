@@ -86,6 +86,7 @@ plugins=(
   kubectl
   npm
   ripgrep
+  rust
   terraform
   urltools
   zsh-syntax-highlighting
