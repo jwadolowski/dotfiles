@@ -155,3 +155,16 @@ while IFS= read -r -d '' file; do
 done < <(find oh-my-zsh/custom -maxdepth 1 -type f -iregex ".*\.zsh$" -print0)
 
 output_separator
+
+# -----------------------------------------------------------------------------
+# oh-my-zsh completions
+# -----------------------------------------------------------------------------
+while IFS= read -r -d '' file; do
+	filename=$(basename "${file}")
+
+	completion_file="${PWD}/${file}"
+	target_file="${OH_MY_ZSH_ROOT_DIR}/completions/${filename}"
+
+	info_log "Processing: ${completion_file} -> ${target_file}"
+	ln -sf "${completion_file}" "${target_file}"
+done < <(find oh-my-zsh/completions -maxdepth 1 -type f -print0)
