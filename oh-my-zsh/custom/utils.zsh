@@ -70,7 +70,7 @@ function vv() {
     if in_git_repo; then
         base_directory=$(git_top_level)
 
-        IFS=$'\n' file=$(fd --type file --follow --hidden --no-ignore-vcs --base-directory ${base_directory} -x realpath --relative-to="${PWD}" {} | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
+        IFS=$'\n' file=$(fd --type file --follow --hidden --base-directory ${base_directory} -x realpath --relative-to="${PWD}" {} | fzf --layout=reverse --query="$1" --preview 'bat --style=numbers --color=always {}')
         [[ -n "$file" ]] && ${EDITOR:-vim} "${file}"
     else
         error_log "Not in Git repo!"
