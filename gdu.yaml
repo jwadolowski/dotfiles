@@ -1,0 +1,5 @@
+# Inspired by https://github.com/folke/tokyonight.nvim/blob/main/extras/fzf/tokyonight_night.zsh
+style:
+  selected-row:
+    text-color: "#ff9e64"
+    background-color: "#292e42"
