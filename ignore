@@ -25,20 +25,71 @@
 # -----------------------------------------------------------------------------
 # Config/cache directories
 # -----------------------------------------------------------------------------
+
+# zsh
 .oh-my-zsh
+.zsh_sessions
+
+# chef
 .berkshelf
 .kitchen
 .chefdk
+.gem
+
+# Ansible
+.ansible
+
+# vagrant
 .vagrant
 .vagrant.d
-.gem
+
+# java
 .m2
 .gradle
 .sonar
+**/target
+
+# node.js
 .npm
 .node-gyp
 node_modules
+.pnpm-state
+
+# https://github.com/tldr-pages/tldr
 .tldrc
+
+# docker
 .docker
+
+# terraform
 .terraform
-**/target
+.terraform.d
+
+# golang
+vendor
+go
+
+# MongoDB 
+.embedmongo
+.3T
+.mongodb
+
+# cloud
+.azure
+.fly
+
+# k8s
+.kube
+
+# rust
+.rustup
+.cargo
+
+# prettier
+.prettierd
+
+# Visual Studio Code
+.vscode
+
+# the rest
+.lemminx
