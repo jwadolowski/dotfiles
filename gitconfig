@@ -20,6 +20,7 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     pu = push -u origin HEAD
     pl = pull
+    plf = pull --force
     rv = remote -v
     st = status
     sti = status --ignored
