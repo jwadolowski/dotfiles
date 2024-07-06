@@ -5,7 +5,7 @@
 [includeIf "gitdir:~/projects/github/"]
     path = ~/.gitconfig_github
 
-[includeIf "gitdir:~/.config/nvim/lua/user/"]
+[includeIf "gitdir:~/.config/nvim/"]
     path = ~/.gitconfig_github
 
 [includeIf "gitdir:~/projects/diva-e/"]
@@ -27,6 +27,7 @@
     fco = "!git co $(git for-each-ref --format='%(refname:short)' | grep -v "HEAD" | sed 's#^origin/##' | sort | uniq | fzf --layout=reverse)"
     sf = diff --name-only --staged
     gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
+    undo = reset --soft HEAD^
 
 [core]
     pager = delta
