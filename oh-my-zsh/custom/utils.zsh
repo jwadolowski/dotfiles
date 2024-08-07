@@ -89,7 +89,7 @@ function c() {
 
 # Quick helper to go into Neovim custom config directory
 function nvc() {
-  cd $HOME/.config/nvim/lua/user
+  cd $HOME/.config/nvim
 }
 
 # -----------------------------------------------------------------------------
