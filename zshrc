@@ -71,13 +71,11 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  ag
   colored-man-pages
   docker
   docker-compose
   doctl
   encode64
-  fd
   fzf
   gh
   git-extras
@@ -85,7 +83,6 @@ plugins=(
   helm
   kubectl
   npm
-  ripgrep
   rust
   terraform
   urltools
