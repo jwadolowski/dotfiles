@@ -79,15 +79,22 @@ output_separator
 # -----------------------------------------------------------------------------
 info_log "Installing bat themes..."
 
+declare -A BAT_THEMES
+BAT_THEMES[enki - theme]="https://github.com/enkia/enki-theme.git"
+BAT_THEMES[catppuccin]="https://github.com/catppuccin/bat.git"
+
 BAT_THEMES_DIR="$(bat --config-dir)/themes"
 mkdir -p "${BAT_THEMES_DIR}"
 
-if [[ -d "${BAT_THEMES_DIR}/enki-theme" ]] && (cd "${BAT_THEMES_DIR}/enki-theme" && git rev-parse --git-dir >/dev/null 2>&1); then
-  info_log "bat's enki-theme is already installed"
-else
-  git clone https://github.com/enkia/enki-theme.git "${BAT_THEMES_DIR}/enki-theme"
-  bat cache --build
-fi
+for t in "${!BAT_THEMES[@]}"; do
+  if [[ -d "${BAT_THEMES_DIR}/${t}" ]] && (cd "${BAT_THEMES_DIR}/${t}" && git rev-parse --git-dir >/dev/null 2>&1); then
+    info_log "${t} theme is already installed"
+  else
+    git clone "${BAT_THEMES[$t]}" "${BAT_THEMES_DIR}/${t}"
+  fi
+done
+
+bat cache --build
 
 output_separator
 
