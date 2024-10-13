@@ -1,8 +1,0 @@
-[git_commit]
-tag_disabled = false
-
-[docker_context]
-disabled = true
-
-[aws]
-disabled = true
