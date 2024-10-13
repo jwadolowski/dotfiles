@@ -1,0 +1,58 @@
+# Should be sourced first, so commands installed via Homebrew are available to
+# the other modules when needed
+zmodule homebrew
+
+# Handles "mise activate zsh" and zsh completions
+zmodule joke/zim-mise
+
+# Sets sane Zsh built-in environment options.
+zmodule environment
+# Applies correct bindkeys for input events.
+zmodule input
+# Sets a custom terminal title.
+zmodule termtitle
+# Utility aliases and functions. Adds colour to ls, grep and less.
+zmodule utility
+
+# This module must be sourced after the utility module, so this module can
+# override the aliases set by that one.
+zmodule fzf
+zmodule joke/zim-kubectl
+zmodule joke/zim-starship
+
+zmodule jwadolowski/dotfiles -n jwadolowski/locale -r oh-my-zsh/custom -s locale.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/path -r oh-my-zsh/custom -s path.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/editor -r oh-my-zsh/custom -s editor.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/aliases -r oh-my-zsh/custom -s aliases.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/man -r oh-my-zsh/custom -s man.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/fzf -r oh-my-zsh/custom -s fzf.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/azure -r oh-my-zsh/custom -s azure.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/helm -r oh-my-zsh/custom -s helm.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/rg -r oh-my-zsh/custom -s rg.zsh
+zmodule jwadolowski/dotfiles -n jwadolowski/utils -r oh-my-zsh/custom -s utils.zsh
+
+# Additional completion definitions for Zsh.
+zmodule zsh-users/zsh-completions --fpath src
+# Enables and configures smart and extensive tab completion.
+# completion must be sourced after all modules that add completion definitions.
+zmodule completion
+
+# https://github.com/zimfw/zimfw/issues/528#issuecomment-1949609155
+zmodule-eval() {
+  local -r ztarget=${2//[^[:alnum:]]/-}.zsh
+  zmodule custom-${1} --use mkdir --if-command ${1} \
+    --cmd "if [[ ! {}/${ztarget} -nt \${commands[${1}]} ]]; then ${2} >! {}/${ztarget}; zcompile -UR {}/${ztarget}; fi" \
+    --source ${ztarget}
+}
+zmodule-eval ngrok 'ngrok completion zsh'
+zmodule-eval fastly 'fastly --completion-script-zsh | sed "s/&& compinit//g"'
+unfunction zmodule-eval
+
+zmodule kiesman99/zim-zoxide
+
+# Must be loaded before zsh-users/zsh-syntax-highlighting
+zmodule catppuccin/zsh-syntax-highlighting -n catppuccin/zsh-syntax-highlighting -r themes -s catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+# Fish-like syntax highlighting for Zsh.
+# zsh-users/zsh-syntax-highlighting must be sourced after completion
+zmodule zsh-users/zsh-syntax-highlighting
