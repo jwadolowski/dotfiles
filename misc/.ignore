@@ -94,3 +94,6 @@ go/src/
 
 # the rest
 .lemminx
+
+# macOS
+.DS_Store
