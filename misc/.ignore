@@ -67,6 +67,8 @@ node_modules
 
 # golang
 vendor
+go/pkg/
+go/src/
 
 # MongoDB 
 .embedmongo
