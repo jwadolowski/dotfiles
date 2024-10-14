@@ -65,8 +65,6 @@ zmodule joke/zim-starship
 # Ref: https://github.com/joke/zim-kubectl
 zmodule joke/zim-kubectl
 
-# TODO: review below and reorganize
-# zmodule jwadolowski/dotfiles -n jwadolowski/man -r oh-my-zsh/custom -s man.zsh
 zmodule jwadolowski/dotfiles -n jwadolowski/helm -r oh-my-zsh/custom -s helm.zsh
 zmodule jwadolowski/dotfiles -n jwadolowski/utils -r oh-my-zsh/custom -s utils.zsh
 
