@@ -1,43 +1,89 @@
+# Source: https://github.com/zimfw/install/blob/master/src/templates/zimrc
+
 # Should be sourced first, so commands installed via Homebrew are available to
 # the other modules when needed
+#
+# Ref: https://github.com/zimfw/homebrew
 zmodule homebrew
 
 # Handles "mise activate zsh" and zsh completions
+#
+# Ref: https://github.com/joke/zim-mise
 zmodule joke/zim-mise
 
 # Sets sane Zsh built-in environment options.
+#
+# Ref: https://github.com/zimfw/environment
 zmodule environment
+
 # Applies correct bindkeys for input events.
+#
+# Ref: https://github.com/zimfw/input
 zmodule input
+
 # Sets a custom terminal title.
+#
+# Ref: https://github.com/zimfw/termtitle
 zmodule termtitle
+
 # Utility aliases and functions. Adds colour to ls, grep and less.
+#
+# Provides 'mkcd' and 'mkpw' functions
+#
+# Ref: https://github.com/zimfw/utility
 zmodule utility
 
-# This module must be sourced after the utility module, so this module can
-# override the aliases set by that one.
+# Enable run-help functionality (combined with 'help' alias)
+#
+# Ref: https://github.com/zimfw/run-help
+zmodule run-help
+
+# FZF integration with zsh
+#
+# Sets some FZF_* variables (see .zshenv for overrides)
+#
+# Ref: https://github.com/zimfw/fzf
 zmodule fzf
-zmodule joke/zim-kubectl
+
+# Init zoxide
+#
+# Ref: https://github.com/kiesman99/zim-zoxide
+zmodule kiesman99/zim-zoxide
+
+# direnv integration
+#
+# Ref: https://github.com/zimfw/direnv
+zmodule direnv
+
+# Set starship prompt up
+#
+# Ref: https://github.com/joke/zim-starship
 zmodule joke/zim-starship
 
-zmodule jwadolowski/dotfiles -n jwadolowski/locale -r oh-my-zsh/custom -s locale.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/path -r oh-my-zsh/custom -s path.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/editor -r oh-my-zsh/custom -s editor.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/aliases -r oh-my-zsh/custom -s aliases.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/man -r oh-my-zsh/custom -s man.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/fzf -r oh-my-zsh/custom -s fzf.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/azure -r oh-my-zsh/custom -s azure.zsh
+# kubectl aliases
+#
+# Ref: https://github.com/joke/zim-kubectl
+zmodule joke/zim-kubectl
+
+# TODO: review below and reorganize
+# zmodule jwadolowski/dotfiles -n jwadolowski/man -r oh-my-zsh/custom -s man.zsh
 zmodule jwadolowski/dotfiles -n jwadolowski/helm -r oh-my-zsh/custom -s helm.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/rg -r oh-my-zsh/custom -s rg.zsh
 zmodule jwadolowski/dotfiles -n jwadolowski/utils -r oh-my-zsh/custom -s utils.zsh
 
 # Additional completion definitions for Zsh.
+#
+# Ref: https://github.com/zsh-users/zsh-completions
 zmodule zsh-users/zsh-completions --fpath src
+
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after all modules that add completion definitions.
+#
+# Ref: https://github.com/zimfw/completion
 zmodule completion
 
-# https://github.com/zimfw/zimfw/issues/528#issuecomment-1949609155
+# Custom completions
+#
+# Ref https://github.com/zimfw/zimfw/issues/528#issuecomment-1949609155
 zmodule-eval() {
   local -r ztarget=${2//[^[:alnum:]]/-}.zsh
   zmodule custom-${1} --use mkdir --if-command ${1} \
@@ -45,14 +91,21 @@ zmodule-eval() {
     --source ${ztarget}
 }
 zmodule-eval ngrok 'ngrok completion zsh'
+# Disable explicit compinit - zimfw takes care of it already
+#
+# Ref: https://github.com/zimfw/zimfw/wiki/Troubleshooting
 zmodule-eval fastly 'fastly --completion-script-zsh | sed "s/&& compinit//g"'
 unfunction zmodule-eval
 
-zmodule kiesman99/zim-zoxide
-
 # Must be loaded before zsh-users/zsh-syntax-highlighting
+#
+# Ref: https://github.com/catppuccin/zsh-syntax-highlighting
 zmodule catppuccin/zsh-syntax-highlighting -n catppuccin/zsh-syntax-highlighting -r themes -s catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # Fish-like syntax highlighting for Zsh.
 # zsh-users/zsh-syntax-highlighting must be sourced after completion
+#
+# Ref: https://github.com/zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-syntax-highlighting
+
+# vim: ft=zsh

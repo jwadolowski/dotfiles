@@ -1,7 +1,4 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by interactive shells
-#
+# Source: https://github.com/zimfw/install/blob/master/src/templates/zimrc
 
 # -----------------
 # Zsh configuration
@@ -42,13 +39,6 @@ WORDCHARS=${WORDCHARS//[\/]}
 # --------------------
 
 #
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-# zstyle ':zim:git' aliases-prefix 'g'
-
-#
 # input
 #
 
@@ -63,18 +53,6 @@ WORDCHARS=${WORDCHARS//[\/]}
 # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
 # If none is provided, the default '%n@%m: %~' is used.
 zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 #
 # zsh-syntax-highlighting
@@ -115,4 +93,35 @@ source ${ZIM_HOME}/init.zsh
 # Post-init module configuration
 # ------------------------------
 
-# }}} End configuration added by Zim install
+# PATH variable adjustments
+#
+# It cannot be placed in ~/.zshenv because brew is not available until ~/.zimrc
+# gets sourced (happens above). See ~/.zprofile comments for loading details
+BREW_PREFIX=$(brew --prefix)
+# Prefer coreutils binaries over built-in macOS ones
+export PATH="${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
+# Prefer gnu-sed over the built-in one
+export PATH="${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}"
+# Prefer gnu-grep over the built-in one
+export PATH="${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}"
+# Prefer gnu-find over the built-in one
+export PATH="${BREW_PREFIX}/opt/findutils/libexec/gnubin:$PATH"
+# Prefer curl installed via brew
+export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
+# Some tools get installed into sbin dir
+#
+# https://github.com/Homebrew/homebrew-core/issues/14669#issuecomment-353399229
+export PATH="${BREW_PREFIX}/sbin:${PATH}"
+# Local binaries (usually installed by hand)
+export PATH="${HOME}/bin:${PATH}"
+
+# MANPATH
+# export MANPATH="${BREW_PREFIX}/opt/coreutils/libexec/gnuman${MANPATH}"
+
+# Aliases
+source ${HOME}/.zsh_aliases
+
+# Listing colors - supported by ls, tree, fd, dust, etc
+#
+# Ref: https://github.com/sharkdp/vivid
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
