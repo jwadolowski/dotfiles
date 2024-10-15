@@ -42,7 +42,10 @@ function v() {
 # -----------------------------------------------------------------------------
 function c() {
   local dir
-  dir=$(fd --type directory --follow --hidden --base-directory "${HOME}" | fzf --query="$1") && cd "${HOME}/${dir}"
+  dir=$(
+    fd --type directory --follow --hidden --base-directory "${HOME}" |
+      fzf --query="$1" --preview 'eza --tree --level 2 --color=always --icons=always --no-quotes ${HOME}/{}'
+  ) && cd "${HOME}/${dir}"
 }
 
 # -----------------------------------------------------------------------------
@@ -53,7 +56,8 @@ function d() {
 
   if _in_git_repo; then
     base_directory=$(git_top_level)
-    target_dir=$(fd --type directory --follow --hidden --base-directory ${base_directory} | fzf --layout=reverse --query="$1")
+    target_dir=$(fd --type directory --follow --hidden --base-directory ${base_directory} |
+      fzf --layout=reverse --query="$1")
     [[ -n $target_dir ]] && cd "${base_directory}/${target_dir}"
   else
     echo "Not in Git repository!"
