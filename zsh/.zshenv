@@ -54,7 +54,13 @@ export AZURE_CONFIG_DIR=$HOME/.azure
 #
 # Ref: https://github.com/zimfw/fzf
 # ----------------------------------------------------------------------------
-export FZF_DEFAULT_OPTS="--height 40% --select-1 --exit-0 --highlight-line --info=inline-right --layout=reverse"
+export FZF_DEFAULT_OPTS="--height 40% \
+  --select-1 \
+  --exit-0 \
+  --highlight-line \
+  --info=inline-right \
+  --layout=reverse
+"
 
 # Ref: https://github.com/catppuccin/fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -77,5 +83,6 @@ export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS \
   --exact \
   --no-sort \
   --cycle \
+  --keep-right \
   --preview 'eza --tree --level 2 --color=always --icons=always --no-quotes {2..}'
 "
