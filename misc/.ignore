@@ -1,33 +1,32 @@
 # Paths to be ignored by fd/rg/ag
 
-# -----------------------------------------------------------------------------
-# Generic settings/config directories
-# -----------------------------------------------------------------------------
+# generic
 /Library/
 .local
 .cache
 .Trash
 .build
+.DS_Store
 
-# -----------------------------------------------------------------------------
 # SCM
-# -----------------------------------------------------------------------------
 .git
 .subversion
 
-# -----------------------------------------------------------------------------
-# Cloud storage
-# -----------------------------------------------------------------------------
+# cloud storage
 /Dropbox/
 .dropbox
 
-# -----------------------------------------------------------------------------
-# Config/cache directories
-# -----------------------------------------------------------------------------
-
-# zsh
+# shell
 .oh-my-zsh
+.zim
 .zsh_sessions
+.zcompdump*
+.zcompcache*
+.zsh_history*
+.bash_history*
+
+# python
+.python_history*
 
 # chef
 .berkshelf
@@ -47,6 +46,7 @@
 .gradle
 .sonar
 **/target
+.swt
 
 # node.js
 .npm
@@ -77,6 +77,7 @@ go/src/
 # cloud
 .azure
 .fly
+.aws
 
 # k8s
 .kube
@@ -94,5 +95,9 @@ go/src/
 # the rest
 .lemminx
 
-# macOS
-.DS_Store
+# Ollama
+.ollama
+
+# Akamai
+.edgerc
+.akamai-cli
