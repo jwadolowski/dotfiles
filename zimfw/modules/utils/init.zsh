@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # Git utils
 # -----------------------------------------------------------------------------
-function _in_git_repo() {
+function in_git_repo() {
   git rev-parse --git-dir >/dev/null 2>&1
 }
 
@@ -26,11 +26,11 @@ function git_top_level() {
 function v() {
   local root_dir="${HOME}" files
 
-  _in_git_repo && root_dir=$(git_top_level)
+  in_git_repo && root_dir=$(git_top_level)
 
   IFS=$'\n' files=(
     $(fd --type file --hidden --follow --base-directory $root_dir |
-      fzf --multi --query="$1" --preview "bat --color=always $root_dir/{}")
+      fzf --multi --query="$1" --preview "bat --color=always ${root_dir}/{}")
   )
   [[ -n "$files" ]] && ${EDITOR:-vim} -- "${files[@]}"
 }
@@ -42,10 +42,11 @@ function v() {
 # -----------------------------------------------------------------------------
 function c() {
   local dir
-  dir=$(
+  target_dir=$(
     fd --type directory --follow --hidden --base-directory "${HOME}" |
-      fzf --query="$1" --preview 'eza --tree --level 2 --color=always --icons=always --no-quotes ${HOME}/{}'
-  ) && cd "${HOME}/${dir}"
+      fzf --query="$1" --preview "eza --tree --level 2 --color=always --icons=always --no-quotes ${HOME}/{}"
+  )
+  [[ -n $target_dir ]] && cd "${HOME}/${target_dir}"
 }
 
 # -----------------------------------------------------------------------------
@@ -54,10 +55,12 @@ function c() {
 function d() {
   local target_dir
 
-  if _in_git_repo; then
+  if in_git_repo; then
     base_directory=$(git_top_level)
-    target_dir=$(fd --type directory --follow --hidden --base-directory ${base_directory} |
-      fzf --layout=reverse --query="$1")
+    target_dir=$(
+      fd --type directory --follow --hidden --base-directory ${base_directory} |
+        fzf --query="$1" --preview "eza --tree --level 2 --color=always --icons=always --no-quotes ${base_directory}/{}"
+    )
     [[ -n $target_dir ]] && cd "${base_directory}/${target_dir}"
   else
     echo "Not in Git repository!"
@@ -65,7 +68,7 @@ function d() {
 }
 
 function gr() {
-  if _in_git_repo; then
+  if in_git_repo; then
     cd $(git_top_level)
   else
     echo "Not in Git repository!"
