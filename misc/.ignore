@@ -17,8 +17,6 @@
 .dropbox
 
 # shell
-.oh-my-zsh
-.zim
 .zsh_sessions
 .zcompdump*
 .zcompcache*
