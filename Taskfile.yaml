@@ -51,6 +51,11 @@ tasks:
     cmds:
       - mise install
 
+  vale:
+    desc: "Install vale styles"
+    cmds:
+      - vale sync
+
   stow:
     desc: "Symlink dotfiles to corresponding HOME-level location"
     cmds:
@@ -66,6 +71,7 @@ tasks:
       - ${STOW_BASE_CMD} bottom
       - ${STOW_BASE_CMD} lazygit
       - ${STOW_BASE_CMD} mise
+      - ${STOW_BASE_CMD} vale
 
   restow:
     desc: "Force symlink all the dotfiles to their corresponding HOME-level location"

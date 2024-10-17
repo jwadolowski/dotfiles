@@ -24,7 +24,7 @@ function git_top_level() {
 # Ref: https://github.com/junegunn/fzf/wiki/examples#opening-files
 # -----------------------------------------------------------------------------
 function v() {
-  local root_dir="${HOME}" files
+  local root_dir="${PWD}" files
 
   in_git_repo && root_dir=$(git_top_level)
 
