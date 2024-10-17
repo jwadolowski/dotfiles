@@ -46,7 +46,7 @@ tasks:
           mkdir -p "${BAT_THEME_DIR}"
 
           if [[ -d "${BAT_THEME_DIR}/${THEME_NAME}" ]] && (cd "${BAT_THEME_DIR}/${THEME_NAME}" && git rev-parse --git-dir >/dev/null 2>&1); then
-            echo "${THEME_NAME} theme is already installed"
+            echo "${THEME_NAME} theme is already installed. Checking for updates..."
             (cd "${BAT_THEME_DIR}/${THEME_NAME}" && git pull)
           else
             git clone "${THEME_URL}" "${BAT_THEME_DIR}/${THEME_NAME}"
@@ -57,15 +57,13 @@ tasks:
 
   stow:
     desc: "Symlink dotfiles to corresponding HOME-level location"
-    deps:
-      - bat
     cmds:
+      - ${STOW_BASE_CMD} zsh
+      - ${STOW_BASE_CMD} zimfw
+      - ${STOW_BASE_CMD} misc
+      - ${STOW_BASE_CMD} git
+      - ${STOW_BASE_CMD} starship
       - ${STOW_BASE_CMD} bat
       - ${STOW_BASE_CMD} yamllint
-      - ${STOW_BASE_CMD} starship
-      - ${STOW_BASE_CMD} git
       - ${STOW_BASE_CMD} gdu
-      - ${STOW_BASE_CMD} misc
-      - ${STOW_BASE_CMD} zsh
       - ${STOW_BASE_CMD} ripgrep
-      - ${STOW_BASE_CMD} zimfw
