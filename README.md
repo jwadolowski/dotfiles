@@ -27,6 +27,9 @@ $ task bat
 # Install mise tools
 $ task mise
 
+# Install vale packages
+$ task vale
+
 # (Optional step) Sync Brewfile
 $ task brewfile
 ```
