@@ -65,8 +65,18 @@ zmodule joke/zim-starship
 # Ref: https://github.com/joke/zim-kubectl
 zmodule joke/zim-kubectl
 
-zmodule jwadolowski/dotfiles -n jwadolowski/helm -r oh-my-zsh/custom -s helm.zsh
-zmodule jwadolowski/dotfiles -n jwadolowski/utils -r oh-my-zsh/custom -s utils.zsh
+# Symlinked by stow
+#
+# A 'local' module was used instead of a GitHub reference to improve feedback
+# loop. All local changes are immediately reflected without Git push
+zmodule "${HOME}/.zim/custom/utils" --name jwadolowski/utils
+
+# This module is not tracked by Git because it's meant to be used for internal
+# variables/functions
+#
+# zmodule's '--if' param doesn't seem to work as anticiptaed therefore an "if
+# dir exist" got added before zmodule execution
+[[ -d "${HOME}/.zim/custom/private" ]] && zmodule "${HOME}/.zim/custom/private" --name jwadolowski/private
 
 # Additional completion definitions for Zsh.
 #
@@ -89,7 +99,7 @@ zmodule-eval() {
     --source ${ztarget}
 }
 zmodule-eval ngrok 'ngrok completion zsh'
-# Disable explicit compinit - zimfw takes care of it already
+# Disable explicit compinit - zimfw already takes care of that
 #
 # Ref: https://github.com/zimfw/zimfw/wiki/Troubleshooting
 zmodule-eval fastly 'fastly --completion-script-zsh | sed "s/&& compinit//g"'
