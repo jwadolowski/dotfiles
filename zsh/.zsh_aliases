@@ -33,6 +33,6 @@ alias help="run-help"     # https://superuser.com/a/1563859/933285
 alias history="history 1" # https://superuser.com/questions/232457/zsh-output-whole-history#comment403794_232462
 alias z="zi"              # Prefer zoxide's interactive mode
 alias checkov="docker run --quiet --tty --volume ${PWD}:/data --workdir /data bridgecrew/checkov --directory /data --output cli --quiet"
-alias buu="brew update && brew upgrade"
+alias bu="brew update && brew upgrade"
 alias jty="yq --input-format json --output-format yaml"
 alias ytj="yq --input-format yaml --output-format json"
