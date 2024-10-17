@@ -15,7 +15,10 @@ $ ./init.sh
 # Install Zim Framework (zimfw)
 $ task zimfw
 
-# Deploy dotfiles with stow
+# Deploy dotfiles with stow (typical use case - deployment from scratch)
+$ task restow
+
+# Deploy dotfiles with stow (usually used during consequtive runs)
 $ task stow
 
 # Install bat themes
@@ -25,9 +28,13 @@ $ task bat
 $ task brewfile
 ```
 
+## Noteworthy facts
+
+`stow`'s `--adapt` flag is used to set all the symlinks up. If given file exists in target location (but isn't managed by `stow` yet) then `stow` will move it to this repository and configure the symlink afterwards. As a result some unwanted changes may show up here. `task restow` was introduced to resolve that.
+
 ## Alfred customizations
 
-Alfred settings get synced via Dropbox which should be enough to set everything up, however just in case here's a list of my customizations:
+Alfred settings get synced through Dropbox that should be enough to set everything up, however just in case here's a list of my customizations:
 
 1. Instruct Alfred to use iTerm2 instead of a built-in Terminal app: [link](https://github.com/vitorgalvao/custom-alfred-iterm-scripts)
 2. Configure Zoxide integration: [link](https://github.com/yihou/alfred-zoxide)

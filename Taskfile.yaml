@@ -58,3 +58,14 @@ tasks:
       - ${STOW_BASE_CMD} yamllint
       - ${STOW_BASE_CMD} gdu
       - ${STOW_BASE_CMD} ripgrep
+
+  restow:
+    desc: "Force symlink all the dotfiles to their corresponding HOME-level location"
+    preconditions:
+      - sh: "! git ls-files --others --exclude-standard"
+        msg: "Git workspace contains untracked files!"
+      - sh: "git diff --exit-code --quiet"
+        msg: "Git workspace isn't clean and contains some uncommitted changes!"
+    cmds:
+      - task: stow
+      - git restore .
