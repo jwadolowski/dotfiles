@@ -8,7 +8,9 @@ Suggested execution order:
 
 ```shell
 # Install homebrew and all the packages listed in the Brewfile
-$ task homebrew
+#
+# It cannot be done via Taskfile.yaml simply because task CLI has to be installed first
+$ ./init.sh
 
 # Install Zim Framework (zimfw)
 $ task zimfw

@@ -14,15 +14,6 @@ tasks:
     cmds:
       - curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 
-  homebrew:
-    desc: "Install homebrew"
-    preconditions:
-      - sh: "! command -v brew"
-        msg: "homebrew seems to be already installed (brew binary exist)"
-    cmds:
-      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - brew bundle install
-
   brewfile:
     desc: "Dump brew packages to Brewfile"
     cmds:
