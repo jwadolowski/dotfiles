@@ -92,4 +92,11 @@ export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS \
 #
 # Ref: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#overriding-default-config-file-location
 # -----------------------------------------------------------------------------
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+export LG_CONFIG_FILE="${HOME}/.config/lazygit/config.yml"
+
+# -----------------------------------------------------------------------------
+# Vale
+#
+# Ref: https://vale.sh/docs/topics/config/#global-configuration
+# -----------------------------------------------------------------------------
+export VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
