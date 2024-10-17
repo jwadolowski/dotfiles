@@ -1,0 +1,119 @@
+# Source: https://github.com/zimfw/install/blob/master/src/templates/zimrc
+
+# Should be sourced first, so commands installed via Homebrew are available to
+# the other modules when needed
+#
+# Ref: https://github.com/zimfw/homebrew
+zmodule homebrew
+
+# Handles "mise activate zsh" and zsh completions
+#
+# Ref: https://github.com/joke/zim-mise
+zmodule joke/zim-mise
+
+# Sets sane Zsh built-in environment options.
+#
+# Ref: https://github.com/zimfw/environment
+zmodule environment
+
+# Applies correct bindkeys for input events.
+#
+# Ref: https://github.com/zimfw/input
+zmodule input
+
+# Sets a custom terminal title.
+#
+# Ref: https://github.com/zimfw/termtitle
+zmodule termtitle
+
+# Utility aliases and functions. Adds colour to ls, grep and less.
+#
+# Provides 'mkcd' and 'mkpw' functions
+#
+# Ref: https://github.com/zimfw/utility
+zmodule utility
+
+# Enable run-help functionality (combined with 'help' alias)
+#
+# Ref: https://github.com/zimfw/run-help
+zmodule run-help
+
+# FZF integration with zsh
+#
+# Sets some FZF_* variables (see .zshenv for overrides)
+#
+# Ref: https://github.com/zimfw/fzf
+zmodule fzf
+
+# Init zoxide
+#
+# Ref: https://github.com/kiesman99/zim-zoxide
+zmodule kiesman99/zim-zoxide
+
+# direnv integration
+#
+# Ref: https://github.com/zimfw/direnv
+zmodule direnv
+
+# Set starship prompt up
+#
+# Ref: https://github.com/joke/zim-starship
+zmodule joke/zim-starship
+
+# kubectl aliases
+#
+# Ref: https://github.com/joke/zim-kubectl
+zmodule joke/zim-kubectl
+
+# Symlinked by stow
+#
+# A 'local' module was used instead of a GitHub reference to improve feedback
+# loop. All local changes are immediately reflected without Git push
+zmodule "${HOME}/.zim/custom/utils" --name jwadolowski/utils
+
+# This module is not tracked by Git because it's meant to be used for internal
+# variables/functions
+#
+# zmodule's '--if' param doesn't seem to work as anticiptaed therefore an "if
+# dir exist" got added before zmodule execution
+[[ -d "${HOME}/.zim/custom/private" ]] && zmodule "${HOME}/.zim/custom/private" --name jwadolowski/private
+
+# Additional completion definitions for Zsh.
+#
+# Ref: https://github.com/zsh-users/zsh-completions
+zmodule zsh-users/zsh-completions --fpath src
+
+# Enables and configures smart and extensive tab completion.
+# completion must be sourced after all modules that add completion definitions.
+#
+# Ref: https://github.com/zimfw/completion
+zmodule completion
+
+# Custom completions
+#
+# Ref https://github.com/zimfw/zimfw/issues/528#issuecomment-1949609155
+zmodule-eval() {
+  local -r ztarget=${2//[^[:alnum:]]/-}.zsh
+  zmodule custom-${1} --use mkdir --if-command ${1} \
+    --cmd "if [[ ! {}/${ztarget} -nt \${commands[${1}]} ]]; then ${2} >! {}/${ztarget}; zcompile -UR {}/${ztarget}; fi" \
+    --source ${ztarget}
+}
+zmodule-eval ngrok 'ngrok completion zsh'
+# Disable explicit compinit - zimfw already takes care of that
+#
+# Ref: https://github.com/zimfw/zimfw/wiki/Troubleshooting
+zmodule-eval fastly 'fastly --completion-script-zsh | sed "s/&& compinit//g"'
+unfunction zmodule-eval
+
+# Must be loaded before zsh-users/zsh-syntax-highlighting
+#
+# Ref: https://github.com/catppuccin/zsh-syntax-highlighting
+zmodule catppuccin/zsh-syntax-highlighting -n catppuccin/zsh-syntax-highlighting -r themes -s catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+# Fish-like syntax highlighting for Zsh.
+# zsh-users/zsh-syntax-highlighting must be sourced after completion
+#
+# Ref: https://github.com/zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-syntax-highlighting
+
+# vim: ft=zsh

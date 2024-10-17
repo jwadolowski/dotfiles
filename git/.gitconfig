@@ -84,7 +84,7 @@
 
 [delta]
     # https://github.com/dandavison/delta/issues/773
-    hunk-header-style	          = omit
+    hunk-header-style = omit 
     features = catppuccin-mocha
 
 # vim: ft=gitconfig

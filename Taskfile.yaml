@@ -1,0 +1,69 @@
+version: "3"
+
+silent: true
+
+env:
+  STOW_BASE_CMD: stow --verbose --no-folding --target {{ .HOME }}
+
+tasks:
+  zimfw:
+    desc: "Install zimfw"
+    preconditions:
+      - sh: "! test -d {{ .HOME }}/.zim"
+        msg: "Zim seems to be already installed (~/.zim directory exists)"
+    cmds:
+      - curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+
+  homebrew:
+    desc: "Install homebrew"
+    preconditions:
+      - sh: "! command -v brew"
+        msg: "homebrew seems to be already installed (brew binary exist)"
+    cmds:
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - brew bundle install
+
+  brewfile:
+    desc: "Dump brew packages to Brewfile"
+    cmds:
+      - brew bundle dump -f
+
+  bat:
+    desc: "Install bat themes"
+    generates:
+      - "{{.HOME}}/.cache/bat/themes.bin"
+      - "{{.HOME}}/.cache/bat/syntaxes.bin"
+    sources:
+      - "{{.HOME}}/.config/bat/themes/**/*.tmTheme"
+      - "bat/.config/bat/config"
+    cmds:
+      - for:
+          - catppuccin=https://github.com/catppuccin/bat.git
+        cmd: |
+          IFS== read -r THEME_NAME THEME_URL <<< {{ .ITEM }}
+
+          BAT_THEME_DIR="$(bat --config-dir)/themes"
+          mkdir -p "${BAT_THEME_DIR}"
+
+          if [[ -d "${BAT_THEME_DIR}/${THEME_NAME}" ]] && (cd "${BAT_THEME_DIR}/${THEME_NAME}" && git rev-parse --git-dir >/dev/null 2>&1); then
+            echo "${THEME_NAME} theme is already installed. Checking for updates..."
+            (cd "${BAT_THEME_DIR}/${THEME_NAME}" && git pull)
+          else
+            git clone "${THEME_URL}" "${BAT_THEME_DIR}/${THEME_NAME}"
+          fi
+
+          # Rebuild bat cache afterwards
+          bat cache --build
+
+  stow:
+    desc: "Symlink dotfiles to corresponding HOME-level location"
+    cmds:
+      - ${STOW_BASE_CMD} zsh
+      - ${STOW_BASE_CMD} zimfw
+      - ${STOW_BASE_CMD} misc
+      - ${STOW_BASE_CMD} git
+      - ${STOW_BASE_CMD} starship
+      - ${STOW_BASE_CMD} bat
+      - ${STOW_BASE_CMD} yamllint
+      - ${STOW_BASE_CMD} gdu
+      - ${STOW_BASE_CMD} ripgrep

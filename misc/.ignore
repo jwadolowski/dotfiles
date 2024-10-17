@@ -1,0 +1,101 @@
+# Paths to be ignored by fd/rg/ag
+
+# generic
+/Library/
+.local
+.cache
+.Trash
+.build
+.DS_Store
+
+# SCM
+.git
+.subversion
+
+# cloud storage
+/Dropbox/
+.dropbox
+
+# shell
+.zsh_sessions
+.zcompdump*
+.zcompcache*
+.zsh_history*
+.bash_history*
+
+# python
+.python_history*
+
+# chef
+.berkshelf
+.kitchen
+.chefdk
+.gem
+
+# Ansible
+.ansible
+
+# vagrant
+.vagrant
+.vagrant.d
+
+# java
+.m2
+.gradle
+.sonar
+**/target
+.swt
+
+# node.js
+.npm
+.node-gyp
+node_modules
+.pnpm-state
+
+# https://github.com/tldr-pages/tldr
+.tldrc
+
+# docker
+.docker
+
+# terraform
+.terraform
+.terraform.d
+
+# golang
+vendor
+go/pkg/
+go/src/
+
+# MongoDB 
+.embedmongo
+.3T
+.mongodb
+
+# cloud
+.azure
+.fly
+.aws
+
+# k8s
+.kube
+
+# rust
+.rustup
+.cargo
+
+# prettier
+.prettierd
+
+# Visual Studio Code
+.vscode
+
+# the rest
+.lemminx
+
+# Ollama
+.ollama
+
+# Akamai
+.edgerc
+.akamai-cli

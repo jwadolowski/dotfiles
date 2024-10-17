@@ -1,0 +1,7 @@
+# Inspired by https://github.com/catppuccin/catppuccin (Mocha theme)
+#
+# Docs: https://github.com/dundee/gdu?tab=readme-ov-file#styling
+style:
+  selected-row:
+    text-color: "#89b4fa"
+    background-color: "#313244"

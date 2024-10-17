@@ -1,0 +1,2 @@
+--theme="Catppuccin Mocha"
+--style="auto" # Required to keep FZF preview clean (w/o header, filename, etc)
