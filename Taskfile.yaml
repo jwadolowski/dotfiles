@@ -58,6 +58,8 @@ tasks:
       - ${STOW_BASE_CMD} yamllint
       - ${STOW_BASE_CMD} gdu
       - ${STOW_BASE_CMD} ripgrep
+      - ${STOW_BASE_CMD} bottom
+      - ${STOW_BASE_CMD} lazygit
 
   restow:
     desc: "Force symlink all the dotfiles to their corresponding HOME-level location"
