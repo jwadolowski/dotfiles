@@ -151,3 +151,18 @@ function ht() {
 
 alias htv="ht"
 alias htb="ht bat"
+
+# -----------------------------------------------------------------------------
+# checkov
+# -----------------------------------------------------------------------------
+function checkov() {
+  docker run \
+    --quiet \
+    --tty \
+    --volume ${PWD}:/data \
+    --workdir /data \
+    bridgecrew/checkov \
+    --directory /data \
+    --output cli \
+    --quiet
+}
