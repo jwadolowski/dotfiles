@@ -24,6 +24,9 @@ $ task stow
 # Install bat themes
 $ task bat
 
+# Install mise tools
+$ task mise
+
 # (Optional step) Sync Brewfile
 $ task brewfile
 ```

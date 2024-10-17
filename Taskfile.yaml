@@ -46,6 +46,11 @@ tasks:
           # Rebuild bat cache afterwards
           bat cache --build
 
+  mise:
+    desc: "Install tools specified in mise's config file"
+    cmds:
+      - mise install
+
   stow:
     desc: "Symlink dotfiles to corresponding HOME-level location"
     cmds:
@@ -60,6 +65,7 @@ tasks:
       - ${STOW_BASE_CMD} ripgrep
       - ${STOW_BASE_CMD} bottom
       - ${STOW_BASE_CMD} lazygit
+      - ${STOW_BASE_CMD} mise
 
   restow:
     desc: "Force symlink all the dotfiles to their corresponding HOME-level location"
