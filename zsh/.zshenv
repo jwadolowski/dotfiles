@@ -86,3 +86,10 @@ export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS \
   --keep-right \
   --preview 'eza --tree --level 2 --color=always --icons=always --no-quotes {2..}'
 "
+
+# -----------------------------------------------------------------------------
+# Lazygit
+#
+# Ref: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#overriding-default-config-file-location
+# -----------------------------------------------------------------------------
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
