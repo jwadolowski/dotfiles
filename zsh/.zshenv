@@ -100,3 +100,10 @@ export LG_CONFIG_FILE="${HOME}/.config/lazygit/config.yml"
 # Ref: https://vale.sh/docs/topics/config/#global-configuration
 # -----------------------------------------------------------------------------
 export VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
+
+# -----------------------------------------------------------------------------
+# bat
+#
+# Ref: https://github.com/sharkdp/bat?tab=readme-ov-file#man
+# -----------------------------------------------------------------------------
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
