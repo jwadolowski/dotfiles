@@ -125,3 +125,9 @@ source ${HOME}/.zsh_aliases
 #
 # Ref: https://github.com/sharkdp/vivid
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
+
+# Installed by: "terraform -install-autocomplete"
+#
+# Ref: https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
