@@ -29,8 +29,8 @@ function v() {
   in_git_repo && root_dir=$(git_top_level)
 
   IFS=$'\n' files=(
-    $(fd --type file --hidden --follow --base-directory $root_dir |
-      fzf --multi --query="$1" --preview "bat --color=always ${root_dir}/{}")
+    $(fd --type file --hidden --follow --base-directory $root_dir --exec realpath --relative-to=${PWD} {} |
+      fzf --multi --query="$1" --preview "bat --color=always {}")
   )
   [[ -n "$files" ]] && ${EDITOR:-vim} -- "${files[@]}"
 }
