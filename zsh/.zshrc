@@ -115,9 +115,6 @@ export PATH="${BREW_PREFIX}/sbin:${PATH}"
 # Local binaries (usually installed by hand)
 export PATH="${HOME}/bin:${PATH}"
 
-# MANPATH
-# export MANPATH="${BREW_PREFIX}/opt/coreutils/libexec/gnuman${MANPATH}"
-
 # Aliases
 source ${HOME}/.zsh_aliases
 
@@ -131,3 +128,14 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 # Ref: https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# zsh completion fix. Overwrites https://github.com/zimfw/completion/blob/master/init.zsh#L89
+#
+# Shamelessly stolen from: https://github.com/marlonrichert/zsh-autocomplete/tree/main?tab=readme-ov-file#insert-prefix-instead-of-substring
+#
+# Refs:
+# - https://github.com/zimfw/zimfw/issues/549
+# - https://github.com/zimfw/completion/issues/10
+zstyle ':completion:*' matcher-list \
+  'm:{[:lower:]-}={[:upper:]_} r:|[.]=**' \
+  '+l:|=*'
