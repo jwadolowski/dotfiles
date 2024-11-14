@@ -154,6 +154,13 @@ alias htb="ht bat"
 
 # -----------------------------------------------------------------------------
 # checkov
+#
+# Terraform plan scanning is pointless until
+# https://github.com/bridgecrewio/checkov/issues/5212 is resolved
+#
+# At the time of writing 'checkov --file tfplan.json
+# --repo-root-for-plan-enrichment .' does not respect for_each/count
+# meta-arguments which makes it useless
 # -----------------------------------------------------------------------------
 function checkov() {
   docker run \
@@ -164,5 +171,6 @@ function checkov() {
     bridgecrew/checkov \
     --directory /data \
     --output cli \
-    --quiet
+    --skip-framework terraform_plan \
+    --quiet "$@"
 }
