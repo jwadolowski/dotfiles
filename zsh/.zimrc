@@ -99,6 +99,7 @@ zmodule-eval() {
     --source ${ztarget}
 }
 zmodule-eval ngrok 'ngrok completion zsh'
+zmodule-eval tailscale 'tailscale completion zsh'
 # Disable explicit compinit - zimfw already takes care of that
 #
 # Ref: https://github.com/zimfw/zimfw/wiki/Troubleshooting
