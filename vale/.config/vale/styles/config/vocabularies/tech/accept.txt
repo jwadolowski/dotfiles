@@ -36,6 +36,7 @@ Zoxide
 [Aa][Ee][Mm]
 [Cc]addy
 [Cc]atppuccin
+[Pp]roxied
 [hH]url
 addons?
 autoscaling
@@ -46,6 +47,7 @@ dotfiles?
 hostnames?
 impactful
 katana
+lookups?
 microsites?
 middlewares?
 misconfigurations?
