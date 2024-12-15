@@ -49,7 +49,6 @@ tasks:
   mise:
     desc: "Install tools specified in mise's config file"
     cmds:
-      - mise trust ~/.config/mise/config.toml
       - mise install
 
   vale:
