@@ -1,3 +1,4 @@
+(?i)aem
 404s?
 AEMaaCS
 APAC
@@ -6,6 +7,7 @@ Akamai
 Ansible
 Boden('s)?
 CDNs?
+CLIs?
 Citrix
 Cloudfront
 Cognifide
@@ -33,17 +35,17 @@ WAF
 WTT
 Zabbix
 Zoxide
-[Aa][Ee][Mm]
+[Cc]acheable
 [Cc]addy
 [Cc]atppuccin
+[Hh]url
 [Pp]roxied
-[hH]url
 addons?
 autoscaling
-cacheable
 configs?
 cv
 dotfiles?
+fd
 hostnames?
 impactful
 katana
