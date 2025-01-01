@@ -1,0 +1,24 @@
+theme = catppuccin-mocha
+font-size = 13
+copy-on-select = true
+
+window-height = 40
+window-width = 140
+window-padding-x = 5
+
+keybind = cmd+left=previous_tab
+keybind = cmd+right=next_tab
+keybind = cmd+shift+left=move_tab:-1
+keybind = cmd+shift+right=move_tab:+1
+
+# ----------------------------------------------------------------------------
+# Known keybinding issue:
+# https://github.com/ghostty-org/ghostty/discussions/2881
+# https://github.com/ghostty-org/ghostty/discussions/3497
+# https://github.com/ghostty-org/ghostty/discussions/3858
+# ----------------------------------------------------------------------------
+# does NOT work
+keybind = cmd+.=esc:.
+# both work
+keybind = cmd+;=esc:.
+keybind = alt+.=esc:.
