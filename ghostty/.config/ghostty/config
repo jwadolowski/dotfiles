@@ -24,7 +24,14 @@ keybind = cmd+shift+right=move_tab:+1
 # - https://github.com/ghostty-org/ghostty/discussions/3858
 # ----------------------------------------------------------------------------
 # does NOT work
-keybind = cmd+.=esc:.
+keybind = cmd+period=esc:.
 # both work
-keybind = cmd+;=esc:.
-keybind = alt+.=esc:.
+keybind = cmd+semicolon=esc:.
+keybind = alt+period=esc:.
+
+# Disable annoyances
+keybind = ctrl+semicolon=ignore
+keybind = ctrl+period=ignore
+keybind = ctrl+comma=ignore
+keybind = option+semicolon=ignore
+keybind = option+comma=ignore
