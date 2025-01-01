@@ -24,15 +24,16 @@ function git_top_level() {
 # Ref: https://github.com/junegunn/fzf/wiki/examples#opening-files
 # -----------------------------------------------------------------------------
 function v() {
-  local root_dir="${PWD}" files
+  local root_dir="${PWD}"
 
   in_git_repo && root_dir=$(git_top_level)
 
-  IFS=$'\n' files=(
-    $(fd --type file --hidden --follow --base-directory $root_dir --exec realpath --relative-to=${PWD} {} |
-      fzf --multi --query="$1" --preview "bat --color=always {}")
-  )
-  [[ -n "$files" ]] && ${EDITOR:-vim} -- "${files[@]}"
+  # Noteworthy info:
+  # - fzf's '--bind' approach feels snappier than previous impl: "files=( $(fd | fzf) ); vim -- $files"
+  # - does NOT open neovim if nothing got selected
+  # - prefer '--exec-batch' over '--exec' (a life-saver for large Git repos - 'realpath' is NOT executed for each found file)
+  fd --type file --hidden --follow --base-directory $root_dir --exec-batch realpath --relative-to=${PWD} {} |
+    fzf --multi --query="$1" --preview "bat --color=always {}" --bind 'enter:become(nvim {+})'
 }
 
 # -----------------------------------------------------------------------------
