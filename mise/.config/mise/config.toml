@@ -1,6 +1,6 @@
 [tools]
 java = ["17", "adoptopenjdk-11"]
-node = ["22", "18", "16"]
+node = ["22", "20", "18", "16"]
 ruby = ["3"]
 
 [settings]
