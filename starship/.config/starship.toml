@@ -1,5 +1,8 @@
 palette = 'catppuccin_mocha'
 
+# 'git_status' is slow for large Git repos
+command_timeout = 1000
+
 # Source: https://github.com/catppuccin/starship
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
