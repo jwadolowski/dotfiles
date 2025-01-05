@@ -33,6 +33,7 @@ Traefik
 USA
 VLANs?
 WAF
+WKND('s)?
 WTT
 Zabbix
 Zoxide
@@ -47,6 +48,7 @@ configs?
 cv
 dotfiles?
 fd
+hardcoded?
 hostnames?
 impactful
 katana
