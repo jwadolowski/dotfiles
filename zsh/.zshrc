@@ -139,3 +139,8 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 zstyle ':completion:*' matcher-list \
   'm:{[:lower:]-}={[:upper:]_} r:|[.]=**' \
   '+l:|=*'
+
+# Re-enable file overwrite via '>'
+#
+# Ref: https://github.com/zimfw/environment
+unsetopt NO_CLOBBER

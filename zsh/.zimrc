@@ -65,6 +65,9 @@ zmodule joke/zim-starship
 # Ref: https://github.com/joke/zim-kubectl
 zmodule joke/zim-kubectl
 
+# urldecode/urlencode helpers
+zmodule ohmyzsh/ohmyzsh --root plugins/urltools
+
 # Symlinked by stow
 #
 # A 'local' module was used instead of a GitHub reference to improve feedback
