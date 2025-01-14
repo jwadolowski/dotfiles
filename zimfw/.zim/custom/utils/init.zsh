@@ -41,7 +41,6 @@ function v() {
   fd \
     --type file \
     --hidden \
-    --follow \
     --base-directory $root_dir \
     --exec-batch realpath \
     --relative-to=${PWD} {} |
