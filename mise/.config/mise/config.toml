@@ -2,6 +2,7 @@
 java = ["17", "adoptopenjdk-11"]
 node = ["22", "20", "18", "16"]
 ruby = ["3"]
+python = ["3"]
 
 [settings]
 trusted_config_paths = ["~/projects"]
