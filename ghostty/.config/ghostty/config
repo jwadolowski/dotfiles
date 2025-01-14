@@ -35,3 +35,7 @@ keybind = ctrl+period=ignore
 keybind = ctrl+comma=ignore
 keybind = option+semicolon=ignore
 keybind = option+comma=ignore
+keybind = ctrl+m=ignore
+keybind = ctrl+i=ignore
+keybind = ctrl+[=ignore
+keybind = ctrl+'=ignore
