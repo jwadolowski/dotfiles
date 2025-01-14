@@ -55,7 +55,6 @@ export AZURE_CONFIG_DIR=$HOME/.azure
 # Ref: https://github.com/zimfw/fzf
 # -----------------------------------------------------------------------------
 export FZF_DEFAULT_OPTS="--height 40% \
-  --select-1 \
   --exit-0 \
   --highlight-line \
   --info=inline-right \

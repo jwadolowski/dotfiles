@@ -29,11 +29,27 @@ function v() {
   in_git_repo && root_dir=$(git_top_level)
 
   # Noteworthy info:
-  # - fzf's '--bind' approach feels snappier than previous impl: "files=( $(fd | fzf) ); vim -- $files"
-  # - does NOT open neovim if nothing got selected
-  # - prefer '--exec-batch' over '--exec' (a life-saver for large Git repos - 'realpath' is NOT executed for each found file)
-  fd --type file --hidden --follow --base-directory $root_dir --exec-batch realpath --relative-to=${PWD} {} |
-    fzf --multi --query="$1" --preview "bat --color=always {}" --bind 'enter:become(nvim {+})'
+  # - fzf's '--bind' approach feels a bit snappier than previous impl: "files=( $(fd | fzf) ); vim -- $files"
+  # - nvim is not opened if nothing got selected
+  # - '--exec-batch' performs way better than '--exec' (a life-saver for large Git repos - 'realpath' is NOT executed for each found file)
+  #
+  # Single-file Git repositories require special handling:
+  # - first of all, '--select-1' must be removed to rely entirely on key/event bindings (make sure it's not definied in $FZF_DEFAULT_OPTS)
+  # - remap 'one' event (see https://junegunn.github.io/fzf/reference/#one) to 'open in $EDITOR'
+  #
+  # Ref: https://github.com/junegunn/fzf/discussions/3803#discussioncomment-9485659
+  fd \
+    --type file \
+    --hidden \
+    --follow \
+    --base-directory $root_dir \
+    --exec-batch realpath \
+    --relative-to=${PWD} {} |
+    fzf \
+      --multi \
+      --query="$1" \
+      --preview "bat --color=always {}" \
+      --bind 'enter:become("$EDITOR" {+}),one:become("$EDITOR" {})'
 }
 
 # -----------------------------------------------------------------------------
