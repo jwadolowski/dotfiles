@@ -63,6 +63,9 @@ zmodule joke/zim-kubectl
 # urldecode/urlencode helpers
 zmodule ohmyzsh/ohmyzsh --root plugins/urltools
 
+# base64 helpers
+zmodule ohmyzsh/ohmyzsh --root plugins/encode64
+
 # Symlinked by stow
 #
 # A 'local' module was used instead of a GitHub reference to improve feedback
