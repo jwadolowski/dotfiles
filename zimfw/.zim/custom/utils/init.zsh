@@ -58,46 +58,43 @@ function v() {
 # Ref: https://github.com/junegunn/fzf/wiki/examples#changing-directory
 # -----------------------------------------------------------------------------
 function c() {
-  local dir
-  target_dir=$(
-    fd --type directory --follow --hidden --base-directory "${HOME}" |
-      fzf --query="$1" --preview "eza --tree --level 2 --color=always --icons=always --no-quotes ${HOME}/{}"
-  )
-  [[ -n $target_dir ]] && cd "${HOME}/${target_dir}"
+  cd "${HOME}/$(
+    fd \
+      --type directory \
+      --hidden \
+      --base-directory "${HOME}" |
+      fzf \
+        --query="$1" \
+        --preview "eza --tree --level 2 --color=always --icons=always --no-quotes ${HOME}/{}"
+  )"
 }
 
 # -----------------------------------------------------------------------------
 # Movements within Git repository
 # -----------------------------------------------------------------------------
 function d() {
-  local target_dir
-
   if in_git_repo; then
     base_directory=$(git_top_level)
-    target_dir=$(
-      fd --type directory --follow --hidden --base-directory ${base_directory} |
-        fzf --query="$1" --preview "eza --tree --level 2 --color=always --icons=always --no-quotes ${base_directory}/{}"
-    )
-    [[ -n $target_dir ]] && cd "${base_directory}/${target_dir}"
+    cd "${base_directory}/$(
+      fd \
+        --type directory \
+        --hidden \
+        --base-directory ${base_directory} |
+        fzf \
+          --query="$1" \
+          --preview "eza --tree --level 2 --color=always --icons=always --no-quotes ${base_directory}/{}"
+    )"
   else
     echo "Not in Git repository!"
   fi
 }
 
 function gr() {
-  if in_git_repo; then
-    cd $(git_top_level)
-  else
-    echo "Not in Git repository!"
-  fi
+  in_git_repo && cd $(git_top_level) || echo "Not in Git repository!"
 }
 
 function gsr() {
-  if in_git_submodule; then
-    cd $(git rev-parse --show-toplevel)
-  else
-    echo "Not in Git submodule!"
-  fi
+  in_git_submodule && cd $(git rev-parse --show-toplevel) || echo "Not in Git submodule!"
 }
 
 # -----------------------------------------------------------------------------
