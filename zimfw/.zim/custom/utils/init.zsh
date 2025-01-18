@@ -35,7 +35,8 @@ function v() {
   #
   # Single-file Git repositories require special handling:
   # - first of all, '--select-1' must be removed to rely entirely on key/event bindings (make sure it's not definied in $FZF_DEFAULT_OPTS)
-  # - remap 'one' event (see https://junegunn.github.io/fzf/reference/#one) to 'open in $EDITOR'
+  # - unbind 'one' event (see https://junegunn.github.io/fzf/reference/#one) to prevent nvim from auto opening when fzf-driven search yields a single file
+  # - remap the 'one' to 'open in $EDITOR'
   #
   # Ref: https://github.com/junegunn/fzf/discussions/3803#discussioncomment-9485659
   fd \
@@ -48,7 +49,7 @@ function v() {
       --multi \
       --query="$1" \
       --preview "bat --color=always {}" \
-      --bind 'enter:become("$EDITOR" {+}),one:become("$EDITOR" {})'
+      --bind 'change:unbind(one),enter:become("$EDITOR" {+}),one:become("$EDITOR" {})'
 }
 
 # -----------------------------------------------------------------------------
