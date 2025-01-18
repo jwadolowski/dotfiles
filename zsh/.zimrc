@@ -50,11 +50,6 @@ zmodule fzf
 # Ref: https://github.com/kiesman99/zim-zoxide
 zmodule kiesman99/zim-zoxide
 
-# direnv integration
-#
-# Ref: https://github.com/zimfw/direnv
-zmodule direnv
-
 # Set starship prompt up
 #
 # Ref: https://github.com/joke/zim-starship
