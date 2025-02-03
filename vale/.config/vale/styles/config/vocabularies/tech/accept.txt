@@ -23,6 +23,7 @@ IPSec
 JCR
 Master
 NGINX
+Neovim
 Nuxt
 OCI
 OOMs?
@@ -64,6 +65,7 @@ misconfigurations?
 misrendered
 mitmproxy
 multicloud
+nvim
 params
 performant
 reusability
