@@ -1,6 +1,7 @@
 theme = catppuccin-mocha
 font-size = 13
-copy-on-select = true
+# Ref: https://github.com/ghostty-org/ghostty/discussions/5455
+copy-on-select = clipboard
 
 window-height = 40
 window-width = 140
