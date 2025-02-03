@@ -121,7 +121,7 @@ source ${HOME}/.zsh_aliases
 # Listing colors - supported by ls, tree, fd, dust, etc
 #
 # Ref: https://github.com/sharkdp/vivid
-if [[ $(command -v vivid) == "" ]]; then
+if [[ ! $(command -v vivid) == "" ]]; then
   export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
 
