@@ -3,7 +3,7 @@ version: "3"
 silent: true
 
 env:
-  STOW_BASE_CMD: stow --verbose --no-folding --target {{ .HOME }}
+  STOW_BASE_CMD: stow --verbose --no-folding --adopt --target {{ .HOME }}
 
 tasks:
   zimfw:
