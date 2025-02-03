@@ -121,7 +121,9 @@ source ${HOME}/.zsh_aliases
 # Listing colors - supported by ls, tree, fd, dust, etc
 #
 # Ref: https://github.com/sharkdp/vivid
-export LS_COLORS="$(vivid generate catppuccin-mocha)"
+if [[ $(command -v vivid) == "" ]]; then
+  export LS_COLORS="$(vivid generate catppuccin-mocha)"
+fi
 
 # Installed by: "terraform -install-autocomplete"
 #
