@@ -8,8 +8,8 @@
 [includeIf "gitdir:~/.config/nvim/"]
     path = ~/.gitconfig_github
 
-[includeIf "gitdir:~/projects/diva-e/"]
-    path = ~/.gitconfig_diva-e
+[includeIf "gitdir:~/projects/github/brave/"]
+    path = ~/.gitconfig_brave
 
 [alias]
     br = branch
