@@ -3,6 +3,9 @@ font-size = 13
 # Ref: https://github.com/ghostty-org/ghostty/discussions/5455
 copy-on-select = clipboard
 
+# 2GB should be more than enough for scrollback
+scrollback-limit = 2147483648
+
 window-height = 40
 window-width = 140
 window-padding-x = 5
