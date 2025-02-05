@@ -11,6 +11,12 @@
 [includeIf "gitdir:~/projects/github/brave/"]
     path = ~/.gitconfig_brave
 
+[includeIf "gitdir:~/projects/github/brave-experiments/"]
+    path = ~/.gitconfig_brave
+
+[includeIf "gitdir:~/projects/github/brave-intl/"]
+    path = ~/.gitconfig_brave
+
 [alias]
     br = branch
     ci = commit --no-verify
