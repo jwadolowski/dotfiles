@@ -56,6 +56,11 @@ tasks:
     cmds:
       - vale sync
 
+  tflint:
+    desc: "Install tflint plugins"
+    cmds:
+      - tflint --init
+
   stow:
     desc: "Symlink dotfiles to corresponding HOME-level location"
     cmds:
@@ -73,6 +78,7 @@ tasks:
       - ${STOW_BASE_CMD} mise
       - ${STOW_BASE_CMD} vale
       - ${STOW_BASE_CMD} ghostty
+      - ${STOW_BASE_CMD} tflint
 
   restow:
     desc: "Force symlink all the dotfiles to their corresponding HOME-level location"
@@ -83,4 +89,4 @@ tasks:
         msg: "Git workspace isn't clean and contains some uncommitted changes!"
     cmds:
       - task: stow
-      - git restore .
+      - git restore
