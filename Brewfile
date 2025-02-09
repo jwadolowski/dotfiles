@@ -159,7 +159,6 @@ brew "sysdig"
 brew "teller"
 brew "wireshark", link: false
 brew "termshark"
-brew "terragrunt"
 brew "tflint"
 brew "the_silver_searcher"
 brew "tldr"
