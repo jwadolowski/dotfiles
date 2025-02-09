@@ -128,8 +128,10 @@ fi
 # Installed by: "terraform -install-autocomplete"
 #
 # Ref: https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
+#
+# Prefer 'tgswitch' over brew-installed binary
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+complete -o nospace -C "${HOME}/bin/terraform" terraform
 
 # zsh completion fix. Overwrites https://github.com/zimfw/completion/blob/master/init.zsh#L89
 #
