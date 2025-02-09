@@ -14,7 +14,7 @@ if [[ $(command -v brew) == "" ]]; then
 
   # At this stage brew is installed, but not yet initialized therefore not
   # executable in scope of the current shell. Let's temporarily set it up
-  # so that 'brew' comand can be called.
+  # so that 'brew' command can be called.
   #
   # Brew configuration is persisted in zimfw's config file that gets deployed
   # in subseqnet steps.
