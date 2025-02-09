@@ -1,21 +1,11 @@
 [user]
-    name = Jakub Wadolowski
-    email = jakub@wadolowski.tech
+    name = Jakub Wądołowski
 
 [includeIf "gitdir:~/projects/github/"]
     path = ~/.gitconfig_github
 
 [includeIf "gitdir:~/.config/nvim/"]
     path = ~/.gitconfig_github
-
-[includeIf "gitdir:~/projects/github/brave/"]
-    path = ~/.gitconfig_brave
-
-[includeIf "gitdir:~/projects/github/brave-experiments/"]
-    path = ~/.gitconfig_brave
-
-[includeIf "gitdir:~/projects/github/brave-intl/"]
-    path = ~/.gitconfig_brave
 
 [alias]
     br = branch
@@ -64,5 +54,18 @@
     hunk-header-style = omit 
     features = catppuccin-mocha
 	line-numbers = true
+
+[gpg]
+    format=ssh
+
+[commit]
+    gpgsign=true
+
+[tag]
+    gpgsign=true
+
+[gpg "ssh"]
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+    allowedSignersFile = ~/.ssh/allowed_signers
 
 # vim: ft=gitconfig

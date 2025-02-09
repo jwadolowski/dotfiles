@@ -1,5 +1,5 @@
 [user]
-    name = jwadolowski
     email = 6334715+jwadolowski@users.noreply.github.com
+    signingkey = ~/.ssh/wadolowski_tech_ed25519.pub
 
 # vim: ft=gitconfig
