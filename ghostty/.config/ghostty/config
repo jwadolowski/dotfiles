@@ -33,3 +33,4 @@ keybind = ctrl+m=ignore
 keybind = ctrl+i=ignore
 keybind = ctrl+[=ignore
 keybind = ctrl+'=ignore
+keybind = ctrl+enter=ignore
