@@ -125,13 +125,15 @@ if [[ ! $(command -v vivid) == "" ]]; then
   export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
 
-# Installed by: "terraform -install-autocomplete"
+# Prefer 'tfswitch' over brew-installed 'terraform'
 #
 # Ref: https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
-#
-# Prefer 'tgswitch' over brew-installed binary
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C "${HOME}/bin/terraform" terraform
+
+# Prefer 'tgswitch' over brew-installed 'terragrunt'
+#
+# Ref: https://terragrunt.gruntwork.io/docs/getting-started/install/#enable-tab-completion
+complete -o nospace -C "${HOME}/bin/terragrunt" terragrunt
 
 # zsh completion fix. Overwrites https://github.com/zimfw/completion/blob/master/init.zsh#L89
 #
