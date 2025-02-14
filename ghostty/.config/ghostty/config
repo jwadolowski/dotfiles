@@ -13,13 +13,6 @@ window-padding-x = 5
 keybind = cmd+left=previous_tab
 keybind = cmd+right=next_tab
 keybind = cmd+period=esc:.
-
-# ----------------------------------------------------------------------------
-# Known flickering issue:
-# - https://github.com/ghostty-org/ghostty/discussions/4180
-# - https://github.com/ghostty-org/ghostty/discussions/4181
-# - https://github.com/ghostty-org/ghostty/discussions/5651
-# ----------------------------------------------------------------------------
 keybind = cmd+shift+left=move_tab:-1
 keybind = cmd+shift+right=move_tab:+1
 
