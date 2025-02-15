@@ -17,13 +17,4 @@ keybind = cmd+shift+left=move_tab:-1
 keybind = cmd+shift+right=move_tab:+1
 
 # Disable annoyances
-keybind = ctrl+semicolon=ignore
-keybind = ctrl+period=ignore
-keybind = ctrl+comma=ignore
-keybind = option+semicolon=ignore
-keybind = option+comma=ignore
-keybind = ctrl+m=ignore
-keybind = ctrl+i=ignore
-keybind = ctrl+[=ignore
-keybind = ctrl+'=ignore
-keybind = ctrl+enter=ignore
+keybind = ctrl+enter=text:\r
