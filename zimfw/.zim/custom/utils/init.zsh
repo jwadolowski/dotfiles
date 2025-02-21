@@ -53,6 +53,23 @@ function v() {
 }
 
 # -----------------------------------------------------------------------------
+# Quick file edit with nvim (current directory)
+# -----------------------------------------------------------------------------
+function vv() {
+  local root_dir="${PWD}"
+
+  fd \
+    --type file \
+    --hidden \
+    --base-directory $root_dir |
+    fzf \
+      --multi \
+      --query="$1" \
+      --preview "bat --color=always {}" \
+      --bind 'change:unbind(one),enter:become("$EDITOR" {+}),one:become("$EDITOR" {})'
+}
+
+# -----------------------------------------------------------------------------
 # fzf-flavoured cd replacement
 #
 # Ref: https://github.com/junegunn/fzf/wiki/examples#changing-directory
