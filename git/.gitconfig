@@ -55,6 +55,12 @@
     features = catppuccin-mocha
 	line-numbers = true
 
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = nvim -n -d "$LOCAL" "$REMOTE"
+
 [gpg]
     format=ssh
 
@@ -67,5 +73,9 @@
 [gpg "ssh"]
     program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
     allowedSignersFile = ~/.ssh/allowed_signers
+
+# Force GitHub SSH whenever HTTPS repo link is used
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 
 # vim: ft=gitconfig
