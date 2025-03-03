@@ -16,5 +16,10 @@ keybind = cmd+period=esc:.
 keybind = cmd+shift+left=move_tab:-1
 keybind = cmd+shift+right=move_tab:+1
 
-# Disable annoyances
+# Aider-specific fix
+#
+# shift+enter == alt+enter
+keybind = shift+enter=text:\x1b\r
+
+# ctlr+enter == enter
 keybind = ctrl+enter=text:\r

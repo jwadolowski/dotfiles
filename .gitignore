@@ -6,3 +6,4 @@ Brewfile.lock.json
 
 # Taskfile
 .task
+.aider*
