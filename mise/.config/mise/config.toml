@@ -6,3 +6,4 @@ python = ["3", "3.8"]
 
 [settings]
 trusted_config_paths = ["~/projects"]
+idiomatic_version_file_enable_tools = ["node"]
