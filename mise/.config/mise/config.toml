@@ -7,3 +7,8 @@ python = ["3", "3.8"]
 [settings]
 trusted_config_paths = ["~/projects"]
 idiomatic_version_file_enable_tools = ["node"]
+
+[env]
+# https://github.com/jdx/mise/discussions/5119
+_.file = '.env'        # Required to load .env file in new terminal tabs
+MISE_ENV_FILE = ".env" # Automatically load .env file contents on directory change
