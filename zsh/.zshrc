@@ -153,9 +153,6 @@ zstyle ':completion:*' matcher-list \
 # Ref: https://github.com/zimfw/environment
 unsetopt NO_CLOBBER
 
-# Added by LM Studio CLI (lms)
-export PATH="${PATH}:${HOME}/.cache/lm-studio/bin"
-
 # pnpm
 export PNPM_HOME="/Users/jwadolowski/Library/pnpm"
 case ":$PATH:" in
