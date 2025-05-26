@@ -24,6 +24,7 @@
     sf = diff --name-only --staged
     gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
     undo = reset --soft HEAD^
+    forksync = "!f() { git fetch upstream; git merge upstream/main; }; f"
 
 [core]
     pager = delta
