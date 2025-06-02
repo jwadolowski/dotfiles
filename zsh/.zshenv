@@ -106,3 +106,10 @@ export VALE_CONFIG_PATH="${HOME}/.config/vale/.vale.ini"
 # Ref: https://github.com/sharkdp/bat?tab=readme-ov-file#man
 # -----------------------------------------------------------------------------
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# -----------------------------------------------------------------------------
+# zsh
+#
+# Ref: https://superuser.com/a/613817
+# -----------------------------------------------------------------------------
+ZLE_REMOVE_SUFFIX_CHARS="" # There's no need to export the variable
