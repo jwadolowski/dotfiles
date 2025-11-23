@@ -120,7 +120,7 @@ export PATH="${HOME}/bin:${PATH}"
 export PATH="${HOME}/.local/bin:$PATH"
 
 # Aliases
-source ${HOME}/.zsh_aliases
+source "${HOME}/.zsh_aliases"
 
 # Listing colors - supported by ls, tree, fd, dust, etc
 #
