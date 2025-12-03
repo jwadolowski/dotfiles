@@ -1,7 +1,7 @@
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff="nvim -d"
-alias g="git"
+alias g="lazygit"
 alias pping="prettyping"
 alias tolower="tr '[:upper:]' '[:lower:]'"
 alias toupper="tr '[:lower:]' '[:upper:]'"
