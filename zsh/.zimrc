@@ -45,10 +45,6 @@ zmodule run-help
 # Ref: https://github.com/zimfw/fzf
 zmodule fzf
 
-# Init zoxide
-#
-# Ref: https://github.com/kiesman99/zim-zoxide
-zmodule kiesman99/zim-zoxide
 
 # Set starship prompt up
 #
@@ -99,6 +95,8 @@ zmodule-eval() {
     --cmd "if [[ ! {}/${ztarget} -nt \${commands[${1}]} ]]; then ${2} >! {}/${ztarget}; zcompile -UR {}/${ztarget}; fi" \
     --source ${ztarget}
 }
+# kiesman99/zim-zoxide recently introduced a breaking change ('--cmd cd') and it has been replaced with an embedded eval
+zmodule-eval zoxide 'zoxide init zsh'
 zmodule-eval ngrok 'ngrok completion zsh'
 zmodule-eval tailscale 'tailscale completion zsh'
 # Disable explicit compinit - zimfw already takes care of that
