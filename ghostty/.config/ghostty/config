@@ -10,6 +10,9 @@ window-height = 40
 window-width = 140
 window-padding-x = 5
 
+# https://ghostty.org/docs/help/terminfo#ssh
+shell-integration-features = ssh-terminfo,ssh-env
+
 keybind = cmd+left=previous_tab
 keybind = cmd+right=next_tab
 keybind = cmd+period=esc:.
