@@ -16,6 +16,26 @@ setopt HIST_IGNORE_ALL_DUPS
 #
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
+#
+# Keybindings cheatsheet:
+#   Movement:
+#     Ctrl+A / Ctrl+E   - beginning / end of line
+#     Ctrl+F / Ctrl+B   - forward / backward one char
+#     Alt+F  / Alt+B    - forward / backward one word
+#   Editing:
+#     Ctrl+K            - kill (cut) to end of line
+#     Ctrl+U            - kill to beginning of line
+#     Ctrl+W / Alt+D    - delete word backward / forward
+#     Ctrl+Y            - yank (paste) killed text
+#     Ctrl+_            - undo
+#   History:
+#     Ctrl+R / Ctrl+S   - reverse / forward history search
+#     Ctrl+P / Ctrl+N   - previous / next history entry
+#   Other:
+#     Ctrl+L            - clear screen
+#     Ctrl+C            - cancel current line
+#
+# IMPORANT: Alt shortcuts require `macos-option-as-alt` in Ghostty
 bindkey -e
 
 # Prompt for spelling correction of commands.

@@ -1,5 +1,12 @@
 theme = Catppuccin Mocha
 font-size = 13
+
+# See zsh/.zshrc for keybindings
+#
+# Left Option = Alt (for Emacs shortcuts: Alt+F, Alt+B, Alt+D)
+# Right Option = macOS default (for Polish characters)
+macos-option-as-alt = left
+
 # Ref: https://github.com/ghostty-org/ghostty/discussions/5455
 copy-on-select = clipboard
 
