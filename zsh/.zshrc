@@ -110,10 +110,6 @@ export PATH="${BREW_PREFIX}/opt/findutils/libexec/gnubin:$PATH"
 export PATH="${BREW_PREFIX}/opt/gnu-tar/libexec/gnubin:$PATH"
 # Prefer curl installed via brew
 export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
-# Some tools get installed into sbin dir
-#
-# https://github.com/Homebrew/homebrew-core/issues/14669#issuecomment-353399229
-export PATH="${BREW_PREFIX}/sbin:${PATH}"
 # Local binaries (usually installed by hand)
 export PATH="${HOME}/bin:${PATH}"
 # uv
