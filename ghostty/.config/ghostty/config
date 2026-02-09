@@ -1,6 +1,8 @@
 theme = Catppuccin Mocha
 font-size = 13
 
+auto-update-channel = tip
+
 # See zsh/.zshrc for keybindings
 #
 # Left Option = Alt (for Emacs shortcuts: Alt+F, Alt+B, Alt+D)
@@ -14,7 +16,7 @@ copy-on-select = clipboard
 scrollback-limit = 2147483648
 
 window-height = 40
-window-width = 140
+window-width = 160
 window-padding-x = 5
 
 # https://ghostty.org/docs/help/terminfo#ssh
