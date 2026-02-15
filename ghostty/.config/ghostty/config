@@ -16,7 +16,7 @@ copy-on-select = clipboard
 scrollback-limit = 2147483648
 
 window-height = 40
-window-width = 160
+window-width = 140
 window-padding-x = 5
 
 # https://ghostty.org/docs/help/terminfo#ssh
