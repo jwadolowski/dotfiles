@@ -35,3 +35,12 @@ keybind = shift+enter=text:\x1b\r
 
 # ctlr+enter == enter
 keybind = ctrl+enter=text:\r
+
+# annoyance
+keybind = ctrl+;=ignore
+
+# duplicates ctrl-l
+keybind = cmd+k=ignore
+
+# https://github.com/ghostty-org/ghostty/issues/10749#issuecomment-4131892831
+keybind = super+v=paste_from_clipboard
