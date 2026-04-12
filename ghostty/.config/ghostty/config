@@ -38,6 +38,7 @@ keybind = ctrl+enter=text:\r
 
 # annoyance
 keybind = ctrl+;=ignore
+keybind = ctrl+m=ignore
 
 # duplicates ctrl-l
 keybind = cmd+k=ignore
