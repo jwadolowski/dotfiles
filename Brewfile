@@ -1,19 +1,19 @@
-tap "azure/kubelogin"
-tap "bufbuild/buf"
-tap "buildpacks/tap"
-tap "charmbracelet/tap"
-tap "fastly/tap"
-tap "hashicorp/tap"
+tap "azure/kubelogin", trusted: true
+tap "bufbuild/buf", trusted: true
+tap "buildpacks/tap", trusted: true
+tap "charmbracelet/tap", trusted: true
+tap "fastly/tap", trusted: true
+tap "hashicorp/tap", trusted: true
 tap "homebrew/bundle"
-tap "localstack/tap"
-tap "mike-engel/jwt-cli"
-tap "mongodb/brew"
+tap "localstack/tap", trusted: true
+tap "mike-engel/jwt-cli", trusted: true
+tap "mongodb/brew", trusted: true
 tap "natesales/repo", "https://github.com/natesales/repo"
-tap "noahgorstein/tap"
-tap "oven-sh/bun"
-tap "sst/tap"
-tap "teamookla/speedtest"
-tap "whiteducksoftware/tap"
+tap "noahgorstein/tap", trusted: true
+tap "oven-sh/bun", trusted: true
+tap "sst/tap", trusted: true
+tap "teamookla/speedtest", trusted: true
+tap "whiteducksoftware/tap", trusted: true
 brew "act"
 brew "aichat"
 brew "aider"
