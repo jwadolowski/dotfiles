@@ -171,10 +171,3 @@ zstyle ':completion:*' matcher-list \
 # Ref: https://github.com/zimfw/environment
 unsetopt NO_CLOBBER
 
-# pnpm
-export PNPM_HOME="/Users/jwadolowski/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
