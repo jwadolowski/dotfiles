@@ -117,18 +117,55 @@ function gsr() {
 # -----------------------------------------------------------------------------
 # AWS profile switcher
 # -----------------------------------------------------------------------------
+function in_terragrunt_unit() {
+  [[ -f terragrunt.hcl && -f main.tf ]]
+}
+
+# Expects the following snippet in main.tf, in the default (non-aliased)
+# provider "aws" block:
+#
+#   provider "aws" {
+#     allowed_account_ids = [module.xyz.account_ids["example_org"]]
+#   }
+function terragrunt_account_key() {
+  hcl2json main.tf 2>/dev/null |
+    jq --raw-output '
+      [
+        ([.provider.aws[]? | select(.alias == null)] | .[0].allowed_account_ids[]?)
+        | select(type == "string")
+        | capture("\\[\"(?<account_key>[^\"]+)\"\\]")
+        | .account_key
+      ][0] // empty
+    '
+}
+
 function ax() {
   local aws_config=~/.aws/config
   ! test -f "${aws_config}" && echo "${aws_config} not found!" && return 1
 
   local profile_suffix="_AdministratorAccess"
-  local profile=$(
-    rg "profile (.+)${profile_suffix}" -r '$1' -o "${aws_config}" |
-      rg -v '^north_' |
-      fzf \
-        --query="$1" \
-        --preview "rg -A5 {}${profile_suffix} ${aws_config} | bat --language=ini --color=always"
+  local profiles=$(
+    rg "profile (.+)${profile_suffix}" --replace='$1' --only-matching "${aws_config}" |
+      rg --invert-match '^north_'
   )
+
+  local search_key
+  [[ -z $1 ]] && in_terragrunt_unit && search_key=$(terragrunt_account_key)
+
+  local profile
+  if [[ -n $search_key ]]; then
+    local matches=$(echo "$profiles" | rg --line-regexp --fixed-strings "$search_key" 2>/dev/null)
+    [[ -n $matches ]] && [[ $(wc -l <<<"$matches") -eq 1 ]] && profile=$matches
+  fi
+
+  if [[ -z $profile ]]; then
+    profile=$(
+      echo "$profiles" |
+        fzf \
+          --query="${search_key:-$1}" \
+          --preview "rg -A5 {}${profile_suffix} ${aws_config} | bat --language=ini --color=always"
+    )
+  fi
 
   [[ -z $profile ]] && return 1
 
