@@ -115,6 +115,27 @@ function gsr() {
 }
 
 # -----------------------------------------------------------------------------
+# AWS profile switcher
+# -----------------------------------------------------------------------------
+function ax() {
+  local aws_config=~/.aws/config
+  ! test -f "${aws_config}" && echo "${aws_config} not found!" && return 1
+
+  local profile_suffix="_AdministratorAccess"
+  local profile=$(
+    rg "profile (.+)${profile_suffix}" -r '$1' -o "${aws_config}" |
+      rg -v '^north_' |
+      fzf \
+        --query="$1" \
+        --preview "rg -A5 {}${profile_suffix} ${aws_config} | bat --language=ini --color=always"
+  )
+
+  [[ -z $profile ]] && return 1
+
+  export AWS_PROFILE="${profile}${profile_suffix}"
+}
+
+# -----------------------------------------------------------------------------
 # delta
 # -----------------------------------------------------------------------------
 function diff2() {
