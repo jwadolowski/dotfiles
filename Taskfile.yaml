@@ -58,6 +58,16 @@ tasks:
     cmds:
       - curl -fsSL https://raw.githubusercontent.com/brave/brave-search-cli/main/scripts/install.sh | sh
 
+  vendor:
+    desc: "Re-materialize vendored content at the pinned revisions (CI usually does this)"
+    cmds:
+      - ./scripts/vendor.sh
+
+  vendor:update:
+    desc: "Bump vendored content to the latest upstream revisions (Renovate usually does this)"
+    cmds:
+      - ./scripts/vendor.sh --update
+
   vale:
     desc: "Install vale styles"
     cmds:
