@@ -17,7 +17,7 @@ tasks:
   brewfile:
     desc: "Dump brew packages to Brewfile"
     cmds:
-      - brew bundle dump -f
+      - brew bundle dump -f --no-describe --taps --formulae --casks --mas
 
   bat:
     desc: "Install bat themes"
