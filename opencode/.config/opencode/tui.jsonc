@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+
+  "theme": "catppuccin",
+
+  // Puts Home/End - fn+left and fn+right on a Mac - on the input line instead
+  // of message navigation. Upstream defaults:
+  //
+  //   messages_first   ctrl+g,home
+  //   messages_last    ctrl+alt+g,end
+  //   input_line_home  ctrl+a
+  //   input_line_end   ctrl+e
+  //
+  // Comma separates alternatives - either key works.
+  "keybinds": {
+    "messages_first": "ctrl+g",
+    "messages_last": "ctrl+alt+g",
+    "input_line_home": "ctrl+a,home",
+    "input_line_end": "ctrl+e,end",
+  },
+}
