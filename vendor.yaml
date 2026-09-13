@@ -42,9 +42,15 @@ targets:
       # "instructions", so AGENTS.md stays hand-written and unfenced.
       - from: src/rules/caveman-activate.md
         to: opencode/.config/opencode/rules/caveman.md
-      # Upstream keeps an opencode-specific command set; take it wholesale.
+      # Upstream keeps an opencode-specific command set; take it wholesale
+      # apart from the two whose skills are not vendored - /caveman-stats reads
+      # a log only the Claude Code plugin writes, and /caveman-help is a
+      # reference card listing it.
       - from: src/plugins/opencode/commands
         to: opencode/.config/opencode/commands
+        exclude:
+          - caveman-help.md
+          - caveman-stats.md
       # The skill dirs the caveman installer selects for opencode
       # (OPENCODE_SKILL_DIRS in bin/install.js); the repo-level skills/ holds
       # build tooling and other harnesses' skills alongside them.
@@ -54,7 +60,5 @@ targets:
           - caveman
           - caveman-commit
           - caveman-review
-          - caveman-help
-          - caveman-stats
           - caveman-compress
           - cavecrew

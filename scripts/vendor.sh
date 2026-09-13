@@ -95,14 +95,23 @@ function fetch_target() {
 }
 
 function copy_entry() {
-  local src="$1" to="$2" include="$3"
-  local dest="${REPO_ROOT}/${to}" child pattern
+  local src="$1" to="$2" include="$3" exclude="$4"
+  local dest="${REPO_ROOT}/${to}" child pattern skip
 
   if [[ -d ${src} && -z ${include} ]]; then
     # Copy each child separately: the destination is shared with other upstreams
     # and with local content, so --delete must never be scoped at its root.
     for child in "${src}"/*; do
       [[ -e ${child} || -L ${child} ]] || continue
+      skip=0
+      for pattern in ${exclude}; do
+        # shellcheck disable=SC2053
+        [[ $(basename "${child}") == ${pattern} ]] && {
+          skip=1
+          break
+        }
+      done
+      ((skip)) && continue
       rsync -a --delete "${child}" "${dest}/"
     done
   elif [[ -d ${src} ]]; then
@@ -175,6 +184,7 @@ for ((i = 0; i < count; i++)); do
     from="$(yq -r ".targets[${i}].copy[${c}].from" "${MANIFEST}")"
     to="$(yq -r ".targets[${i}].copy[${c}].to" "${MANIFEST}")"
     include="$(yq -r ".targets[${i}].copy[${c}].include // [] | join(\" \")" "${MANIFEST}")"
+    exclude="$(yq -r ".targets[${i}].copy[${c}].exclude // [] | join(\" \")" "${MANIFEST}")"
     patch="$(yq -r ".targets[${i}].copy[${c}].patch // \"\"" "${MANIFEST}")"
 
     [[ -e "${src}/${from}" ]] || {
@@ -182,7 +192,7 @@ for ((i = 0; i < count; i++)); do
       exit 1
     }
 
-    copy_entry "${src}/${from}" "${to}" "${include}"
+    copy_entry "${src}/${from}" "${to}" "${include}" "${exclude}"
     [[ -n ${patch} ]] && apply_patch "${to}" "${patch}" "${name}"
   done
 
