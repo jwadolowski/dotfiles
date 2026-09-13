@@ -30,6 +30,12 @@ $ task mise
 # Install vale packages
 $ task vale
 
+# Install Brave Search CLI (required by the `bx` skill)
+$ task bx
+
+# Set up the opencode provider (interactive)
+$ opencode providers login
+
 # (Optional step) Sync Brewfile
 $ task brewfile
 ```

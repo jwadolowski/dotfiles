@@ -1,0 +1,80 @@
+{
+  // Theme and keybinds live in tui.jsonc. Setting them here makes opencode
+  // write a separate tui.json that then loads alongside it.
+  "$schema": "https://opencode.ai/config.json",
+
+  "model": "openrouter/moonshotai/kimi-k3",
+
+  // Used by opencode's built-in title and summary agents, which name sessions
+  // and write compaction summaries. Without it they fall back to the model
+  // above.
+  "small_model": "openrouter/google/gemini-2.5-flash-lite",
+
+  "default_agent": "plan",
+
+  // Vendored caveman ruleset (see vendor.yaml), kept out of AGENTS.md so that
+  // file stays hand-written. The path has to start with ~/ or be absolute - a
+  // relative one resolves against the project directory.
+  "instructions": ["~/.config/opencode/rules/caveman.md"],
+
+  "agent": {
+    // Fast and cheap for edits.
+    "build": {
+      "model": "openrouter/z-ai/glm-5.3-flash",
+    },
+
+    // Read-only agents, so a cheap model is fine - but not the cheapest, since
+    // they run many tool calls and a bad one costs more turns than it saves.
+    //
+    // Set here rather than in the agent files because frontmatter wins over
+    // this file, and the vendoring step strips the model key upstream ships.
+    "cavecrew-investigator": {
+      "mode": "subagent",
+      "model": "openrouter/z-ai/glm-5.3-flash",
+    },
+    "cavecrew-reviewer": {
+      "mode": "subagent",
+      "model": "openrouter/z-ai/glm-5.3-flash",
+    },
+
+    // Writes files, so it keeps the default model.
+    "cavecrew-builder": {
+      "mode": "subagent",
+    },
+  },
+
+  "plugin": ["@dietrichgebert/ponytail"],
+
+  "mcp": {
+    // Installed with Homebrew, see Brewfile.
+    "terraform": {
+      "type": "local",
+      "command": [
+        "/opt/homebrew/bin/terraform-mcp-server",
+        "stdio",
+        "--toolsets=registry",
+      ],
+      "enabled": true,
+    },
+  },
+
+  "lsp": true,
+
+  // Denied on purpose - the bx skill replaces it, see AGENTS.md.
+  "permission": {
+    "websearch": "deny",
+  },
+
+  "references": {
+    "devops": {
+      "path": "~/projects/github/brave/devops",
+      "description": "brave/devops",
+    },
+    "brave-core": {
+      "path": "~/projects/github/brave/brave-browser/src/brave",
+      "description": "brave/brave-core",
+    },
+  },
+
+  "share": "disabled",
+}

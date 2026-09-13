@@ -51,6 +51,13 @@ tasks:
     cmds:
       - mise install
 
+  bx:
+    desc: "Install Brave Search CLI"
+    status:
+      - test -x {{ .HOME }}/.local/bin/bx
+    cmds:
+      - curl -fsSL https://raw.githubusercontent.com/brave/brave-search-cli/main/scripts/install.sh | sh
+
   vale:
     desc: "Install vale styles"
     cmds:
@@ -83,6 +90,7 @@ tasks:
       - ${STOW_BASE_CMD} pnpm
       - ${STOW_BASE_CMD} bun
       - ${STOW_BASE_CMD} uv
+      - ${STOW_BASE_CMD} opencode
 
   restow:
     desc: "Force symlink all the dotfiles to their corresponding HOME-level location"
