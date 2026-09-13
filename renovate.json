@@ -1,4 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"]
+  "extends": ["config:recommended"],
+  "ignorePaths": ["opencode/.config/opencode/**"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^vendor\\.yaml$/"],
+      "matchStrings": ["repo:\\s*(?<depName>\\S+)\\s+track:\\s*tag\\s+ref:\\s*(?<currentValue>v\\S+)"],
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^vendor\\.yaml$/"],
+      "matchStrings": ["repo:\\s*(?<depName>\\S+)\\s+track:\\s*branch\\s+ref:\\s*(?<currentValue>\\S+)\\s+pin:\\s*(?<currentDigest>[0-9a-f]{40})"],
+      "datasourceTemplate": "git-refs",
+      "packageNameTemplate": "https://github.com/{{depName}}"
+    }
+  ],
+  "gitIgnoredAuthors": ["41898282+github-actions[bot]@users.noreply.github.com"]
 }

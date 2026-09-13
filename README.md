@@ -40,6 +40,16 @@ $ opencode providers login
 $ task brewfile
 ```
 
+## Agent configuration
+
+Some content under `opencode/.config/opencode/` is vendored from upstream
+repositories, declared in `vendor.yaml` and pinned by commit SHA. Renovate opens
+a pull request when an upstream moves and CI re-materializes the files on the
+same branch, so updates always arrive as a reviewable diff.
+
+On a machine `git pull` is enough for files that changed - they are symlinked
+into place. Run `task stow` as well when an update added new ones.
+
 ## Noteworthy facts
 
 `stow`'s `--adapt` flag is used to set all the symlinks up. If given file exists in target location (but isn't managed by `stow` yet) then `stow` will move it to this repository and configure the symlink afterwards. As a result some unwanted changes may show up here. `task restow` was introduced to resolve that.

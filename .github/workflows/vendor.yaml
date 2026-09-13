@@ -1,0 +1,56 @@
+name: vendor
+
+# Renovate decides *when* an upstream moved (see the custom managers in
+# renovate.json), but it can only bump the revision strings in vendor.yaml - no
+# bot copies upstream file trees. This workflow supplies the missing half.
+on:
+  pull_request:
+    paths:
+      - vendor.yaml
+      - scripts/vendor.sh
+      - opencode/.config/opencode/skills/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # A Renovate pull request arrives incomplete: the manifest names a new
+  # revision while the vendored files still hold the old content. Materializing
+  # onto Renovate's own branch keeps an update to a single reviewable pull
+  # request instead of two competing ones.
+  materialize:
+    if: startsWith(github.head_ref, 'renovate/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.head_ref }}
+      - run: ./scripts/vendor.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
+        with:
+          commit_message: "chore(vendor): Materialize skills at pinned revisions"
+
+  # Any other pull request means the opposite: a hand edit to vendored content
+  # will be silently overwritten by the next sync, so the tree must already
+  # match its pins. Fail loudly rather than rewriting someone's branch.
+  drift:
+    if: ${{ !startsWith(github.head_ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: ./scripts/vendor.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # git diff alone ignores untracked files, so a newly added upstream skill
+      # would pass unnoticed; porcelain covers adds, deletes and modifications.
+      - run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Vendored tree does not match vendor.yaml pins:"
+            git status --short
+            exit 1
+          fi
