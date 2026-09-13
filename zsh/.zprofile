@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/jwadolowski/.docker/bin"
+# End of Docker Desktop section.
+
 # This file was left blank on purpose
 #
 # Order of operations:
