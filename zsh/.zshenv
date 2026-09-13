@@ -19,6 +19,18 @@ export GOPATH="${HOME}/go"
 export PATH="${GOPATH}/bin:${PATH}"
 
 # -----------------------------------------------------------------------------
+# pnpm
+#
+# PNPM_HOME is the directory `pnpm add -g` drops its shims into.
+#
+# Replaces the block `pnpm setup` appends to ~/.zshrc. Re-running the command
+# appends its own copy regardless, so don't do it.
+#
+# Ref: https://pnpm.io/cli/setup
+# -----------------------------------------------------------------------------
+export PNPM_HOME="${HOME}/Library/pnpm"
+
+# -----------------------------------------------------------------------------
 # grep
 #
 # Do NOT use colors defined by zimfw/utility module

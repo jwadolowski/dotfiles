@@ -134,6 +134,8 @@ export PATH="${BREW_PREFIX}/opt/curl/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 # uv
 export PATH="${HOME}/.local/bin:$PATH"
+# pnpm global binaries
+export PATH="${PNPM_HOME}/bin:${PATH}"
 
 # Aliases
 source "${HOME}/.zsh_aliases"
