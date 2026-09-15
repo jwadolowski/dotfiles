@@ -20,7 +20,7 @@
   "agent": {
     // Fast and cheap for edits.
     "build": {
-      "model": "openrouter/z-ai/glm-5.3-flash",
+      "model": "openrouter/deepseek/deepseek-v4.1-flash",
     },
 
     // Read-only agents, so a cheap model is fine - but not the cheapest, since
@@ -30,11 +30,11 @@
     // this file, and the vendoring step strips the model key upstream ships.
     "cavecrew-investigator": {
       "mode": "subagent",
-      "model": "openrouter/z-ai/glm-5.3-flash",
+      "model": "openrouter/deepseek/deepseek-v4.1-flash",
     },
     "cavecrew-reviewer": {
       "mode": "subagent",
-      "model": "openrouter/z-ai/glm-5.3-flash",
+      "model": "openrouter/deepseek/deepseek-v4.1-flash",
     },
 
     // Writes files, so it keeps the default model.
