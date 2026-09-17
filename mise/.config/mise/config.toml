@@ -1,4 +1,6 @@
 [tools]
+# Required by groovyls (managed via Mason in nvim)
+java = ["temurin-21"]
 node = ["lts"]
 ruby = ["3"]
 python = ["3", "3.8"]
