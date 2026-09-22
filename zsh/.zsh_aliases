@@ -40,3 +40,4 @@ alias tg="terragrunt"
 alias tgp="terragrunt plan"
 alias tga="terragrunt apply"
 alias oc="opencode"
+alias strings="${BREW_PREFIX}/opt/binutils/bin/strings" # Alias, not PATH - keeps GNU ar/ranlib/strip out of the way
