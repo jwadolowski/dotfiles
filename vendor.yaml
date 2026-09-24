@@ -31,8 +31,8 @@ targets:
   - name: caveman-agents
     repo: JuliusBrussee/caveman
     track: tag
-    ref: v2.6.0
-    pin: b82c0ad42c2bedc1f2cd78e414dadfaffbaaeec3
+    ref: v2.7.0
+    pin: 8b0c1d3699b8d83e87fe4605b378da20c41555e0
     copy:
       - from: agents
         to: opencode/.config/opencode/agents
