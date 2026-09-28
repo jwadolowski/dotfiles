@@ -4,6 +4,7 @@ tap "bufbuild/buf", trusted: true
 tap "buildpacks/tap", trusted: true
 tap "charmbracelet/tap", trusted: true
 tap "fastly/tap", trusted: true
+tap "floci-io/floci"
 tap "hashicorp/tap", trusted: true
 tap "homebrew/bundle"
 tap "localstack/tap", trusted: true
@@ -218,6 +219,7 @@ brew "bufbuild/buf/buf"
 brew "buildpacks/tap/pack"
 brew "charmbracelet/tap/mods"
 brew "fastly/tap/fastly"
+brew "floci-io/floci/floci", trusted: true
 brew "mike-engel/jwt-cli/jwt-cli"
 brew "mongodb/brew/mongodb-database-tools"
 brew "natesales/repo/q"
