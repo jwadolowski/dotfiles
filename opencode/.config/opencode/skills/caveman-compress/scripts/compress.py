@@ -362,6 +362,66 @@ from .validate import validate
 
 MAX_RETRIES = 2
 
+# Output ceiling for one SDK call: the max output of the default model
+# (claude-sonnet-4-5). A body that needs more is refused in call_claude(),
+# never written back truncated.
+MAX_OUTPUT_TOKENS = 64000
+
+
+def resolve_max_output_tokens() -> int:
+    """Output ceiling for one SDK call, overridable per model.
+
+    The default tracks the max output of the default model. CAVEMAN_MODEL lets
+    a user pin a model whose ceiling is lower (claude-opus-4-0 tops out at
+    32K), and asking for more output than the model allows is a 400 from the
+    API — an opaque failure in place of the truncation this cap exists to
+    prevent. CAVEMAN_MAX_OUTPUT_TOKENS lets that user lower the ask to match.
+
+    A malformed value raises rather than silently falling back: an override
+    that is quietly ignored looks like the cap was raised when it was not, and
+    the symptom is the same truncation, one layer further from the cause.
+    """
+    raw = os.environ.get("CAVEMAN_MAX_OUTPUT_TOKENS", "").strip()
+    if not raw:
+        return MAX_OUTPUT_TOKENS
+    try:
+        value = int(raw)
+    except ValueError:
+        raise RuntimeError(
+            f"CAVEMAN_MAX_OUTPUT_TOKENS must be a positive integer, got {raw!r}."
+        ) from None
+    if value < 1:
+        raise RuntimeError(
+            f"CAVEMAN_MAX_OUTPUT_TOKENS must be a positive integer, got {raw!r}."
+        )
+    return value
+
+
+def _is_smaller_than_body(candidate_body: str, body: str) -> bool:
+    """True when `candidate_body` actually compresses `body`.
+
+    The non-expansion invariant for #776. It lives in a helper because it has
+    to hold for EVERY candidate, not just the first one: a candidate that fails
+    validation is sent back to Claude for repair, and the repaired text is what
+    gets written if it validates. Checking only the first candidate left the
+    retry path able to write a longer file and report it as a successful
+    compression — the original bug, one branch over.
+
+    Always compares bodies with frontmatter already removed. Frontmatter is
+    preserved verbatim, so counting it on one side and not the other would
+    measure the wrong thing.
+    """
+    candidate_len = len(candidate_body.strip())
+    body_len = len(body.strip())
+    if candidate_len >= body_len:
+        print(
+            "❌ Compression aborted: output is not smaller than input "
+            f"({candidate_len} >= {body_len} chars)."
+        )
+        return False
+    return True
+
+
 # Bounds each individual Claude call so a stalled CLI (dropped network, an
 # auth prompt with no TTY to answer it) can't hang past what LOCK_WAIT_SECONDS
 # assumes for the whole run's worst case (MAX_RETRIES+1 calls).
@@ -389,12 +449,25 @@ def call_claude(prompt: str) -> str:
         try:
             import anthropic
 
+            max_output_tokens = resolve_max_output_tokens()
             client = anthropic.Anthropic(api_key=api_key, timeout=CLAUDE_CALL_TIMEOUT_SECONDS)
-            msg = client.messages.create(
+            # Streaming, not create(): a large compression needs far more than
+            # the old 8192-token cap, and tokens that arrive as they are
+            # generated keep a long call from tripping the request timeout.
+            with client.messages.stream(
                 model=os.environ.get("CAVEMAN_MODEL", "claude-sonnet-4-5"),
-                max_tokens=8192,
+                max_tokens=max_output_tokens,
                 messages=[{"role": "user", "content": prompt}],
-            )
+            ) as stream:
+                msg = stream.get_final_message()
+            # At the cap the tail was never generated. validate() and the fix
+            # prompt cannot recover it, so fail now instead of paying for
+            # retries that end by restoring the original anyway.
+            if msg.stop_reason == "max_tokens":
+                raise RuntimeError(
+                    f"Claude output hit the {max_output_tokens}-token cap, so the result is incomplete. "
+                    "Split the file into smaller parts and compress each one."
+                )
             # Tool-heavy models can put a tool_use or thinking block first; take
             # the first text block instead of trusting content[0].
             text = next((block.text for block in msg.content if getattr(block, "type", None) == "text"), "")
@@ -649,6 +722,16 @@ def _compress_file_locked(filepath: Path) -> bool:
         print("   already in caveman form. Original file is untouched (no backup created).")
         return False
 
+    # A rewrite that is structurally faithful but LONGER than the input passes
+    # every check below (validate() only checks structural invariants, not
+    # length) and would otherwise be written over the original and reported
+    # as a successful compression — the opposite of what this tool exists to
+    # do (issue #776). Same length is also a reject: a compression that saved
+    # nothing isn't a compression.
+    if not _is_smaller_than_body(compressed_body, body):
+        print("   Original file is untouched (no backup created).")
+        return False
+
     # Reassemble: frontmatter (verbatim) + compressed body
     compressed = frontmatter + compressed_body
 
@@ -710,6 +793,18 @@ def _compress_file_locked(filepath: Path) -> bool:
         if anchor.startswith(("---", "#")) and first_nonblank_line(fixed) != anchor:
             print("❌ Fix attempt aborted: output does not start with the original's first line.")
             print("   Possible preamble leak. Skipping this attempt.")
+            continue
+
+        # The repaired candidate is what gets written if it validates, so the
+        # non-expansion invariant has to hold for it too — a repair that
+        # restores the structure validate() asked for by padding the prose back
+        # out is exactly the "compression" #776 is about. `fixed` is a whole
+        # file (build_fix_prompt is given one, and the anchor check above
+        # requires it to start with the original's first line), so its
+        # frontmatter is split off to compare like against like.
+        _, fixed_body = split_frontmatter(fixed)
+        if not _is_smaller_than_body(fixed_body, body):
+            print("   Skipping this attempt.")
             continue
 
         compressed = fixed
