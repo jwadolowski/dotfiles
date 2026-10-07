@@ -9,6 +9,20 @@ in this file. Exception: I explicitly ask for another language.
 `websearch` tool disabled (Exa). For any web search need, use the `bx` skill
 (Brave Search CLI via `bash`) instead - don't attempt `websearch` first.
 
+## Web fetching
+
+Fetching docs from a site: try `<origin>/llms.txt` first - many docs sites
+publish an LLM-friendly markdown index there (`llms-full.txt` holds full
+content, often large). For a single page, try appending `.md` to its URL. Fall
+back to the regular HTML page if neither exists.
+
+GitHub URLs (PRs, issues, commits, files, releases, Actions runs): use the `gh`
+CLI via `bash` instead of fetching github.com pages. It is authenticated, handles
+private repos, and returns structured output - e.g. `gh pr view <url> --comments`,
+`gh pr diff <url>`, `gh issue view <url> --comments`,
+`gh api repos/{owner}/{repo}/contents/{path}`, `gh run view <id> --log-failed`.
+Use `--json` when only specific fields are needed.
+
 ## Build/test commands
 
 Check for project-provided build/test entry points first (`Makefile`, task
