@@ -82,6 +82,9 @@ zstyle ':zim:termtitle' format '%1~'
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
+# Skip highlighting very long command lines to avoid keystroke lag
+ZSH_HIGHLIGHT_MAXLENGTH=8000
+
 # Customize the main highlighter styles.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
 #typeset -A ZSH_HIGHLIGHT_STYLES
