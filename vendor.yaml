@@ -32,7 +32,7 @@ targets:
     repo: JuliusBrussee/caveman
     track: tag
     ref: v3.2.0
-    pin: b82c0ad42c2bedc1f2cd78e414dadfaffbaaeec3
+    pin: e20f07e8152a0c0360f58c09e79d30ac94329991
     copy:
       - from: agents
         to: opencode/.config/opencode/agents
