@@ -213,7 +213,7 @@ brew "yq"
 brew "yt-dlp"
 brew "zoxide"
 brew "zsh"
-brew "anomalyco/tap/opencode", trusted: true
+brew "anomalyco/tap/opencode-v2", trusted: true
 brew "azure/kubelogin/kubelogin"
 brew "bufbuild/buf/buf"
 brew "buildpacks/tap/pack"
