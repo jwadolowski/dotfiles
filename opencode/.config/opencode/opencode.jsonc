@@ -1,6 +1,5 @@
 {
-  // Theme and keybinds live in tui.jsonc. Setting them here makes opencode
-  // write a separate tui.json that then loads alongside it.
+  // Theme and keybinds live in cli.json, the terminal client config.
   "$schema": "https://opencode.ai/config.json",
 
   "model": "openrouter/moonshotai/kimi-k3",
@@ -17,7 +16,7 @@
   // relative one resolves against the project directory.
   "instructions": ["~/.config/opencode/rules/caveman.md"],
 
-  "agent": {
+  "agents": {
     // Fast and cheap for edits.
     "build": {
       "model": "openrouter/deepseek/deepseek-v4.1-flash",
@@ -43,27 +42,31 @@
     },
   },
 
-  "plugin": ["@dietrichgebert/ponytail"],
+  "plugins": ["@dietrichgebert/ponytail"],
 
   "mcp": {
-    // Installed with Homebrew, see Brewfile.
-    "terraform": {
-      "type": "local",
-      "command": [
-        "/opt/homebrew/bin/terraform-mcp-server",
-        "stdio",
-        "--toolsets=registry",
-      ],
-      "enabled": true,
+    "servers": {
+      // Installed with Homebrew, see Brewfile.
+      "terraform": {
+        "type": "local",
+        "command": [
+          "/opt/homebrew/bin/terraform-mcp-server",
+          "stdio",
+          "--toolsets=registry",
+        ],
+      },
     },
   },
 
-  "lsp": true,
-
   // Denied on purpose - the bx skill replaces it, see AGENTS.md.
-  "permission": {
-    "websearch": "deny",
-  },
+  "permissions": [
+    { "action": "websearch", "resource": "*", "effect": "deny" },
+
+    // Scratch space. Rules match canonical paths and /tmp is a symlink to
+    // /private/tmp on macOS, so both are listed.
+    { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "/private/tmp/*", "effect": "allow" },
+  ],
 
   "references": {
     "devops": {
