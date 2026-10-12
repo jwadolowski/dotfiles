@@ -33,6 +33,7 @@ alias history="history 1" # https://superuser.com/questions/232457/zsh-output-wh
 alias z="zi"              # Prefer zoxide's interactive mode
 alias bu="brew update && brew upgrade"
 alias zu="zimfw update && zimfw upgrade"
+alias mu="mise upgrade"
 alias jty="yq --input-format json --output-format yaml"
 alias ytj="yq --input-format yaml --output-format json"
 alias tf="terraform"
