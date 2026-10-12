@@ -111,4 +111,4 @@ tasks:
         msg: "Git workspace isn't clean and contains some uncommitted changes!"
     cmds:
       - task: stow
-      - git restore
+      - git restore .
