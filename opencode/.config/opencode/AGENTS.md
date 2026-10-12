@@ -19,9 +19,16 @@ back to the regular HTML page if neither exists.
 GitHub URLs (PRs, issues, commits, files, releases, Actions runs): use the `gh`
 CLI via `bash` instead of fetching github.com pages. It is authenticated, handles
 private repos, and returns structured output - e.g. `gh pr view <url> --comments`,
-`gh pr diff <url>`, `gh issue view <url> --comments`,
-`gh api repos/{owner}/{repo}/contents/{path}`, `gh run view <id> --log-failed`.
+`gh pr diff <url>`, `gh issue view <url> --comments`, `gh run view <id> --log-failed`.
 Use `--json` when only specific fields are needed.
+
+Repo files: `gh repo read-file <path> -R {owner}/{repo}` prints raw content
+(`--ref` for a branch, tag or commit); `gh repo read-dir [<path>] -R {owner}/{repo}`
+lists a directory. Both are in preview - if one fails, fall back to
+`gh api repos/{owner}/{repo}/contents/{path}` (base64-encoded).
+
+Inline PR review comments have no dedicated command - use
+`gh api repos/{owner}/{repo}/pulls/{n}/comments`.
 
 ## Build/test commands
 

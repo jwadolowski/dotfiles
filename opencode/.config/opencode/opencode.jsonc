@@ -58,8 +58,8 @@
     },
   },
 
-  // Denied on purpose - the bx skill replaces it, see AGENTS.md.
   "permissions": [
+    // Denied on purpose - the bx skill replaces it, see AGENTS.md.
     { "action": "websearch", "resource": "*", "effect": "deny" },
 
     // Scratch space. Rules match canonical paths and /tmp is a symlink to
