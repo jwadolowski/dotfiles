@@ -9,7 +9,7 @@ targets:
   - name: terraform-skill
     repo: antonbabenko/terraform-skill
     track: tag
-    ref: v1.17.1
+    ref: v1.17.2
     pin: b59d2be9ff4db8f835c8459e05e325ba11e3a21f
     copy:
       - from: skills/terraform-skill
