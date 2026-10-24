@@ -10,7 +10,7 @@ targets:
     repo: antonbabenko/terraform-skill
     track: tag
     ref: v1.17.2
-    pin: b59d2be9ff4db8f835c8459e05e325ba11e3a21f
+    pin: 9c1e92d962a5407c227e5566416e962a2f057240
     copy:
       - from: skills/terraform-skill
         to: opencode/.config/opencode/skills/terraform-skill
