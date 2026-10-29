@@ -66,6 +66,29 @@
     // /private/tmp on macOS, so both are listed.
     { "action": "external_directory", "resource": "/tmp/*", "effect": "allow" },
     { "action": "external_directory", "resource": "/private/tmp/*", "effect": "allow" },
+
+    // gh asks, except read-only subcommands. Last match wins.
+    { "action": "bash", "resource": "gh *", "effect": "ask" },
+    { "action": "bash", "resource": "gh auth status*", "effect": "allow" },
+    { "action": "bash", "resource": "gh pr view*", "effect": "allow" },
+    { "action": "bash", "resource": "gh pr diff*", "effect": "allow" },
+    { "action": "bash", "resource": "gh pr list*", "effect": "allow" },
+    { "action": "bash", "resource": "gh pr checks*", "effect": "allow" },
+    { "action": "bash", "resource": "gh pr status*", "effect": "allow" },
+    { "action": "bash", "resource": "gh issue view*", "effect": "allow" },
+    { "action": "bash", "resource": "gh issue list*", "effect": "allow" },
+    { "action": "bash", "resource": "gh run view*", "effect": "allow" },
+    { "action": "bash", "resource": "gh run list*", "effect": "allow" },
+    { "action": "bash", "resource": "gh repo view*", "effect": "allow" },
+    { "action": "bash", "resource": "gh repo read-file*", "effect": "allow" },
+    { "action": "bash", "resource": "gh repo read-dir*", "effect": "allow" },
+    { "action": "bash", "resource": "gh release view*", "effect": "allow" },
+    { "action": "bash", "resource": "gh release list*", "effect": "allow" },
+    { "action": "bash", "resource": "gh search *", "effect": "allow" },
+
+    // Pushing asks. Second rule catches git -C <dir> push.
+    { "action": "bash", "resource": "git push*", "effect": "ask" },
+    { "action": "bash", "resource": "git * push*", "effect": "ask" },
   ],
 
   "references": {
