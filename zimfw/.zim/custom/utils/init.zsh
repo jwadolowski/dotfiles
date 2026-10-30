@@ -163,7 +163,7 @@ function ax() {
       echo "$profiles" |
         fzf \
           --query="${search_key:-$1}" \
-          --preview "rg -A5 {}${profile_suffix} ${aws_config} | bat --language=ini --color=always"
+          --preview "rg -A5 --fixed-strings '[profile '{}'${profile_suffix}]' ${aws_config} | bat --language=ini --color=always"
     )
   fi
 
