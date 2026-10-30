@@ -45,20 +45,22 @@ targets:
       # Upstream keeps an opencode-specific command set; take it wholesale
       # apart from the two whose skills are not vendored - /caveman-stats reads
       # a log only the Claude Code plugin writes, and /caveman-help is a
-      # reference card listing it.
+      # reference card listing it. /caveman-commit is owned locally: subject
+      # capitalized after the colon, 72-char limit instead of upstream's 50.
       - from: src/plugins/opencode/commands
         to: opencode/.config/opencode/commands
         exclude:
           - caveman-help.md
           - caveman-stats.md
+          - caveman-commit.md
       # The skill dirs the caveman installer selects for opencode
       # (OPENCODE_SKILL_DIRS in bin/install.js); the repo-level skills/ holds
-      # build tooling and other harnesses' skills alongside them.
+      # build tooling and other harnesses' skills alongside them. caveman-commit
+      # is owned locally, same as its command.
       - from: skills
         to: opencode/.config/opencode/skills
         include:
           - caveman
-          - caveman-commit
           - caveman-review
           - caveman-compress
           - cavecrew

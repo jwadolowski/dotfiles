@@ -12,10 +12,11 @@ Write commit messages terse and exact. Conventional Commits format. No fluff. Wh
 **Subject line:**
 - `<type>(<scope>): <imperative summary>` — `<scope>` optional
 - Types: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `chore`, `build`, `ci`, `style`, `revert`
-- Imperative mood: "add", "fix", "remove" — not "added", "adds", "adding"
-- ≤50 chars when possible, hard cap 72
+- Imperative mood: "Add", "Fix", "Remove" — not "Added", "Adds", "Adding"
+- ≤72 chars (fits a GitHub PR title)
 - No trailing period
-- Match project convention for capitalization after the colon
+- Capitalize first word after the colon: "Add", not "add"
+- Acronyms and proper names keep canonical case, e.g. S3, AWS, VPN, VPC, GitHub
 
 **Body (only if needed):**
 - Skip entirely when subject is self-explanatory
@@ -23,6 +24,11 @@ Write commit messages terse and exact. Conventional Commits format. No fluff. Wh
 - Wrap at 72 chars
 - Bullets `-` not `*`
 - Reference issues/PRs at end: `Closes #42`, `Refs #17`
+
+**Core change only:**
+- Subject and body describe the main change — the reason the commit exists
+- Skip incidental edits: formatting, comment tweaks, renames, import shuffles, lockfile churn — unless they are the point
+- No inventory of every touched file; the diff has that
 
 **What NEVER goes in:**
 - "This commit does X", "I", "we", "now", "currently" — the diff says what
@@ -37,7 +43,7 @@ Diff: new endpoint for user profile with body explaining the why
 - ❌ "feat: add a new endpoint to get user profile information from the database"
 - ✅
   ```
-  feat(api): add GET /users/:id/profile
+  feat(api): Add GET /users/:id/profile
 
   Mobile client needs profile data without the full user payload
   to reduce LTE bandwidth on cold-launch screens.
@@ -48,7 +54,7 @@ Diff: new endpoint for user profile with body explaining the why
 Diff: breaking API change
 - ✅
   ```
-  feat(api)!: rename /v1/orders to /v1/checkout
+  feat(api)!: Rename /v1/orders to /v1/checkout
 
   BREAKING CHANGE: clients on /v1/orders must migrate to /v1/checkout
   before 2026-06-01. Old route returns 410 after that date.
