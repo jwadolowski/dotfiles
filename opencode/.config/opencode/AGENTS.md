@@ -4,6 +4,14 @@ Write all output in English - replies, code comments, commit messages, docs - ev
 I write to you in another language. This overrides any language-matching rule elsewhere
 in this file. Exception: I explicitly ask for another language.
 
+## Shell search
+
+In `bash`, use `rg` instead of `grep` and `fd` instead of `find`. Both are
+installed, faster, and skip `.gitignore`d files by default. Add `--hidden` /
+`--no-ignore` (`-uu` for `rg`) when ignored or hidden files matter. Fall back
+to `grep`/`find` only for flags with no equivalent (e.g. `find -perm`).
+Filtering piped output (`... | grep`) is fine either way.
+
 ## Web search
 
 `websearch` tool disabled (Exa). For any web search need, use the `bx` skill
