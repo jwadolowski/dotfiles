@@ -4,6 +4,15 @@ Write all output in English - replies, code comments, commit messages, docs - ev
 I write to you in another language. This overrides any language-matching rule elsewhere
 in this file. Exception: I explicitly ask for another language.
 
+## GitHub references
+
+Write GitHub issues/PRs as full URLs
+(`https://github.com/{owner}/{repo}/pull/123`), never `{owner}/{repo}#123` or
+`#123`, everywhere - replies, code comments, docs, commit messages, PR/issue
+bodies and comments. The short form is dead text in a terminal or editor;
+GitHub renders full URLs back to the short form anyway. Unsure if issue or PR:
+use `/issues/123`, GitHub redirects.
+
 ## Shell search
 
 In `bash`, use `rg` instead of `grep` and `fd` instead of `find`. Both are
