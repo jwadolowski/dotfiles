@@ -31,7 +31,7 @@ targets:
   - name: caveman-agents
     repo: JuliusBrussee/caveman
     track: tag
-    ref: v4.0.1
+    ref: v4.1.0
     pin: d262ab3882952a59312ff3537cd86d894523c5ab
     copy:
       - from: agents
