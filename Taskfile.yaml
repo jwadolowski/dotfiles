@@ -100,7 +100,6 @@ tasks:
       - ${STOW_BASE_CMD} pnpm
       - ${STOW_BASE_CMD} bun
       - ${STOW_BASE_CMD} uv
-      - ${STOW_BASE_CMD} yarn
       - ${STOW_BASE_CMD} pip
       - ${STOW_BASE_CMD} bundler
       - ${STOW_BASE_CMD} opencode
