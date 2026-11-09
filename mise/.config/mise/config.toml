@@ -9,6 +9,7 @@ neovim = ["0.12"]
 [settings]
 trusted_config_paths = ["~/projects"]
 idiomatic_version_file_enable_tools = ["node"]
+minimum_release_age = "7d"
 
 [env]
 # https://github.com/jdx/mise/discussions/5119
