@@ -17,5 +17,11 @@
     "session.last": "ctrl+alt+g",
     "input.line.home": "ctrl+a,home",
     "input.line.end": "ctrl+e,end"
+  },
+  "tabs": {
+    "mode": "auto"
+  },
+  "terminal": {
+    "copy": "select"
   }
 }
