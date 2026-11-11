@@ -79,3 +79,15 @@ of truth instead of recalling schemas from memory: `get_provider_details`,
 and `get_module_details` for modules. All are read-only registry queries - no
 state, no credentials, no cloud API calls - so run them freely without asking,
 and prefer them over the `bx` skill for registry.terraform.io content.
+
+## AWS
+
+Do not recall AWS service behavior from memory - limits, API parameters,
+runtime restrictions (e.g. the CloudFront Functions JavaScript subset vs
+Lambda@Edge), or regional availability. The `aws-knowledge` MCP server is wired
+up locally and serves the official AWS docs, API references and What's New
+posts - look things up there before proposing code or config. It is read-only
+and needs no credentials, so run it freely without asking, and prefer it over
+the `bx` skill for docs.aws.amazon.com content. Terraform resource schemas
+still come from the `terraform` MCP server; `aws-knowledge` covers how the
+service itself behaves.

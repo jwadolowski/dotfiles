@@ -55,6 +55,13 @@
           "--toolsets=registry",
         ],
       },
+
+      // Remote, hosted by AWS, no auth. Docs only - no credentials, no API
+      // calls.
+      "aws-knowledge": {
+        "type": "remote",
+        "url": "https://knowledge-mcp.global.api.aws",
+      },
     },
   },
 
