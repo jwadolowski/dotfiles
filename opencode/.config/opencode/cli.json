@@ -19,7 +19,7 @@
     "input.line.end": "ctrl+e,end"
   },
   "tabs": {
-    "mode": "auto"
+    "mode": "off"
   },
   "terminal": {
     "copy": "select"
