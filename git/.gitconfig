@@ -75,4 +75,12 @@
     program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
     allowedSignersFile = ~/.ssh/allowed_signers
 
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
 # vim: ft=gitconfig
